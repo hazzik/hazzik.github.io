@@ -6,7 +6,7 @@ highlighter:      pygments
 permalink:        pretty
 
 # Setup
-title:            Hazzik`s blog
+title:            Hazzik's blog
 tagline:          ''
 description:      ''
 url:              http://alexzaytsev.me
@@ -17,8 +17,6 @@ author:
 
 paginate:         5
 
-# Custom vars
-version:          1.0.0
-
 github:
-  repo:           https://github.com/hazzik
+  source:    'http://github.com/hazzik/alexzaytsev.me/edit/gh-pages/'
+  

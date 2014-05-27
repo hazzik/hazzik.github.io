@@ -7,12 +7,14 @@ title: Home
   {% for post in paginator.posts %}
   <div class="post">
     <h1 class="post-title">
+      <a href="{{ site.github.source }}{{ post.path }}"><i class="fa fa-edit"></i></a>
       <a href="{{ post.url }}">
         {{ post.title }}
       </a>
     </h1>
 
-    <span class="post-date">{{ post.date | date_to_string }}</span>
+    <span class="post-date"><i class="fa fa-calendar"></i> {{ post.date | date_to_string }}</span>
+    <span class="post-tags"><i class="fa fa-tags"></i> {{ post.tags | join: ', ' }}</span>
 
     {{ post.content }}
   </div>

@@ -99,6 +99,14 @@ a.sidebar-nav-item:focus {
   font-weight: bold;
 }
 
+.sidebar-social {
+  padding-left: 0;
+  list-style: none;
+}
+.sidebar-social-item {
+  display: inline;
+}
+
 /* Sticky sidebar
  *
  * Add the `sidebar-sticky` class to the sidebar's container to affix it the
@@ -136,6 +144,7 @@ a.sidebar-nav-item:focus {
 
 @media (min-width: 64rem) {
   .content {
+    max-width: 52rem;
     margin-left: 22rem;
     margin-right: 4rem;
   }

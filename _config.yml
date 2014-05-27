@@ -1,10 +1,24 @@
-# Site settings
-title: Hazzik`s blog
-email: me@alexzaytsev.me
-description: ""
-baseurl: ""
-url: "http://alexzaytsev.me"
+# Dependencies
+markdown:         redcarpet
+highlighter:      pygments
 
-# Build settings
-markdown: kramdown
-permalink: pretty
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            Hazzik`s blog
+tagline:          ''
+description:      ''
+url:              http://alexzaytsev.me
+
+author:
+  name:           'Alexander Zaytsev'
+  url:            http://alexzaytsev.me
+
+paginate:         5
+
+# Custom vars
+version:          1.0.0
+
+github:
+  repo:           https://github.com/hazzik

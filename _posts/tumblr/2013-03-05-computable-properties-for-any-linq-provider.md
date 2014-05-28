@@ -9,6 +9,9 @@ tags:
 - Decompiler
 - Delegate
 tumblr_url: http://hazzik.tumblr.com/post/44564275956/computable-properties-for-any-linq-provider
+redirect_from:
+- /post/44564275956/computable-properties-for-any-linq-provider/
+- /post/44564275956/
 ---
 In this blog post I want to present a little library which I wrote a while ago. This library can decompile methods to their λ-representation.
 

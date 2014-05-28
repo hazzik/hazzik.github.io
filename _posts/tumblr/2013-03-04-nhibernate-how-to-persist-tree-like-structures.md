@@ -9,6 +9,9 @@ tags:
 - Tree-Hierarchy
 - Persistent-Tree
 tumblr_url: http://hazzik.tumblr.com/post/44522958800/nhibernate-how-to-persist-tree-like-structures
+redirect_from:
+- /post/44522958800/nhibernate-how-to-persist-tree-like-structures/
+- /post/44522958800/
 ---
 Many of you have seen a simple problem - how to store hierarchy data in relational database and efficient work with it. It seems that there is no simpler things to do - just create PARENT_ID column and store the parent identifier of this record.
 

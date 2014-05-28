@@ -12,10 +12,11 @@ title: Home
         {{ post.title }}
       </a>
     </h1>
-
-    <span class="post-date"><i class="fa fa-calendar"></i> {{ post.date | date_to_string }}</span>
-    <span class="post-tags"><i class="fa fa-tags"></i> {{ post.tags | join: ', ' }}</span>
-
+    <ul class="post-info">
+      <li><i class="fa fa-calendar"></i> {{ post.date | date_to_string }}</li>
+      <li><i class="fa fa-tags"></i> {{ post.tags | join: ', ' }}</li>
+      <li><i class="fa fa-comments"></i> <a href="{{ post.url }}#disqus_thread" data-disqus-identifier="{% if post.disqus_identifier %}{{ post.disqus_identifier}}{% else %}{{ post.url }}{% endif %}">0 comments</a></li>
+    </ul>
     {{ post.content }}
   </div>
   {% endfor %}

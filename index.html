@@ -36,7 +36,7 @@
     <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="tag-cloud">
-      <a href="/tag/blog" class="set-1">Blog</a> <a href="/tag/computed-properties" class="set-1">Computed Properties</a> <a href="/tag/decompiler" class="set-1">Decompiler</a> <a href="/tag/delegate" class="set-1">Delegate</a> <a href="/tag/linq" class="set-1">LINQ</a> <a href="/tag/nhibernate" class="set-5">NHibernate</a> <a href="/tag/persistent-tree" class="set-1">Persistent-Tree</a> <a href="/tag/tree" class="set-1">Tree</a> <a href="/tag/tree-hierarchy" class="set-1">Tree-Hierarchy</a> <a href="/tag/tree-structures" class="set-1">Tree-Structures</a>
+      <a href="/tag/asp-dot-net-mvc" class="set-1">ASP.NET MVC</a> <a href="/tag/blog" class="set-1">Blog</a> <a href="/tag/computed-properties" class="set-1">Computed Properties</a> <a href="/tag/dataannotations" class="set-1">DataAnnotations</a> <a href="/tag/decompiler" class="set-1">Decompiler</a> <a href="/tag/delegate" class="set-1">Delegate</a> <a href="/tag/linq" class="set-1">LINQ</a> <a href="/tag/nhibernate" class="set-5">NHibernate</a> <a href="/tag/persistent-tree" class="set-1">Persistent-Tree</a> <a href="/tag/renderaction" class="set-1">RenderAction</a> <a href="/tag/tree" class="set-1">Tree</a> <a href="/tag/tree-hierarchy" class="set-1">Tree-Hierarchy</a> <a href="/tag/tree-structures" class="set-1">Tree-Structures</a>
     </div>
     <div class="sidebar-about">
 
@@ -74,6 +74,87 @@
 
     <div class="content container">
       <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://github.com/hazzik/alexzaytsev.me/edit/master/_posts/2014-06-17-render-action-attribute.md"><i class="fa fa-edit"></i></a>
+      <a href="/2014/06/17/render-action-attribute/">
+        Render Action Attribute
+      </a>
+    </h1>
+    <ul class="post-info">
+      <li><i class="fa fa-calendar"></i> <time datetime="2014-06-17T11:43:03+12:00"> 17 Jun 2014 </time></li>
+      <li><i class="fa fa-tags"></i> <a href="/tag/asp-dot-net-mvc" rel="tag">ASP.NET MVC</a>, <a href="/tag/dataannotations" rel="tag">DataAnnotations</a>, <a href="/tag/renderaction" rel="tag">RenderAction</a> </li>
+      <li><i class="fa fa-comments"></i> <a href="/2014/06/17/render-action-attribute/#disqus_thread" data-disqus-identifier="/2014/06/17/render-action-attribute/">0 комментариев</a></li>
+    </ul>
+    <h3>RenderActionOptions.cs</h3>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">RenderActionOptions</span> 
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">string</span> <span class="n">MetadataKey</span> <span class="p">=</span> <span class="s">"RenderActionOptions"</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Action</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Controller</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Area</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3>RenderActionAttribute.cs</h3>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">RenderActionAttribute</span> <span class="p">:</span> <span class="n">Attribute</span><span class="p">,</span> <span class="n">IMetadataAware</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nf">RenderActionAttribute</span><span class="p">([</span><span class="n">AspMvcAction</span><span class="p">]</span> <span class="kt">string</span> <span class="n">action</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Action</span> <span class="p">=</span> <span class="n">action</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nf">RenderActionAttribute</span><span class="p">([</span><span class="n">AspMvcAction</span><span class="p">]</span> <span class="kt">string</span> <span class="n">action</span><span class="p">,</span> <span class="p">[</span><span class="n">AspMvcController</span><span class="p">]</span> <span class="kt">string</span> <span class="n">controller</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Action</span> <span class="p">=</span> <span class="n">action</span><span class="p">;</span>
+        <span class="n">Controller</span> <span class="p">=</span> <span class="n">controller</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nf">RenderActionAttribute</span><span class="p">([</span><span class="n">AspMvcAction</span><span class="p">]</span> <span class="kt">string</span> <span class="n">action</span><span class="p">,</span> <span class="p">[</span><span class="n">AspMvcController</span><span class="p">]</span> <span class="kt">string</span> <span class="n">controller</span><span class="p">,</span> <span class="p">[</span><span class="n">AspMvcController</span><span class="p">]</span> <span class="kt">string</span> <span class="n">area</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Action</span> <span class="p">=</span> <span class="n">action</span><span class="p">;</span>
+        <span class="n">Controller</span> <span class="p">=</span> <span class="n">controller</span><span class="p">;</span>
+        <span class="n">Area</span> <span class="p">=</span> <span class="n">area</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Action</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Controller</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Area</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">OnMetadataCreated</span><span class="p">(</span><span class="n">ModelMetadata</span> <span class="n">metadata</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="n">metadata</span><span class="p">.</span><span class="n">AdditionalValues</span><span class="p">[</span><span class="n">RenderActionOptions</span><span class="p">.</span><span class="n">MetadataKey</span><span class="p">]</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RenderActionOptions</span>
+    <span class="p">{</span>
+            <span class="n">Action</span> <span class="p">=</span> <span class="n">Action</span><span class="p">,</span>
+            <span class="n">Controller</span> <span class="p">=</span> <span class="n">Controller</span><span class="p">,</span>
+            <span class="n">Area</span> <span class="p">=</span> <span class="n">Area</span>
+    <span class="p">};</span>
+        <span class="n">metadata</span><span class="p">.</span><span class="n">TemplateHint</span> <span class="p">=</span> <span class="s">"RenderAction"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3>Shared/EditorTemplates/RenderAction.cshtml</h3>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="err">@</span><span class="p">{</span>
+    <span class="n">var</span> <span class="n">data</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RouteValueDictionary</span><span class="p">(</span><span class="n">ViewData</span><span class="p">);</span>
+    <span class="kt">object</span> <span class="n">o</span><span class="p">;</span>
+    <span class="n">ViewData</span><span class="p">.</span><span class="n">ModelMetadata</span><span class="p">.</span><span class="n">AdditionalValues</span><span class="p">.</span><span class="nf">TryGetValue</span><span class="p">(</span><span class="n">RenderActionOptions</span><span class="p">.</span><span class="n">MetadataKey</span><span class="p">,</span> <span class="k">out</span> <span class="n">o</span><span class="p">);</span>
+    <span class="n">var</span> <span class="n">options</span> <span class="p">=</span> <span class="n">o</span> <span class="k">as</span> <span class="n">RenderActionOptions</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(!</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">options</span><span class="p">.</span><span class="n">Area</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">data</span><span class="p">[</span><span class="s">"area"</span><span class="p">]</span> <span class="p">=</span> <span class="n">options</span><span class="p">.</span><span class="n">Area</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(!</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">options</span><span class="p">.</span><span class="n">Controller</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">Html</span><span class="p">.</span><span class="nf">RenderAction</span><span class="p">(</span><span class="n">options</span><span class="p">.</span><span class="n">Action</span><span class="p">,</span> <span class="n">options</span><span class="p">.</span><span class="n">Controller</span><span class="p">,</span> <span class="n">data</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">Html</span><span class="p">.</span><span class="nf">RenderAction</span><span class="p">(</span><span class="n">options</span><span class="p">.</span><span class="n">Action</span><span class="p">,</span> <span class="n">data</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+  </div>
   
   <div class="post">
     <h1 class="post-title">

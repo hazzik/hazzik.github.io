@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta name="description" content="" />
+
+  <title>
+    
+      Hazzik's blog &middot; 
+    
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="tag-cloud">
+      <a href="/tag/blog" class="set-1">Blog</a> <a href="/tag/computed-properties" class="set-1">Computed Properties</a> <a href="/tag/decompiler" class="set-1">Decompiler</a> <a href="/tag/delegate" class="set-1">Delegate</a> <a href="/tag/linq" class="set-1">LINQ</a> <a href="/tag/nhibernate" class="set-5">NHibernate</a> <a href="/tag/persistent-tree" class="set-1">Persistent-Tree</a> <a href="/tag/tree" class="set-1">Tree</a> <a href="/tag/tree-hierarchy" class="set-1">Tree-Hierarchy</a> <a href="/tag/tree-structures" class="set-1">Tree-Structures</a>
+    </div>
+    <div class="sidebar-about">
+
+      <h1><a href="/">Hazzik's blog</a></h1>
+      <p class="lead"><a href="/"></a></p>
+
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item active">
+        <a href="/">Home</a>
+      </li>
+
+      
+
+      
+      
+            <li class="sidebar-nav-item">
+              <a href="/about/">About</a>
+            </li>
+      
+    </ul>
+    <ul class="sidebar-social">
+      <li class="sidebar-social-item"><a href="http://twitter.com/hazzik"><i class="fa fa-twitter"></i></a></li>
+      &middot;
+      <li class="sidebar-social-item"><a href="http://github.com/hazzik"><i class="fa fa-github"></i></a></li>
+      &middot;
+      <li class="sidebar-social-item"><a href="http://linkedin.com/in/hazzik"><i class="fa fa-linkedin"></i></a></li>
+    </ul>
+
+    <p>&copy; 2014. All rights reserved.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://github.com/hazzik/alexzaytsev.me/edit/master/_posts/2014-05-27-the-blog-has-been-moved.md"><i class="fa fa-edit"></i></a>
+      <a href="/2014/05/27/the-blog-has-been-moved/">
+        The blog has been moved to alexzaytsev.me
+      </a>
+    </h1>
+    <ul class="post-info">
+      <li><i class="fa fa-calendar"></i> <time datetime="2014-05-27T20:26:00+12:00"> 27 May 2014 </time></li>
+      <li><i class="fa fa-tags"></i> <a href="/tag/blog" rel="tag">Blog</a> </li>
+      <li><i class="fa fa-comments"></i> <a href="/2014/05/27/the-blog-has-been-moved/#disqus_thread" data-disqus-identifier="/2014/05/27/the-blog-has-been-moved/">0 комментариев</a></li>
+    </ul>
+    <p>Subj</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://github.com/hazzik/alexzaytsev.me/edit/master/_posts/tumblr/2013-03-05-computable-properties-for-any-linq-provider.md"><i class="fa fa-edit"></i></a>
+      <a href="/2013/03/05/computable-properties-for-any-linq-provider/">
+        Computable properties for any LINQ provider
+      </a>
+    </h1>
+    <ul class="post-info">
+      <li><i class="fa fa-calendar"></i> <time datetime="2013-03-05T09:31:14+12:00"> 05 Mar 2013 </time></li>
+      <li><i class="fa fa-tags"></i> <a href="/tag/nhibernate" rel="tag">NHibernate</a>, <a href="/tag/linq" rel="tag">LINQ</a>, <a href="/tag/computed-properties" rel="tag">Computed Properties</a>, <a href="/tag/decompiler" rel="tag">Decompiler</a>, <a href="/tag/delegate" rel="tag">Delegate</a> </li>
+      <li><i class="fa fa-comments"></i> <a href="/2013/03/05/computable-properties-for-any-linq-provider/#disqus_thread" data-disqus-identifier="/2013/03/05/computable-properties-for-any-linq-provider/">0 комментариев</a></li>
+    </ul>
+    <p>In this blog post I want to present a little library which I wrote a while ago. This library can decompile methods to their λ-representation.</p>
+
+<h1>Why</h1>
+
+<p>Sometimes you need to use computable properties in LINQ queries, for example you have Employee class with computable property FullName</p>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">class</span> <span class="nc">Employee</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">FullName</span>
+    <span class="p">{</span>
+        <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">FirstName</span> <span class="p">+</span> <span class="s">" "</span> <span class="p">+</span> <span class="n">LastName</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">LastName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">FirstName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>And now your manager comes to you and says that we need to have ability to search by employee’s full name. And you without any thinking write following query:</p>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">var</span> <span class="n">employees</span> <span class="p">=</span> <span class="p">(</span><span class="n">from</span> <span class="n">employee</span> <span class="k">in</span> <span class="n">db</span><span class="p">.</span><span class="n">Employees</span>
+                 <span class="nf">where</span> <span class="p">(</span><span class="n">employee</span><span class="p">.</span><span class="n">FirstName</span> <span class="p">+</span> <span class="s">" "</span> <span class="p">+</span> <span class="n">employee</span><span class="p">.</span><span class="n">LastName</span><span class="p">)</span> <span class="p">==</span> <span class="s">"Test User"</span>
+                 <span class="n">select</span> <span class="n">employee</span><span class="p">).</span><span class="nf">ToList</span><span class="p">();</span>
+</code></pre></div>
+<p>Yes, with such simple property as FullName it can work, but what will you do if field would be not simple as this one? For example there is one field from one of my previous projects, and it should be queryable!</p>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">class</span> <span class="nc">WayPoint</span> 
+<span class="p">{</span>
+    <span class="c1">// all other is skipped due to clarity reasons
+</span>    <span class="k">public</span> <span class="k">virtual</span> <span class="kt">bool</span> <span class="n">IsValid</span>
+    <span class="p">{</span>
+        <span class="k">get</span> 
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">Account</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="p">||</span>
+               <span class="p">(</span><span class="n">Role</span> <span class="p">==</span> <span class="k">null</span> <span class="p">||</span> <span class="n">Account</span><span class="p">.</span><span class="n">Role</span> <span class="p">==</span> <span class="n">Role</span><span class="p">)</span> <span class="p">&amp;</span><span class="n">amp</span><span class="p">;&amp;</span><span class="n">amp</span><span class="p">;</span>
+               <span class="p">(</span><span class="n">StructuralUnit</span> <span class="p">==</span> <span class="k">null</span> <span class="p">||</span> <span class="n">Account</span><span class="p">.</span><span class="n">State</span><span class="p">.</span><span class="n">StructuralUnit</span> <span class="p">==</span> <span class="n">StructuralUnit</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This is much harder…</p>
+
+<p>What do we have to solve such puzzles?</p>
+
+<h1>&lt;formula&gt; element in NHibernate</h1>
+
+<p>If you are using NHibernate then you can map this field as formula, but this way is full of big scare bears, and such code is hard to maintain, and the <code>&lt;formula&gt;</code> element supports only small subset of SQL, and if you are developing software which have to work with different RDBMS you have to be very-very careful.</p>
+
+<p>It works only in NHibernate</p>
+
+<h1><a href="http://damieng.com/blog/2009/06/24/client-side-properties-and-any-remote-linq-provider">Microsoft.Linq.Translations</a></h1>
+
+<p>With this great and powerful library we would rewrite our class like this</p>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">class</span> <span class="nc">Employee</span> 
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">CompiledExpression</span> <span class="n">fullNameExpression</span>
+        <span class="p">=</span> <span class="n">DefaultTranslationOf</span><span class="p">.</span><span class="nf">Property</span><span class="p">(</span><span class="n">e</span> <span class="p">=&gt;</span> <span class="n">e</span><span class="p">.</span><span class="n">FullName</span><span class="p">).</span><span class="nf">Is</span><span class="p">(</span><span class="n">e</span> <span class="p">=&gt;</span> <span class="n">e</span><span class="p">.</span><span class="n">FirstName</span> <span class="p">+</span> <span class="s">" "</span> <span class="p">+</span> <span class="n">e</span><span class="p">.</span><span class="n">LastName</span><span class="p">);</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">FullName</span> 
+    <span class="p">{</span>
+        <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">fullNameExpression</span><span class="p">.</span><span class="nf">Evaluate</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">LastName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">FirstName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">var</span> <span class="n">employees</span> <span class="p">=</span> <span class="p">(</span><span class="n">from</span> <span class="n">employee</span> <span class="k">in</span> <span class="n">db</span><span class="p">.</span><span class="n">Employees</span>
+                 <span class="n">where</span> <span class="n">employee</span><span class="p">.</span><span class="n">FullName</span> <span class="p">==</span> <span class="s">"Test User"</span>
+                 <span class="n">select</span> <span class="n">employee</span><span class="p">).</span><span class="nf">WithTranslations</span><span class="p">().</span><span class="nf">ToList</span><span class="p">()</span>
+</code></pre></div>
+<p>All right, and the query looks good but the field declaration is terrible! And Evaluate compiles the λ-expression in runtime, which is no less terrible than the computable field decalaration.</p>
+
+<p>And now meet my small library - DelegateDecompiler</p>
+
+<h1>DelegateDecompiler</h1>
+
+<p>The property should be marked with [Computed] attribute and it is all you need, and add <code>.Decompile()</code> method invocation to the query.</p>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">class</span> <span class="nc">Employee</span> 
+<span class="p">{</span>
+    <span class="p">[</span><span class="n">Computed</span><span class="p">]</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">FullName</span> 
+    <span class="p">{</span>
+        <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">FirstName</span> <span class="p">+</span> <span class="s">" "</span> <span class="p">+</span> <span class="n">LastName</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">LastName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">FirstName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">var</span> <span class="n">employees</span> <span class="p">=</span> <span class="p">(</span><span class="n">from</span> <span class="n">employee</span> <span class="k">in</span> <span class="n">db</span><span class="p">.</span><span class="n">Employees</span>
+                 <span class="n">where</span> <span class="n">employee</span><span class="p">.</span><span class="n">FullName</span> <span class="p">==</span> <span class="s">"Test User"</span>
+                 <span class="n">select</span> <span class="n">employee</span><span class="p">).</span><span class="nf">Decompile</span><span class="p">().</span><span class="nf">ToList</span><span class="p">()</span>
+</code></pre></div>
+<p>In my opinion it is gracefully (If you don’t blow your own horn, no one will do it for you). But bear in mind that the source of your computable property should be supported using LINQ provider.</p>
+
+<h1>How does it work?</h1>
+
+<p><code>.Decompile()</code> method finds all the properties and methods marked with <code>[Computed]</code> attribute and expand them to their source expressions. In other words the query above will become as following query:</p>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">var</span> <span class="n">employees</span> <span class="p">=</span> <span class="p">(</span><span class="n">from</span> <span class="n">employee</span> <span class="k">in</span> <span class="n">db</span><span class="p">.</span><span class="n">Employees</span>
+                 <span class="nf">where</span> <span class="p">(</span><span class="n">employee</span><span class="p">.</span><span class="n">FirstName</span> <span class="p">+</span> <span class="s">" "</span> <span class="p">+</span> <span class="n">employee</span><span class="p">.</span><span class="n">LastName</span><span class="p">)</span> <span class="p">==</span> <span class="s">"Test User"</span>
+                 <span class="n">select</span> <span class="n">employee</span><span class="p">).</span><span class="nf">ToList</span><span class="p">();</span>
+</code></pre></div>
+<p>The library uses Mono.Reflection (GitHub, NuGet) as decompiler. The Mono.Reflection library is written by Jean-Baptiste Evain the creator of Mono.Cecil.</p>
+
+<p>PS: This is an alpha version, use at your own risk.</p>
+
+<h1>Links</h1>
+
+<ul>
+<li><a href="https://github.com/hazzik/DelegateDecompiler">Source code at GitHub</a></li>
+<li><a href="https://nuget.org/packages/DelegateDecompiler">Nuget package</a></li>
+</ul>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://github.com/hazzik/alexzaytsev.me/edit/master/_posts/tumblr/2013-03-04-nhibernate-how-to-persist-tree-like-structures.md"><i class="fa fa-edit"></i></a>
+      <a href="/2013/03/04/nhibernate-how-to-persist-tree-like-structures/">
+        NHibernate: How to persist Tree-like structures
+      </a>
+    </h1>
+    <ul class="post-info">
+      <li><i class="fa fa-calendar"></i> <time datetime="2013-03-04T17:21:00+12:00"> 04 Mar 2013 </time></li>
+      <li><i class="fa fa-tags"></i> <a href="/tag/tree" rel="tag">Tree</a>, <a href="/tag/nhibernate" rel="tag">NHibernate</a>, <a href="/tag/tree-structures" rel="tag">Tree-Structures</a>, <a href="/tag/tree-hierarchy" rel="tag">Tree-Hierarchy</a>, <a href="/tag/persistent-tree" rel="tag">Persistent-Tree</a> </li>
+      <li><i class="fa fa-comments"></i> <a href="/2013/03/04/nhibernate-how-to-persist-tree-like-structures/#disqus_thread" data-disqus-identifier="/2013/03/04/nhibernate-how-to-persist-tree-like-structures/">0 комментариев</a></li>
+    </ul>
+    <p>Many of you have seen a simple problem - how to store hierarchy data in relational database and efficient work with it. It seems that there is no simpler things to do - just create PARENT_ID column and store the parent identifier of this record.</p>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">class</span> <span class="nc">Tree</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">Id</span><span class="p">;</span>
+    <span class="n">Tree</span> <span class="n">Parent</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>But it is only at first glance.</p>
+
+<p>Everything is fine until you are working with only one level of an hierarchy: an parent and his children. But the funny part begins when you need to extend your levels, for example you need to check an ancestor of entity on any of the upper levels.</p>
+
+<p>This task can not be handled by any ORM - in best case you will get <a href="http://nhprof.com/Learn/Alerts/SelectNPlusOne">SELECT N+1</a> problem. To solve this issue you need to write custom database depend query with WITH statement for Microsoft Sql Server or CONNECT BY PRIOR for Oracle, or even custom stored procedure, use temporary tables and other scary things.</p>
+
+<p>In article “<a href="http://nhibernate.hibernatingrhinos.com/16/how-to-map-a-tree-in-nhibernate">How to map a tree in NHibernate</a>&quot; <a href="http://lostechies.com/gabrielschenker/author/gabrielschenker/">Gabriel Schenker</a> offers an alternate approach - adding an helper table to store hierarchy relations. This table will store all ancestors and descendants for each entity. Descendants will be mapped to Descendants collection and ancestors will be mapped to Ancestors collection. Both collections are many-to-many:</p>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">class</span> <span class="nc">Tree</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">Id</span><span class="p">;</span>
+    <span class="n">Tree</span> <span class="n">Parent</span><span class="p">;</span>
+    <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">Tree</span><span class="p">&gt;</span> <span class="n">Children</span><span class="p">;</span>
+    <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">Tree</span><span class="p">&gt;</span> <span class="n">Ancestors</span><span class="p">;</span>
+    <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">Tree</span><span class="p">&gt;</span> <span class="n">Descendant</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>You can easy handle this structure.</p>
+
+<p>But pros always go with cons. From cons I see that you have to manage this hierarchy table. You can do it from code or from trigger, query or stored procedure in your database.</p>
+
+<p>Happily if you will decide to manage it from code you can write it once and use everywhere. And it is what <a href="https://github.com/BrandyFx/Grapes">I did eventually</a>.</p>
+
+<h1>Brandy.Grapes</h1>
+
+<p><a href="https://github.com/BrandyFx/Grapes">Brandy.Grapes</a> - this is a small set of libraries (only three of them) which allows to easy manage such persisting hierarchy data with <a href="http://nhforge.org/">NHibernate</a>.</p>
+
+<p>You need to install the library through <a href="http://nuget.org/">nuget</a> (currently NHibernate By Code and FluentNHibernate are supported):</p>
+<div class="highlight"><pre><code class="language-" data-lang="">&gt; install-package Brandy.Grapes.NHibernate
+</code></pre></div>
+<p>or</p>
+<div class="highlight"><pre><code class="language-" data-lang="">&gt; install-pacakge Brandy.Grapes.FluentNhibernate
+</code></pre></div>
+<p>Inherit your entity from TreeEntry`1</p>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MySuperTree</span> <span class="p">:</span> <span class="n">TreeEntry</span><span class="p">&lt;</span><span class="n">MySuperTree</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">virtual</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">virtual</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>At last write a mapping, for example for FluentNHibernate:</p>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">Brandy.Grapes.FluentNHibernate</span><span class="p">;</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">MySuperTreeMap</span> <span class="p">:</span> <span class="n">ClassMap</span><span class="p">&lt;</span><span class="n">MySuperTree</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="nf">MySuperTreeMap</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">Id</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
+        <span class="nf">Map</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+
+        <span class="k">this</span><span class="p">.</span><span class="nf">MapTree</span><span class="p">(</span><span class="s">"MySuperTreeHierarchy"</span><span class="p">);</span> <span class="c1">// all magic goes here
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Enjoy: now Brandy.Grapes will track hierarchy changes and persist it to a database for you.
+But when you add anything to the hierarchy the library need to load almost all nodes for the hierarchy from database to correct handle the relations. If your hierarchy is changed frequently you can turn off changes tracking by code and do it in database. There are few ways to do so.</p>
+
+<p>Call the stored procedure by trigger or by code to update hierarchy:</p>
+<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="c1">-- Example for Microsoft Sql Server
+</span><span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">FillHierarchy</span><span class="p">]</span> <span class="p">(</span><span class="o">@</span><span class="k">table_name</span> <span class="n">nvarchar</span><span class="p">(</span><span class="k">MAX</span><span class="p">),</span> <span class="o">@</span><span class="n">hierarchy_name</span> <span class="n">nvarchar</span><span class="p">(</span><span class="k">MAX</span><span class="p">))</span>
+<span class="k">AS</span>
+<span class="k">BEGIN</span>
+    <span class="k">DECLARE</span> <span class="o">@</span><span class="k">sql</span> <span class="n">nvarchar</span><span class="p">(</span><span class="k">MAX</span><span class="p">),</span> <span class="o">@</span><span class="n">id_column_name</span> <span class="n">nvarchar</span><span class="p">(</span><span class="k">MAX</span><span class="p">)</span>
+    <span class="k">SET</span> <span class="o">@</span><span class="n">id_column_name</span> <span class="o">=</span> <span class="s1">''</span><span class="p">[</span><span class="s1">''</span> <span class="o">+</span> <span class="o">@</span><span class="k">table_name</span> <span class="o">+</span> <span class="s1">''</span><span class="n">_ID</span><span class="p">]</span><span class="s1">''</span>
+    <span class="k">SET</span> <span class="o">@</span><span class="k">table_name</span> <span class="o">=</span> <span class="s1">''</span><span class="p">[</span><span class="s1">''</span> <span class="o">+</span> <span class="o">@</span><span class="k">table_name</span> <span class="o">+</span> <span class="s1">''</span><span class="p">]</span><span class="s1">''</span>
+    <span class="k">SET</span> <span class="o">@</span><span class="n">hierarchy_name</span> <span class="o">=</span> <span class="s1">''</span><span class="p">[</span><span class="s1">''</span> <span class="o">+</span> <span class="o">@</span><span class="n">hierarchy_name</span> <span class="o">+</span> <span class="s1">''</span><span class="p">]</span><span class="s1">''</span>
+
+    <span class="k">SET</span> <span class="o">@</span><span class="k">sql</span> <span class="o">=</span> <span class="s1">'</span><span class="se">''</span><span class="s1">'</span>
+    <span class="k">SET</span> <span class="o">@</span><span class="k">sql</span> <span class="o">=</span> <span class="o">@</span><span class="k">sql</span> <span class="o">+</span> <span class="s1">''</span><span class="k">WITH</span> <span class="n">Hierachy</span><span class="p">(</span><span class="n">CHILD_ID</span><span class="p">,</span> <span class="n">PARENT_ID</span><span class="p">)</span> <span class="k">AS</span> <span class="p">(</span> <span class="s1">''</span>
+    <span class="k">SET</span> <span class="o">@</span><span class="k">sql</span> <span class="o">=</span> <span class="o">@</span><span class="k">sql</span> <span class="o">+</span> <span class="s1">''</span><span class="k">SELECT</span> <span class="s1">''</span> <span class="o">+</span> <span class="o">@</span><span class="n">id_column_name</span> <span class="o">+</span> <span class="s1">''</span><span class="p">,</span> <span class="p">[</span><span class="n">PARENT_ID</span><span class="p">]</span> <span class="k">FROM</span> <span class="s1">''</span> <span class="o">+</span> <span class="o">@</span><span class="k">table_name</span> <span class="o">+</span> <span class="s1">''</span> <span class="n">e</span> <span class="s1">''</span>
+    <span class="k">SET</span> <span class="o">@</span><span class="k">sql</span> <span class="o">=</span> <span class="o">@</span><span class="k">sql</span> <span class="o">+</span> <span class="s1">''</span><span class="k">UNION</span> <span class="k">ALL</span> <span class="s1">''</span>
+    <span class="k">SET</span> <span class="o">@</span><span class="k">sql</span> <span class="o">=</span> <span class="o">@</span><span class="k">sql</span> <span class="o">+</span> <span class="s1">''</span><span class="k">SELECT</span> <span class="n">e</span><span class="p">.</span><span class="s1">''</span> <span class="o">+</span> <span class="o">@</span><span class="n">id_column_name</span> <span class="o">+</span> <span class="s1">''</span><span class="p">,</span> <span class="n">e</span><span class="p">.[</span><span class="n">PARENT_ID</span><span class="p">]</span> <span class="k">FROM</span> <span class="s1">''</span> <span class="o">+</span> <span class="o">@</span><span class="k">table_name</span> <span class="o">+</span> <span class="s1">''</span> <span class="n">e</span> <span class="s1">''</span>
+    <span class="k">SET</span> <span class="o">@</span><span class="k">sql</span> <span class="o">=</span> <span class="o">@</span><span class="k">sql</span> <span class="o">+</span> <span class="s1">''</span><span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">Hierachy</span> <span class="n">eh</span> <span class="k">ON</span> <span class="n">e</span><span class="p">.</span><span class="s1">''</span> <span class="o">+</span> <span class="o">@</span><span class="n">id_column_name</span> <span class="o">+</span> <span class="s1">''</span> <span class="o">=</span> <span class="n">eh</span><span class="p">.[</span><span class="n">PARENT_ID</span><span class="p">])</span> <span class="s1">''</span>
+    <span class="k">SET</span> <span class="o">@</span><span class="k">sql</span> <span class="o">=</span> <span class="o">@</span><span class="k">sql</span> <span class="o">+</span> <span class="s1">''</span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="s1">''</span> <span class="o">+</span> <span class="o">@</span><span class="n">hierarchy_name</span> <span class="o">+</span> <span class="s1">''</span> <span class="p">([</span><span class="n">CHILD_ID</span><span class="p">],</span> <span class="p">[</span><span class="n">PARENT_ID</span><span class="p">])</span> <span class="p">(</span> <span class="s1">''</span>
+    <span class="k">SET</span> <span class="o">@</span><span class="k">sql</span> <span class="o">=</span> <span class="o">@</span><span class="k">sql</span> <span class="o">+</span> <span class="s1">''</span><span class="k">SELECT</span> <span class="p">[</span><span class="n">CHILD_ID</span><span class="p">],</span> <span class="p">[</span><span class="n">PARENT_ID</span><span class="p">]</span> <span class="k">FROM</span> <span class="n">Hierachy</span> <span class="k">WHERE</span> <span class="p">[</span><span class="n">PARENT_ID</span><span class="p">]</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="s1">''</span>
+    <span class="k">SET</span> <span class="o">@</span><span class="k">sql</span> <span class="o">=</span> <span class="o">@</span><span class="k">sql</span> <span class="o">+</span> <span class="s1">''</span><span class="p">)</span> <span class="s1">''</span>
+
+    <span class="k">EXECUTE</span> <span class="p">(</span><span class="o">@</span><span class="k">sql</span><span class="p">)</span>
+<span class="k">END</span>
+<span class="k">GO</span>
+</code></pre></div>
+<p>Create a view for each hierarchy (the same query as in stored proceure) and map Ancestors and Descendants collections to that view:</p>
+<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="c1">-- Example for Microsoft Sql Server
+</span><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="p">[</span><span class="n">MySuperTreeHierarchy</span><span class="p">]</span>
+<span class="k">AS</span>
+    <span class="k">WITH</span> <span class="n">Hierachy</span> <span class="p">(</span><span class="n">CHILD_ID</span><span class="p">,</span> <span class="n">PARENT_ID</span><span class="p">)</span> 
+    <span class="k">AS</span> 
+    <span class="p">(</span>
+        <span class="k">SELECT</span> <span class="p">[</span><span class="n">MySuperTree_ID</span><span class="p">],</span> <span class="p">[</span><span class="n">PARENT_ID</span><span class="p">]</span> <span class="k">FROM</span> <span class="p">[</span><span class="n">MySuperTree</span><span class="p">]</span> <span class="k">AS</span> <span class="n">e</span>
+        <span class="k">UNION</span> <span class="k">ALL</span>
+        <span class="k">SELECT</span> <span class="n">e</span><span class="p">.[</span><span class="n">MySuperTree_ID</span><span class="p">],</span> <span class="n">e</span><span class="p">.[</span><span class="n">PARENT_ID</span><span class="p">]</span> <span class="k">FROM</span> <span class="p">[</span><span class="n">MySuperTree</span><span class="p">]</span> <span class="k">AS</span> <span class="n">e</span> 
+            <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">Hierachy</span> <span class="k">AS</span> <span class="n">eh</span> <span class="k">ON</span> <span class="n">e</span><span class="p">.[</span><span class="n">MySuperTree_ID</span><span class="p">]</span> <span class="o">=</span> <span class="n">eh</span><span class="p">.[</span><span class="n">PARENT_ID</span><span class="p">]</span>
+    <span class="p">)</span>
+
+    <span class="k">SELECT</span> <span class="p">[</span><span class="n">CHILD_ID</span><span class="p">],</span> <span class="p">[</span><span class="n">PARENT_ID</span><span class="p">]</span> <span class="k">FROM</span> <span class="n">Hierachy</span> <span class="k">WHERE</span> <span class="p">[</span><span class="n">PARENT_ID</span><span class="p">]</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span>
+<span class="k">GO</span>
+</code></pre></div>
+<p>Both approaches much powerful than calling dynamic queries to database on pure SQL from code.</p>
+
+<p>PS: an contract of TreeEntry`1 abstract class:</p>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">abstract</span> <span class="k">class</span> <span class="nc">TreeEntry</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">where</span> <span class="n">T</span> <span class="p">:</span> <span class="n">TreeEntry</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">virtual</span> <span class="n">T</span> <span class="n">Parent</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">virtual</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">Children</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">virtual</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">Ancestors</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">virtual</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">Descendants</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="nf">AddChild</span><span class="p">(</span><span class="n">T</span> <span class="n">child</span><span class="p">);</span>
+
+    <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="nf">RemoveChild</span><span class="p">(</span><span class="n">T</span> <span class="n">child</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>PPS: Currently EntityFramework does not support hiding collections by IEnumerable`1 interface, so I decided to not provide implementation for EntityFramework.</p>
+
+  </div>
+  
+</div>
+
+<div class="pagination">
+  
+    <span class="pagination-item older">Older</span>
+  
+  
+    <span class="pagination-item newer">Newer</span>
+  
+</div>
+
+    </div>
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+var disqus_shortname = 'hazzik-blog-en'; // required: replace example with your forum shortname
+
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function () {
+var s = document.createElement('script'); s.async = true;
+s.type = 'text/javascript';
+s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+<!-- Yandex.Metrika counter -->
+<script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript"></script>
+<script type="text/javascript">
+try { var yaCounter25093751 = new Ya.Metrika({id:25093751,
+          webvisor:true,
+          clickmap:true,
+          trackLinks:true,
+          accurateTrackBounce:true});
+} catch(e) { }
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/25093751" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+  </body>
+</html>

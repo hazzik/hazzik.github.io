@@ -1,7 +1,6 @@
 # Dependencies
 markdown:         redcarpet
-highlighter:      pygments
-
+highlighter:      rouge
 
 # Permalinks
 permalink:        pretty
@@ -11,7 +10,9 @@ title:            Hazzik's blog
 tagline:          ''
 description:      ''
 url:              http://alexzaytsev.me
-timezone:         'Pacific/Auckland'
+timezone:         'NZS-12:00'
+tag_page_layout: tag_page
+tag_page_dir: tag
 
 author:
   name:           'Alexander Zaytsev'
@@ -20,7 +21,9 @@ author:
 paginate:         5
 
 github:
-  source:    'http://github.com/hazzik/alexzaytsev.me/edit/gh-pages/'
+  source:    'http://github.com/hazzik/alexzaytsev.me/edit/master/'
+
+ya_metrika_id:    25093751
 
 gems:
   - jekyll-redirect-from

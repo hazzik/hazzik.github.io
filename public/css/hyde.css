@@ -75,6 +75,25 @@ html {
   color: #fff;
 }
 
+.tag-cloud {
+  font-size: 16px;
+}
+.tag-cloud .set-1 {
+  font-size: 100%;
+}
+.tag-cloud .set-2 {
+  font-size: 120%;
+}
+.tag-cloud .set-3 {
+  font-size: 140%;
+}
+.tag-cloud .set-4 {
+  font-size: 160%;
+}
+.tag-cloud .set-5 {
+  font-size: 180%;
+}
+
 /* About section */
 .sidebar-about h1 {
   color: #fff;

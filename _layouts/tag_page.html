@@ -1,0 +1,18 @@
+---
+layout: page
+---
+<div class="posts">
+  {% for post in page.posts %}
+  <div class="post">
+    <h2 class="post-title">
+      <a href="{{ post.url }}">
+        {{ post.title }}
+      </a>
+    </h2>
+    <ul class="post-info">
+      <li><i class="fa fa-calendar"></i> <time datetime="{{ post.date | date_to_xmlschema }}"> {{ post.date | date_to_string }} </time></li>
+      <li><i class="fa fa-tags"></i> {{ post | tags }} </li>
+    </ul>
+  </div>
+  {% endfor %}
+</div>

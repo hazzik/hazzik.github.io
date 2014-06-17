@@ -124,12 +124,12 @@
 
     <span class="k">public</span> <span class="k">void</span> <span class="nf">OnMetadataCreated</span><span class="p">(</span><span class="n">ModelMetadata</span> <span class="n">metadata</span><span class="p">)</span>
     <span class="p">{</span>
-    <span class="n">metadata</span><span class="p">.</span><span class="n">AdditionalValues</span><span class="p">[</span><span class="n">RenderActionOptions</span><span class="p">.</span><span class="n">MetadataKey</span><span class="p">]</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RenderActionOptions</span>
-    <span class="p">{</span>
+        <span class="n">metadata</span><span class="p">.</span><span class="n">AdditionalValues</span><span class="p">[</span><span class="n">RenderActionOptions</span><span class="p">.</span><span class="n">MetadataKey</span><span class="p">]</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RenderActionOptions</span>
+        <span class="p">{</span>
             <span class="n">Action</span> <span class="p">=</span> <span class="n">Action</span><span class="p">,</span>
             <span class="n">Controller</span> <span class="p">=</span> <span class="n">Controller</span><span class="p">,</span>
             <span class="n">Area</span> <span class="p">=</span> <span class="n">Area</span>
-    <span class="p">};</span>
+        <span class="p">};</span>
         <span class="n">metadata</span><span class="p">.</span><span class="n">TemplateHint</span> <span class="p">=</span> <span class="s">"RenderAction"</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -152,6 +152,13 @@
     <span class="p">{</span>
         <span class="n">Html</span><span class="p">.</span><span class="nf">RenderAction</span><span class="p">(</span><span class="n">options</span><span class="p">.</span><span class="n">Action</span><span class="p">,</span> <span class="n">data</span><span class="p">);</span>
     <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2>Example of Usage</h2>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Model</span> 
+<span class="p">{</span>
+    <span class="p">[</span><span class="nf">Display</span><span class="p">(</span><span class="n">Name</span> <span class="p">=</span> <span class="s">"City"</span><span class="p">),</span> <span class="nf">RenderAction</span><span class="p">(</span><span class="s">"ListCities"</span><span class="p">,</span> <span class="s">"Cities"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">CityId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
   </div>

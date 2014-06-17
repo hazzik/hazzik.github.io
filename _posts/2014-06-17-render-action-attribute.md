@@ -46,12 +46,12 @@ public class RenderActionAttribute : Attribute, IMetadataAware
  
     public void OnMetadataCreated(ModelMetadata metadata)
     {
-	metadata.AdditionalValues[RenderActionOptions.MetadataKey] = new RenderActionOptions
-	{
+        metadata.AdditionalValues[RenderActionOptions.MetadataKey] = new RenderActionOptions
+        {
             Action = Action,
             Controller = Controller,
             Area = Area
-	};
+        };
         metadata.TemplateHint = "RenderAction";
     }
 }
@@ -75,5 +75,13 @@ public class RenderActionAttribute : Attribute, IMetadataAware
     {
         Html.RenderAction(options.Action, data);
     }
+}
+```
+##Example of Usage
+```csharp
+public class Model 
+{
+    [Display(Name = "City"), RenderAction("ListCities", "Cities")]
+    public int CityId { get; set; }
 }
 ```

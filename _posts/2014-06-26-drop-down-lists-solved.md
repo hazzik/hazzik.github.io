@@ -327,7 +327,7 @@ public class GenresController {
 3. MultiSelect "out of the box"
 4. Post-Redirect-Get is supported
 
-# Ending
+## Ending
 
 For me, as a developer of MvcExtensions the methdos using the library is preferrable.
 

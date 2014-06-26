@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta name="description" content="" />
+
+  <title>
+    
+      Solving DropDown list in ASP.NET mvc with MvcExtensions &middot; Hazzik's blog
+    
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="tag-cloud">
+      <a href="/tag/asp-dot-net-mvc" class="set-5">ASP.NET MVC</a> <a href="/tag/blog" class="set-1">Blog</a> <a href="/tag/computed-properties" class="set-1">Computed Properties</a> <a href="/tag/dataannotations" class="set-1">DataAnnotations</a> <a href="/tag/decompiler" class="set-1">Decompiler</a> <a href="/tag/delegate" class="set-1">Delegate</a> <a href="/tag/dropdown" class="set-1">DropDown</a> <a href="/tag/linq" class="set-1">LINQ</a> <a href="/tag/mvcextensions" class="set-1">MvcExtensions</a> <a href="/tag/nhibernate" class="set-5">NHibernate</a> <a href="/tag/persistent-tree" class="set-1">Persistent-Tree</a> <a href="/tag/renderaction" class="set-1">RenderAction</a> <a href="/tag/tree" class="set-1">Tree</a> <a href="/tag/tree-hierarchy" class="set-1">Tree-Hierarchy</a> <a href="/tag/tree-structures" class="set-1">Tree-Structures</a>
+    </div>
+    <div class="sidebar-about">
+
+      <h1><a href="/">Hazzik's blog</a></h1>
+      <p class="lead"><a href="/"></a></p>
+
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+        <a href="/">Home</a>
+      </li>
+
+      
+
+      
+      
+            <li class="sidebar-nav-item">
+              <a href="/about/">About</a>
+            </li>
+      
+    </ul>
+    <ul class="sidebar-social">
+      <li class="sidebar-social-item"><a href="http://twitter.com/hazzik"><i class="fa fa-twitter"></i></a></li>
+      &middot;
+      <li class="sidebar-social-item"><a href="http://github.com/hazzik"><i class="fa fa-github"></i></a></li>
+      &middot;
+      <li class="sidebar-social-item"><a href="http://linkedin.com/in/hazzik"><i class="fa fa-linkedin"></i></a></li>
+    </ul>
+
+    <p>&copy; 2014. All rights reserved.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post hentry">
+  <h1 class="post-title entry-title">
+    <a href="http://github.com/hazzik/alexzaytsev.me/edit/master/_posts/2014-06-26-drop-down-lists-solved.md"><i class="fa fa-edit"></i></a> Solving DropDown list in ASP.NET mvc with MvcExtensions
+  </h1>
+  <ul class="post-info">
+    <li><i class="fa fa-calendar"></i><time datetime="2014-06-26T17:23:16+12:00" class="published"> 26 Jun 2014 </time></li>
+    <li class="tags"><i class="fa fa-tags"></i> <a href="/tag/mvcextensions" rel="tag">MvcExtensions</a>, <a href="/tag/asp-dot-net-mvc" rel="tag">ASP.NET MVC</a>, <a href="/tag/dropdown" rel="tag">DropDown</a></li>
+    <li><i class="fa fa-comments"></i> <a href="/2014/06/26/drop-down-lists-solved/#disqus_thread" data-disqus-identifier="/2014/06/26/drop-down-lists-solved/">0 comments</a></li>
+  </ul>
+  <div class="entry-content">
+    <p>This is an translation of <a href="http://blog.hazzik.ru/2012/04/02/mvcextensions-solving-drop-down-lists-problem/">my article</a> from 2nd April of 2012.
+From the first version of <a href="http://www.asp.net/mvc">ASP.NET MVC</a> couple of years ago I found that there is no common solution how to display drop down lists properly. Probably every of you <a href="http://www.google.ru/webhp#q=asp.net+mvc+dropdownlist">asked yourself</a>: &#8220;How to pass the selection list to a drop down list?&#8221; And so I was asking the same question to myself, I could not even sleep;)</p>
+
+<!-- more -->
+
+<p>Introduction</p>
+
+<p>For example we have an form to create a film, and we need to select film&#39;s genre from a drop down list. I&#39;m not going to show any &quot;newbuy&quot; solutions as, for instance, getting the genres in the view file.</p>
+
+<h2>&quot;Head on&quot; solution</h2>
+
+<p>The programmers bumping that problem try to solve it by brute force: they create additional property &quot;Genres&quot; of type <em>SelectList<em> at the model class, and they fill it at the controller&#39;s action. Like this:</p>
+
+<h3>The model</h3>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Movie</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">GenreId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">SelectList</span> <span class="n">Genres</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>    
+    <span class="c1">//...
+</span><span class="p">}</span> 
+</code></pre></div>
+<h3>The controller</h3>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MoviesController</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Create</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">var</span> <span class="n">model</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Movie</span><span class="p">()</span> <span class="p">{</span> <span class="n">Genres</span> <span class="p">=</span> <span class="nf">GetAllGenresFromDatabase</span><span class="p">();</span> <span class="p">}</span>
+        <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">model</span><span class="p">);</span> 
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Create</span><span class="p">(</span><span class="n">Movie</span> <span class="n">form</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// do something with movie.
+</span>    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Edit</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">var</span> <span class="n">model</span> <span class="p">=</span> <span class="nf">GetMovieFromDatabase</span><span class="p">();</span>
+        <span class="n">model</span><span class="p">.</span><span class="n">Genres</span> <span class="p">=</span> <span class="nf">GetAllGenresFromDatabase</span><span class="p">();</span> 
+        <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">model</span><span class="p">);</span> 
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Edit</span><span class="p">(</span><span class="n">EditMovie</span> <span class="n">form</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// do something with movie.
+</span>    <span class="p">}</span>
+    <span class="c1">//...
+</span><span class="p">}</span>
+</code></pre></div>
+<p>This works so far, but the solution has some major problems</p>
+
+<ol>
+<li> Model has the redundant field</li>
+<li> You need to create a model for a creation form</li>
+<li> Code duplication of the list filling logic. <small>This problem grow if you need to select form the same list in many places.</small></li>
+<li> You can not use <code>Html.EditorForModel()</code>, as you do not have access to neighbour fields when ASP.NET renders the model</li>
+</ol>
+
+<h2>Solution using ViewBag / ViewData</h2>
+
+<p>The solution is similar to the previous one with one simple change: selection list is passing through ViewBag / ViewData</p>
+
+<h3>The model</h3>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Movie</span> <span class="p">{</span>
+    <span class="p">[</span><span class="nf">UIHint</span><span class="p">(</span><span class="s">"Genres"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">GenreId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="c1">//...
+</span><span class="p">}</span>
+</code></pre></div>
+<h3>The controller</h3>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MoviesController</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Create</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">ViewBag</span><span class="p">.</span><span class="n">Genres</span> <span class="p">=</span> <span class="nf">GetAllGenresFromDatabase</span><span class="p">();</span>
+        <span class="k">return</span> <span class="nf">View</span><span class="p">();</span> 
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Create</span><span class="p">(</span><span class="n">Movie</span> <span class="n">form</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// do something with movie.
+</span>    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Edit</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">var</span> <span class="n">model</span> <span class="p">=</span> <span class="nf">GetMovieFromDatabase</span><span class="p">();</span>
+        <span class="n">ViewBag</span><span class="p">.</span><span class="n">Genres</span> <span class="p">=</span> <span class="nf">GetAllGenresFromDatabase</span><span class="p">();</span> 
+        <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">model</span><span class="p">);</span> 
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Edit</span><span class="p">(</span><span class="n">EditMovie</span> <span class="n">form</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// do something with movie.
+</span>    <span class="p">}</span>
+    <span class="c1">//...
+</span><span class="p">}</span>
+</code></pre></div>
+<p>Pros over the previous solution</p>
+
+<ol>
+<li> The model does not have redundant fields anymore</li>
+<li> You do not need to create the model in the creation action</li>
+<li> You can use <code>Html.EditorForModel()</code> with own Editor Template for every drop-down list field</li>
+</ol>
+
+<p>Cons</p>
+
+<ol>
+<li> The dynamic or magic-strings* are used, which complicates refactoring and code modification</li>
+<li> You still have code duplication of ddl fill logic</li>
+<li> You need to have an editor template for every field</li>
+</ol>
+
+<h3>Improved solution with ViewBag / ViewData</h3>
+
+<p>To reduce code duplication of filling logic we move the code to action filter</p>
+
+<h3>The model</h3>
+
+<p>The same as in the previous example</p>
+
+<h3>ActionFilter</h3>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">PopulateGenresAttribute</span><span class="p">:</span> <span class="n">ActionFilterAttribute</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnActionExecuted</span><span class="p">(</span><span class="n">ActionExecutedContext</span> <span class="n">filterContext</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">filterContext</span><span class="p">.</span><span class="n">Controller</span><span class="p">.</span><span class="n">ViewData</span><span class="p">[</span><span class="s">"Genres"</span><span class="p">]</span> <span class="p">=</span> <span class="nf">GetAllGenresFromDatabase</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="c1">//...
+</span><span class="p">}</span>
+</code></pre></div>
+<h3>The controller</h3>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MoviesController</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">HttpGet</span><span class="p">,</span> <span class="n">PopulateGenres</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Create</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">View</span><span class="p">();</span> 
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Create</span><span class="p">(</span><span class="n">Movie</span> <span class="n">form</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// do something with movie.
+</span>    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpGet</span><span class="p">,</span> <span class="n">PopulateGenres</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Edit</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">var</span> <span class="n">model</span> <span class="p">=</span> <span class="nf">GetMovieFromDatabase</span><span class="p">();</span>
+        <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">model</span><span class="p">);</span> 
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Edit</span><span class="p">(</span><span class="n">EditMovie</span> <span class="n">form</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// do something with movie.
+</span>    <span class="p">}</span>
+    <span class="c1">//...
+</span><span class="p">}</span>
+</code></pre></div>
+<p>Pros over the previous solution</p>
+
+<ol>
+<li> We do not have code duplication of selection list filling logic</li>
+</ol>
+
+<p>Cons</p>
+
+<ol>
+<li> The dynamic or magic-strings* are used, which complicates refactoring and code modification</li>
+<li> You need to have an editor template for every field</li>
+</ol>
+
+<h3>Imporved solution with ViewBag / ViewData + <a href="http://mvcextensions.github.io">MvcExtnsions</a></h3>
+
+<p>MvcExtensions have beautiful <a href="http://github.com/MvcExtensions/Core/blob/master/src/MvcExtensions/ModelMetadata/HtmlSelectModelMetadataItemBuilderExtensions.cs">methdos to work with drop down lists</a>: AsDropDownList / AsListBox (the first one for drop down list and the second one for multi-select lists). These are extension methods for model metadata builder. These methods set the template and allow to pass the ViewData&#39;s field name which stores the selection list to the View. So we are solving the need of having an template per field.</p>
+
+<h3>The model</h3>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Movie</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">GenreId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span> 
+</code></pre></div>
+<h3>The metadata</h3>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MovieMetadata</span> <span class="p">:</span> <span class="n">ModelMetadataConfiguration</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="n">MovieMetadata</span> <span class="p">{</span>
+        <span class="nf">Configure</span><span class="p">(</span><span class="n">movie</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">movie</span><span class="p">.</span><span class="n">GenreId</span><span class="p">).</span><span class="nf">AsDropDownList</span><span class="p">(</span><span class="s">"Genres"</span><span class="cm">/*шаблон*/</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3>The controller</h3>
+
+<p>The same as in the previous example</p>
+
+<p>Pros over the previous solution</p>
+
+<ol>
+<li> You use two generic templates (DropDownList / ListBox) for all of your lists, but you still have an ability to set your own template if you need so</li>
+</ol>
+
+<p>Cons</p>
+
+<ol>
+<li> The dynamic or magic-strings* are used, which complicates refactoring and code modification</li>
+</ol>
+
+<h2>The solution with ChildAction</h2>
+
+<p>If you&#39;ll try to use just a child action, then it&#39;ll not work at all: you will not have client-side validation from the box, you will not be able to use nested forms, etc. &lt;!-- В <a href="http://pashapash.com/2010/12/dropdown-v-asp-net-mvc-chast-1/">статье</a> (<a href="http://pashapash.com/2011/01/dropdown-v-asp-net-mvc-chast-2/">часть 2</a>) неизвестного автора (быстрый поиск выдал только <a href="http://habrahabr.ru/users/PashaPash/">профиль</a> на хабре) решены эти проблемы, и по-этому я буду рассматривать <em>окончательное решение автора</em>. --&gt;</p>
+
+<h3>The model</h3>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Movie</span> <span class="p">{</span>
+    <span class="p">[</span><span class="nf">UIHint</span><span class="p">(</span><span class="s">"Genres"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">GenreId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span> 
+</code></pre></div>
+<h3>The controllers</h3>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MoviesController</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Create</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">View</span><span class="p">();</span> 
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Create</span><span class="p">(</span><span class="n">Movie</span> <span class="n">form</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// do something with movie.
+</span>    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Edit</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">var</span> <span class="n">model</span> <span class="p">=</span> <span class="nf">GetMovieFromDatabase</span><span class="p">();</span>
+        <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">model</span><span class="p">);</span> 
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Edit</span><span class="p">(</span><span class="n">EditMovie</span> <span class="n">form</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// do something with movie.
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">GenresController</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">List</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">var</span> <span class="n">selectedGenreId</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">ControllerContext</span><span class="p">.</span><span class="n">ParentActionViewContext</span><span class="p">.</span><span class="n">ViewData</span><span class="p">.</span><span class="n">Model</span> <span class="k">as</span> <span class="kt">int</span><span class="p">?;</span>
+
+        <span class="n">var</span> <span class="n">genres</span> <span class="p">=</span> <span class="nf">GetGenresFormDatabase</span><span class="p">();</span>
+
+        <span class="n">var</span> <span class="n">model</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">SelectList</span><span class="p">(</span><span class="n">genres</span><span class="p">,</span> <span class="s">"Id"</span><span class="p">,</span> <span class="s">"DisplayName"</span><span class="p">,</span> <span class="n">selectedGenreId</span><span class="p">);</span>
+
+        <span class="k">this</span><span class="p">.</span><span class="n">ViewData</span><span class="p">.</span><span class="n">Model</span> <span class="p">=</span> <span class="n">model</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">ViewData</span><span class="p">.</span><span class="n">ModelMetadata</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">ControllerContext</span><span class="p">.</span><span class="n">ParentActionViewContext</span><span class="p">.</span><span class="n">ViewData</span><span class="p">.</span><span class="n">ModelMetadata</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="s">"DropDown"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Pros over the previous solution</p>
+
+<ol>
+<li> dynamic and magic-strings are not used anymore</li>
+<li> We do not have code duplication of selection list filling logic</li>
+</ol>
+
+<p>Cons</p>
+
+<ol>
+<li> Duplication of the boilerplate code</li>
+<li> Need to have an template for each of your selection lists</li>
+<li> The Post-Redirect-Get scenario is not supported</li>
+</ol>
+
+<h3>Solution using ChildAction + MvcExtensions</h3>
+
+<p>I decided to imporve the previouse solution and apply the ActionFilter experience, and now, from the version <a href="http://nuget.org/packages/MvcExtensions">2.5.0-rc8000</a> MvcExtension do support child-action based drop down lists out of the box. I&#39;ve added extension methods, which allows to use <em>RenderAction</em> to render the model fields. Also <code>SelectListActionAttribute</code> attibute were added, which serves the action providing selection list data. Also this solution supports Post-Redirect-Get scenario.</p>
+
+<h3>The model</h3>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Movie</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">GenreId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3>The metadata</h3>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MovieMetadata</span> <span class="p">:</span> <span class="n">ModelMetadataConfiguration</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="n">MovieMetadata</span> <span class="p">{</span>
+        <span class="nf">Configure</span><span class="p">(</span><span class="n">movie</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">movie</span><span class="p">.</span><span class="n">GenreId</span><span class="p">).</span><span class="nf">RenderAction</span><span class="p">(</span><span class="s">"List"</span><span class="p">,</span> <span class="s">"Genres"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3>The controllers</h3>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MoviesController</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Create</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">View</span><span class="p">();</span> 
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Create</span><span class="p">(</span><span class="n">Movie</span> <span class="n">form</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// do something with movie.
+</span>    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Edit</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">var</span> <span class="n">model</span> <span class="p">=</span> <span class="nf">GetMovieFromDatabase</span><span class="p">();</span>
+        <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">model</span><span class="p">);</span> 
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Edit</span><span class="p">(</span><span class="n">EditMovie</span> <span class="n">form</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// do something with movie.
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">GenresController</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">ChildActionOnly</span><span class="p">,</span> <span class="n">SelectListAction</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">List</span><span class="p">(</span><span class="kt">int</span> <span class="n">selected</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">var</span> <span class="n">model</span> <span class="p">=</span> <span class="nf">GetGenresFormDatabase</span><span class="p">(</span><span class="n">selected</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="s">"DropDown"</span><span class="p">,</span> <span class="n">model</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Pros over the previous solution</p>
+
+<ol>
+<li> No boilerplate code duplication</li>
+<li> Use generic template</li>
+<li> MultiSelect &quot;out of the box&quot;</li>
+<li> Post-Redirect-Get is supported</li>
+</ol>
+
+<h1>Ending</h1>
+
+<p>For me, as a developer of MvcExtensions the methdos using the library is preferrable.</p>
+
+<p>The sample of code with ViewBag / ViewData + MvcExtensions is here: <a href="http://github.com/MvcExtensions/Core/tree/master/samples">http://github.com/MvcExtensions/Core/tree/master/samples</a></p>
+
+<p>The sample of code with ChildAction + MvcExtensions is here: <a href="http://github.com/hazzik/DropDowns">http://github.com/hazzik/DropDowns</a></p>
+
+<hr>
+
+<p>*magic-strings can be easily solved by using of constans, and so because of that, I prefere using string over dynamic properties.</p>
+
+<p>PS: The MvcExtensions abilities to extend ASP.NET MVC are limitless</p>
+
+  </div>
+</div>
+
+
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'hazzik-blog-en'; // required: replace example with your forum shortname
+      var disqus_identifier = '/2014/06/26/drop-down-lists-solved/';
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2014/06/17/render-action-attribute/">
+            Render Action Attribute
+            <small>17 Jun 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2014/05/27/the-blog-has-been-moved/">
+            The blog has been moved to alexzaytsev.me
+            <small>27 May 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2013/03/05/computable-properties-for-any-linq-provider/">
+            Computable properties for any LINQ provider
+            <small>05 Mar 2013</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+var disqus_shortname = 'hazzik-blog-en'; // required: replace example with your forum shortname
+
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function () {
+var s = document.createElement('script'); s.async = true;
+s.type = 'text/javascript';
+s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+<!-- Yandex.Metrika counter -->
+<script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript"></script>
+<script type="text/javascript">
+try { var yaCounter25093751 = new Ya.Metrika({id:25093751,
+          webvisor:true,
+          clickmap:true,
+          trackLinks:true,
+          accurateTrackBounce:true});
+} catch(e) { }
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/25093751" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+  </body>
+</html>

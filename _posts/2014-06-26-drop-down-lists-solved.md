@@ -22,7 +22,7 @@ For example we have an form to create a film, and we need to select film's genre
 
 ## "Head on" solution
 
-The programmers bumping that problem try to solve it by brute force: they create additional property "Genres" of type <em>SelectList<em> at the model class, and they fill it at the controller's action. Like this:
+The programmers bumping that problem try to solve it by brute force: they create additional property "Genres" of type <em>SelectList</em> at the model class, and they fill it at the controller's action. Like this:
 
 
 ###The model

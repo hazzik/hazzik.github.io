@@ -7,7 +7,7 @@
     <atom:link href="http://alexzaytsev.me/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>Solving DropDown list in ASP.NET mvc with MvcExtensions</title>
+        <title>Solving DropDown list in ASP.NET MVC with MvcExtensions</title>
         <description>&lt;p&gt;This is an translation of &lt;a href=&quot;http://blog.hazzik.ru/2012/04/02/mvcextensions-solving-drop-down-lists-problem/&quot;&gt;my article&lt;/a&gt; from 2nd April of 2012.
 From the first version of &lt;a href=&quot;http://www.asp.net/mvc&quot;&gt;ASP.NET MVC&lt;/a&gt; couple of years ago I found that there is no common solution how to display drop down lists properly. Probably every of you &lt;a href=&quot;http://www.google.ru/webhp#q=asp.net+mvc+dropdownlist&quot;&gt;asked yourself&lt;/a&gt;: &amp;#8220;How to pass the selection list to a drop down list?&amp;#8221; And so I was asking the same question to myself, I could not even sleep;)&lt;/p&gt;
 

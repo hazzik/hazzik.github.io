@@ -83,8 +83,9 @@
     <li><i class="fa fa-comments"></i> <a href="/2014/06/26/drop-down-lists-solved/#disqus_thread" data-disqus-identifier="/2014/06/26/drop-down-lists-solved/">0 comments</a></li>
   </ul>
   <div class="entry-content">
-    <p>This is an translation of <a href="http://blog.hazzik.ru/2012/04/02/mvcextensions-solving-drop-down-lists-problem/">my article</a> from 2nd April of 2012.
-From the first version of <a href="http://www.asp.net/mvc">ASP.NET MVC</a> couple of years ago I found that there is no common solution how to display drop down lists properly. Probably every of you <a href="http://www.google.ru/webhp#q=asp.net+mvc+dropdownlist">asked yourself</a>: &#8220;How to pass the selection list to a drop down list?&#8221; And so I was asking the same question to myself, I could not even sleep;)</p>
+    <p>This is an translation of <a href="http://blog.hazzik.ru/2012/04/02/mvcextensions-solving-drop-down-lists-problem/">my article</a> from 2nd April of 2012.</p>
+
+<p>From the first version of <a href="http://www.asp.net/mvc">ASP.NET MVC</a> couple of years ago I found that there is no common solution how to display drop down lists properly. Probably every of you <a href="http://www.google.ru/webhp#q=asp.net+mvc+dropdownlist">asked yourself</a>: &#8220;How to pass the selection list to a drop down list?&#8221; And so I was asking the same question to myself, I could not even sleep;)</p>
 
 <!-- more -->
 
@@ -96,14 +97,14 @@ From the first version of <a href="http://www.asp.net/mvc">ASP.NET MVC</a> coupl
 
 <p>The programmers bumping that problem try to solve it by brute force: they create additional property &quot;Genres&quot; of type <em>SelectList</em> at the model class, and they fill it at the controller&#39;s action. Like this:</p>
 
-<h3>The model</h3>
+<h4>The model</h4>
 <div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Movie</span> <span class="p">{</span>
     <span class="k">public</span> <span class="kt">int</span> <span class="n">GenreId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
     <span class="k">public</span> <span class="n">SelectList</span> <span class="n">Genres</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>    
     <span class="c1">//...
 </span><span class="p">}</span> 
 </code></pre></div>
-<h3>The controller</h3>
+<h4>The controller</h4>
 <div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MoviesController</span> <span class="p">{</span>
     <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Create</span><span class="p">()</span> <span class="p">{</span>
         <span class="n">var</span> <span class="n">model</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Movie</span><span class="p">()</span> <span class="p">{</span> <span class="n">Genres</span> <span class="p">=</span> <span class="nf">GetAllGenresFromDatabase</span><span class="p">();</span> <span class="p">}</span>
@@ -129,24 +130,24 @@ From the first version of <a href="http://www.asp.net/mvc">ASP.NET MVC</a> coupl
 <p>This works so far, but the solution has some major problems</p>
 
 <ol>
-<li> Model has the redundant field</li>
-<li> You need to create a model for a creation form</li>
-<li> Code duplication of the list filling logic. <small>This problem grow if you need to select form the same list in many places.</small></li>
-<li> You can not use <code>Html.EditorForModel()</code>, as you do not have access to neighbour fields when ASP.NET renders the model</li>
+<li> Model has redundant fields</li>
+<li> Need to create a model for a creation form (when there is no entity in DB yet)</li>
+<li> Code duplication for select list options retrieval logic. <small>This problem grows if you need to select form the same list in many places.</small></li>
+<li> Not possible to use <code>Html.EditorForModel()</code> to display all you form at once with auto-generated markup, as we do not have access to neighbour fields when ASP.NET renders the model</li>
 </ol>
 
 <h2>Solution using ViewBag / ViewData</h2>
 
 <p>The solution is similar to the previous one with one simple change: selection list is passing through ViewBag / ViewData</p>
 
-<h3>The model</h3>
+<h4>The model</h4>
 <div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Movie</span> <span class="p">{</span>
     <span class="p">[</span><span class="nf">UIHint</span><span class="p">(</span><span class="s">"Genres"</span><span class="p">)]</span>
     <span class="k">public</span> <span class="kt">int</span> <span class="n">GenreId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
     <span class="c1">//...
 </span><span class="p">}</span>
 </code></pre></div>
-<h3>The controller</h3>
+<h4>The controller</h4>
 <div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MoviesController</span> <span class="p">{</span>
     <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Create</span><span class="p">()</span> <span class="p">{</span>
         <span class="n">ViewBag</span><span class="p">.</span><span class="n">Genres</span> <span class="p">=</span> <span class="nf">GetAllGenresFromDatabase</span><span class="p">();</span>
@@ -169,31 +170,31 @@ From the first version of <a href="http://www.asp.net/mvc">ASP.NET MVC</a> coupl
     <span class="c1">//...
 </span><span class="p">}</span>
 </code></pre></div>
-<p>Pros over the previous solution</p>
+<h3>Pros over the previous solution</h3>
 
 <ol>
-<li> The model does not have redundant fields anymore</li>
-<li> You do not need to create the model in the creation action</li>
-<li> You can use <code>Html.EditorForModel()</code> with own Editor Template for every drop-down list field</li>
+<li> The model does not have redundant fields</li>
+<li> Not needed to create a model for a creation form (when there is no entity in DB yet)</li>
+<li> Possible to use <code>Html.EditorForModel()</code> with own Editor Template for every drop-down list field</li>
 </ol>
 
-<p>Cons</p>
+<h3>Cons</h3>
 
 <ol>
-<li> The dynamic or magic-strings* are used, which complicates refactoring and code modification</li>
-<li> You still have code duplication of ddl fill logic</li>
-<li> You need to have an editor template for every field</li>
+<li> Using of the dynamics or magic-strings*, which complicates refactoring and code modification</li>
+<li> Code duplication for select list options retrieval logic</li>
+<li> Custom editor template per field</li>
 </ol>
 
-<h3>Improved solution with ViewBag / ViewData</h3>
+<h2>Improved solution with ViewBag / ViewData</h2>
 
-<p>To reduce code duplication of filling logic we move the code to action filter</p>
+<p>To improve the solution and reduce code duplication of retrieving of selection options logic we move the code from the controller action to an action filter</p>
 
-<h3>The model</h3>
+<h4>The model</h4>
 
 <p>The same as in the previous example</p>
 
-<h3>ActionFilter</h3>
+<h4>ActionFilter</h4>
 <div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">PopulateGenresAttribute</span><span class="p">:</span> <span class="n">ActionFilterAttribute</span> <span class="p">{</span>
     <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnActionExecuted</span><span class="p">(</span><span class="n">ActionExecutedContext</span> <span class="n">filterContext</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">filterContext</span><span class="p">.</span><span class="n">Controller</span><span class="p">.</span><span class="n">ViewData</span><span class="p">[</span><span class="s">"Genres"</span><span class="p">]</span> <span class="p">=</span> <span class="nf">GetAllGenresFromDatabase</span><span class="p">();</span>
@@ -201,7 +202,7 @@ From the first version of <a href="http://www.asp.net/mvc">ASP.NET MVC</a> coupl
     <span class="c1">//...
 </span><span class="p">}</span>
 </code></pre></div>
-<h3>The controller</h3>
+<h4>The controller</h4>
 <div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MoviesController</span> <span class="p">{</span>
     <span class="p">[</span><span class="n">HttpGet</span><span class="p">,</span> <span class="n">PopulateGenres</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Create</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nf">View</span><span class="p">();</span> 
@@ -222,62 +223,63 @@ From the first version of <a href="http://www.asp.net/mvc">ASP.NET MVC</a> coupl
     <span class="c1">//...
 </span><span class="p">}</span>
 </code></pre></div>
-<p>Pros over the previous solution</p>
+<h3>Pros over the previous solution</h3>
 
 <ol>
-<li> We do not have code duplication of selection list filling logic</li>
+<li> No code duplication for select list options retrieval logic</li>
 </ol>
 
-<p>Cons</p>
+<h3>Cons</h3>
 
 <ol>
-<li> The dynamic or magic-strings* are used, which complicates refactoring and code modification</li>
-<li> You need to have an editor template for every field</li>
+<li> Using of the dynamics or magic-strings*, which complicates refactoring and code modification</li>
+<li> Custom editor template per field</li>
+<li> Application specific logic in the filter, which smells</li>
 </ol>
 
-<h3>Imporved solution with ViewBag / ViewData + <a href="http://mvcextensions.github.io">MvcExtnsions</a></h3>
+<h2>Imporved solution with ViewBag / ViewData + <a href="http://mvcextensions.github.io">MvcExtnsions</a></h2>
 
 <p>MvcExtensions have beautiful <a href="http://github.com/MvcExtensions/Core/blob/master/src/MvcExtensions/ModelMetadata/HtmlSelectModelMetadataItemBuilderExtensions.cs">methdos to work with drop down lists</a>: AsDropDownList / AsListBox (the first one for drop down list and the second one for multi-select lists). These are extension methods for model metadata builder. These methods set the template and allow to pass the ViewData&#39;s field name which stores the selection list to the View. So we are solving the need of having an template per field.</p>
 
-<h3>The model</h3>
+<h4>The model</h4>
 <div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Movie</span> <span class="p">{</span>
     <span class="k">public</span> <span class="kt">int</span> <span class="n">GenreId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 <span class="p">}</span> 
 </code></pre></div>
-<h3>The metadata</h3>
+<h4>The metadata</h4>
 <div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MovieMetadata</span> <span class="p">:</span> <span class="n">ModelMetadataConfiguration</span> <span class="p">{</span>
     <span class="k">public</span> <span class="n">MovieMetadata</span> <span class="p">{</span>
         <span class="nf">Configure</span><span class="p">(</span><span class="n">movie</span> <span class="p">=&gt;</span> <span class="n">movie</span><span class="p">.</span><span class="n">GenreId</span><span class="p">).</span><span class="nf">AsDropDownList</span><span class="p">(</span><span class="s">"Genres"</span><span class="cm">/*шаблон*/</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3>The controller</h3>
+<h4>The controller</h4>
 
 <p>The same as in the previous example</p>
 
-<p>Pros over the previous solution</p>
+<h3>Pros over the previous solution</h3>
 
 <ol>
-<li> You use two generic templates (DropDownList / ListBox) for all of your lists, but you still have an ability to set your own template if you need so</li>
+<li> Using of two generic templates (DropDownList / ListBox) for all lists, or specific one if needed</li>
 </ol>
 
-<p>Cons</p>
+<h3>Cons</h3>
 
 <ol>
-<li> The dynamic or magic-strings* are used, which complicates refactoring and code modification</li>
+<li> Using of the dynamics or magic-strings*, which complicates refactoring and code modification</li>
 </ol>
 
 <h2>The solution with ChildAction</h2>
 
-<p>If you&#39;ll try to use just a child action, then it&#39;ll not work at all: you will not have client-side validation from the box, you will not be able to use nested forms, etc. &lt;!-- В <a href="http://pashapash.com/2010/12/dropdown-v-asp-net-mvc-chast-1/">статье</a> (<a href="http://pashapash.com/2011/01/dropdown-v-asp-net-mvc-chast-2/">часть 2</a>) неизвестного автора (быстрый поиск выдал только <a href="http://habrahabr.ru/users/PashaPash/">профиль</a> на хабре) решены эти проблемы, и по-этому я буду рассматривать <em>окончательное решение автора</em>. --&gt;</p>
+<p>This is a good idea to put logic of the selection list to a separate action. This will lead to better separation of concern and give you some benifits like caching. But yf you&#39;ll try to use just a child action, then it&#39;ll not work at all: you will not have client-side validation from the box, you will not be able to use nested forms, etc., because the field names will be broken. To make it work properly you need to set view data&#39;s model metadata to the same as in parent action.</p>
 
-<h3>The model</h3>
+<h4>The model</h4>
 <div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Movie</span> <span class="p">{</span>
     <span class="p">[</span><span class="nf">UIHint</span><span class="p">(</span><span class="s">"Genres"</span><span class="p">)]</span>
     <span class="k">public</span> <span class="kt">int</span> <span class="n">GenreId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 <span class="p">}</span> 
 </code></pre></div>
-<h3>The controllers</h3>
+<h4>The controllers</h4>
 <div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MoviesController</span> <span class="p">{</span>
     <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Create</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nf">View</span><span class="p">();</span> 
@@ -311,18 +313,19 @@ From the first version of <a href="http://www.asp.net/mvc">ASP.NET MVC</a> coupl
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Pros over the previous solution</p>
+<h3>Pros over the previous solution</h3>
 
 <ol>
-<li> dynamic and magic-strings are not used anymore</li>
-<li> We do not have code duplication of selection list filling logic</li>
+<li> No using of dynamics and magic-strings</li>
+<li> No code duplication of select list options retrieval logic</li>
+<li> No application specific logic in ActionFilter</li>
 </ol>
 
-<p>Cons</p>
+<h3>Cons</h3>
 
 <ol>
 <li> Duplication of the boilerplate code</li>
-<li> Need to have an template for each of your selection lists</li>
+<li> Custom template per select list</li>
 <li> The Post-Redirect-Get scenario is not supported</li>
 </ol>
 
@@ -330,18 +333,19 @@ From the first version of <a href="http://www.asp.net/mvc">ASP.NET MVC</a> coupl
 
 <p>I decided to imporve the previouse solution and apply the ActionFilter experience, and now, from the version <a href="http://nuget.org/packages/MvcExtensions">2.5.0-rc8000</a> MvcExtension do support child-action based drop down lists out of the box. I&#39;ve added extension methods, which allows to use <em>RenderAction</em> to render the model fields. Also <code>SelectListActionAttribute</code> attibute were added, which serves the action providing selection list data. Also this solution supports Post-Redirect-Get scenario.</p>
 
-<h3>The model<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Movie</span> <span class="p">{</span>
+<h4>The model</h4>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Movie</span> <span class="p">{</span>
     <span class="k">public</span> <span class="kt">int</span> <span class="n">GenreId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3>The metadata</h3>
+<h4>The metadata</h4>
 <div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MovieMetadata</span> <span class="p">:</span> <span class="n">ModelMetadataConfiguration</span> <span class="p">{</span>
     <span class="k">public</span> <span class="n">MovieMetadata</span> <span class="p">{</span>
         <span class="nf">Configure</span><span class="p">(</span><span class="n">movie</span> <span class="p">=&gt;</span> <span class="n">movie</span><span class="p">.</span><span class="n">GenreId</span><span class="p">).</span><span class="nf">RenderAction</span><span class="p">(</span><span class="s">"List"</span><span class="p">,</span> <span class="s">"Genres"</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3>The controllers</h3>
+<h4>The controllers</h4>
 <div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MoviesController</span> <span class="p">{</span>
     <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span> <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Create</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nf">View</span><span class="p">();</span> 
@@ -367,17 +371,16 @@ From the first version of <a href="http://www.asp.net/mvc">ASP.NET MVC</a> coupl
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Pros over the previous solution</p>
+<h3>Pros over the previous solution</h3>
 
 <ol>
-<li> No boilerplate code duplication</li>
-<li> Use generic template</li>
-<li> MultiSelect &quot;out of the box&quot;</li>
-<li> Post-Redirect-Get is supported</li>
+<li>No boilerplate code duplication</li>
+<li>Use an generic template</li>
+<li>MultiSelect &quot;out of the box&quot;</li>
+<li>Post-Redirect-Get is supported</li>
 </ol>
 
-<h1>Ending</h1>
-
+<h1>Ending
 <p>For me, as a developer of MvcExtensions the methdos using the library is preferrable.</p>
 
 <p>The sample of code with ViewBag / ViewData + MvcExtensions is here: <a href="http://github.com/MvcExtensions/Core/tree/master/samples">http://github.com/MvcExtensions/Core/tree/master/samples</a></p>

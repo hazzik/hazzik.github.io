@@ -305,7 +305,7 @@
 &lt;li&gt;Post-Redirect-Get is supported&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h1&gt;Ending
+&lt;h2&gt;Ending
 &lt;p&gt;For me, as a developer of MvcExtensions the methdos using the library is preferrable.&lt;/p&gt;
 
 &lt;p&gt;The sample of code with ViewBag / ViewData + MvcExtensions is here: &lt;a href=&quot;http://github.com/MvcExtensions/Core/tree/master/samples&quot;&gt;http://github.com/MvcExtensions/Core/tree/master/samples&lt;/a&gt;&lt;/p&gt;

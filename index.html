@@ -411,7 +411,9 @@
       <li><i class="fa fa-tags"></i> <a href="/tag/asp-dot-net-mvc" rel="tag">ASP.NET MVC</a>, <a href="/tag/dataannotations" rel="tag">DataAnnotations</a>, <a href="/tag/renderaction" rel="tag">RenderAction</a> </li>
       <li><i class="fa fa-comments"></i> <a href="/2014/06/17/render-action-attribute/#disqus_thread" data-disqus-identifier="/2014/06/17/render-action-attribute/">0 комментариев</a></li>
     </ul>
-    <h3>RenderActionOptions.cs</h3>
+    <p>The purpose of this attribute is to be able to render action as an editor or display template for your form fields. First of all we will need the data structure which will hold options for the our editor template.</p>
+
+<h4>RenderActionOptions.cs</h4>
 <div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">RenderActionOptions</span> 
 <span class="p">{</span>
     <span class="k">public</span> <span class="k">static</span> <span class="kt">string</span> <span class="n">MetadataKey</span> <span class="p">=</span> <span class="s">"RenderActionOptions"</span><span class="p">;</span>
@@ -421,7 +423,9 @@
     <span class="k">public</span> <span class="kt">string</span> <span class="n">Area</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3>RenderActionAttribute.cs</h3>
+<p>Then we can use custom attribute, which implements <a href="http://msdn.microsoft.com/en-us/library/system.web.mvc.imetadataaware">IMetadataAware</a> interface, to fill the options and pass them to a metadata.</p>
+
+<h4>RenderActionAttribute.cs</h4>
 <div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">RenderActionAttribute</span> <span class="p">:</span> <span class="n">Attribute</span><span class="p">,</span> <span class="n">IMetadataAware</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="nf">RenderActionAttribute</span><span class="p">([</span><span class="n">AspMvcAction</span><span class="p">]</span> <span class="kt">string</span> <span class="n">action</span><span class="p">)</span>
@@ -458,7 +462,9 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3>Shared/EditorTemplates/RenderAction.cshtml</h3>
+<p>And finally at our EditorTemplate we will retrieve the options from the metadata and use <code>Html.RenderAction</code> helper method to render our action. Please note, that <code>Html.RenderAction</code> nor <code>Html.Action</code> do not accept &quot;area&quot; as an argument, so we need to add the &quot;area&quot; key to our routes dictionary. Also, we pass <code>data</code> to the <code>Html.RenderAction</code> method to be able supply some additional information/metadata to the rendered action.</p>
+
+<h4>Shared/EditorTemplates/RenderAction.cshtml</h4>
 <div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="err">@</span><span class="p">{</span>
     <span class="n">var</span> <span class="n">data</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RouteValueDictionary</span><span class="p">(</span><span class="n">ViewData</span><span class="p">);</span>
     <span class="kt">object</span> <span class="n">o</span><span class="p">;</span>
@@ -479,12 +485,20 @@
 <span class="p">}</span>
 </code></pre></div>
 <h2>Example of Usage</h2>
-<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Model</span> 
+
+<h4>MyModel.cs</h4>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MyModel</span> 
 <span class="p">{</span>
     <span class="p">[</span><span class="nf">Display</span><span class="p">(</span><span class="n">Name</span> <span class="p">=</span> <span class="s">"City"</span><span class="p">),</span> <span class="nf">RenderAction</span><span class="p">(</span><span class="s">"ListCities"</span><span class="p">,</span> <span class="s">"Cities"</span><span class="p">)]</span>
     <span class="k">public</span> <span class="kt">int</span> <span class="n">CityId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<h4>MyForm.cshtml</h4>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">@model</span> <span class="n">MyModel</span>
+<span class="c1">// ...
+</span><span class="n">@Html</span><span class="p">.</span><span class="nf">EditorFor</span><span class="p">(</span><span class="n">m</span> <span class="p">=&gt;</span> <span class="n">m</span><span class="p">.</span><span class="n">CityId</span><span class="p">,</span> <span class="k">new</span> <span class="p">{</span> <span class="n">htmlAttributes</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> <span class="n">@class</span> <span class="p">=</span> <span class="s">"my-editor"</span> <span class="p">}</span> <span class="p">}</span> <span class="p">)</span>
+<span class="c1">// ...
+</span></code></pre></div>
   </div>
   
   <div class="post">

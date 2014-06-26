@@ -251,7 +251,7 @@ From the first version of <a href="http://www.asp.net/mvc">ASP.NET MVC</a> coupl
 <h3>The metadata</h3>
 <div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MovieMetadata</span> <span class="p">:</span> <span class="n">ModelMetadataConfiguration</span> <span class="p">{</span>
     <span class="k">public</span> <span class="n">MovieMetadata</span> <span class="p">{</span>
-        <span class="nf">Configure</span><span class="p">(</span><span class="n">movie</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">movie</span><span class="p">.</span><span class="n">GenreId</span><span class="p">).</span><span class="nf">AsDropDownList</span><span class="p">(</span><span class="s">"Genres"</span><span class="cm">/*шаблон*/</span><span class="p">);</span>
+        <span class="nf">Configure</span><span class="p">(</span><span class="n">movie</span> <span class="p">=&gt;</span> <span class="n">movie</span><span class="p">.</span><span class="n">GenreId</span><span class="p">).</span><span class="nf">AsDropDownList</span><span class="p">(</span><span class="s">"Genres"</span><span class="cm">/*шаблон*/</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -334,15 +334,14 @@ From the first version of <a href="http://www.asp.net/mvc">ASP.NET MVC</a> coupl
 
 <p>I decided to imporve the previouse solution and apply the ActionFilter experience, and now, from the version <a href="http://nuget.org/packages/MvcExtensions">2.5.0-rc8000</a> MvcExtension do support child-action based drop down lists out of the box. I&#39;ve added extension methods, which allows to use <em>RenderAction</em> to render the model fields. Also <code>SelectListActionAttribute</code> attibute were added, which serves the action providing selection list data. Also this solution supports Post-Redirect-Get scenario.</p>
 
-<h3>The model</h3>
-<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Movie</span> <span class="p">{</span>
+<h3>The model<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Movie</span> <span class="p">{</span>
     <span class="k">public</span> <span class="kt">int</span> <span class="n">GenreId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3>The metadata</h3>
 <div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MovieMetadata</span> <span class="p">:</span> <span class="n">ModelMetadataConfiguration</span> <span class="p">{</span>
     <span class="k">public</span> <span class="n">MovieMetadata</span> <span class="p">{</span>
-        <span class="nf">Configure</span><span class="p">(</span><span class="n">movie</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">movie</span><span class="p">.</span><span class="n">GenreId</span><span class="p">).</span><span class="nf">RenderAction</span><span class="p">(</span><span class="s">"List"</span><span class="p">,</span> <span class="s">"Genres"</span><span class="p">);</span>
+        <span class="nf">Configure</span><span class="p">(</span><span class="n">movie</span> <span class="p">=&gt;</span> <span class="n">movie</span><span class="p">.</span><span class="n">GenreId</span><span class="p">).</span><span class="nf">RenderAction</span><span class="p">(</span><span class="s">"List"</span><span class="p">,</span> <span class="s">"Genres"</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>

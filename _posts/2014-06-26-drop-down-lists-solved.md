@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Solving DropDown list in ASP.NET mvc with MvcExtensions
+title: Solving DropDown list in ASP.NET MVC with MvcExtensions
 date: 2014-06-26T17:23:16+12:00
 tags:
 - MvcExtensions

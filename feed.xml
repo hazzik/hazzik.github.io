@@ -19,7 +19,7 @@ From the first version of &lt;a href=&quot;http://www.asp.net/mvc&quot;&gt;ASP.N
 
 &lt;h2&gt;&amp;quot;Head on&amp;quot; solution&lt;/h2&gt;
 
-&lt;p&gt;The programmers bumping that problem try to solve it by brute force: they create additional property &amp;quot;Genres&amp;quot; of type &lt;em&gt;SelectList&lt;em&gt; at the model class, and they fill it at the controller&amp;#39;s action. Like this:&lt;/p&gt;
+&lt;p&gt;The programmers bumping that problem try to solve it by brute force: they create additional property &amp;quot;Genres&amp;quot; of type &lt;em&gt;SelectList&lt;/em&gt; at the model class, and they fill it at the controller&amp;#39;s action. Like this:&lt;/p&gt;
 
 &lt;h3&gt;The model&lt;/h3&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Movie&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;

@@ -36,7 +36,7 @@
     <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="tag-cloud">
-      <a href="/tag/asp-dot-net-mvc" class="set-5">ASP.NET MVC</a> <a href="/tag/blog" class="set-1">Blog</a> <a href="/tag/computed-properties" class="set-1">Computed Properties</a> <a href="/tag/dataannotations" class="set-1">DataAnnotations</a> <a href="/tag/decompiler" class="set-1">Decompiler</a> <a href="/tag/delegate" class="set-1">Delegate</a> <a href="/tag/dropdown" class="set-1">DropDown</a> <a href="/tag/linq" class="set-1">LINQ</a> <a href="/tag/mvcextensions" class="set-1">MvcExtensions</a> <a href="/tag/nhibernate" class="set-5">NHibernate</a> <a href="/tag/persistent-tree" class="set-1">Persistent-Tree</a> <a href="/tag/renderaction" class="set-1">RenderAction</a> <a href="/tag/tree" class="set-1">Tree</a> <a href="/tag/tree-hierarchy" class="set-1">Tree-Hierarchy</a> <a href="/tag/tree-structures" class="set-1">Tree-Structures</a>
+      <a href="/tag/asp-dot-net-mvc" class="set-5">ASP.NET MVC</a> <a href="/tag/blog" class="set-1">Blog</a> <a href="/tag/computed-properties" class="set-1">Computed Properties</a> <a href="/tag/dataannotations" class="set-1">DataAnnotations</a> <a href="/tag/decompiler" class="set-1">Decompiler</a> <a href="/tag/delegate" class="set-1">Delegate</a> <a href="/tag/drop-down-lists" class="set-1">Drop down lists</a> <a href="/tag/linq" class="set-1">LINQ</a> <a href="/tag/mvcextensions" class="set-1">MvcExtensions</a> <a href="/tag/nhibernate" class="set-5">NHibernate</a> <a href="/tag/persistent-tree" class="set-1">Persistent-Tree</a> <a href="/tag/renderaction" class="set-1">RenderAction</a> <a href="/tag/tree" class="set-1">Tree</a> <a href="/tag/tree-hierarchy" class="set-1">Tree-Hierarchy</a> <a href="/tag/tree-structures" class="set-1">Tree-Structures</a>
     </div>
     <div class="sidebar-about">
 
@@ -84,7 +84,7 @@
     </h1>
     <ul class="post-info">
       <li><i class="fa fa-calendar"></i> <time datetime="2014-06-26T17:23:16+12:00"> 26 Jun 2014 </time></li>
-      <li><i class="fa fa-tags"></i> <a href="/tag/mvcextensions" rel="tag">MvcExtensions</a>, <a href="/tag/asp-dot-net-mvc" rel="tag">ASP.NET MVC</a>, <a href="/tag/dropdown" rel="tag">DropDown</a> </li>
+      <li><i class="fa fa-tags"></i> <a href="/tag/mvcextensions" rel="tag">MvcExtensions</a>, <a href="/tag/asp-dot-net-mvc" rel="tag">ASP.NET MVC</a>, <a href="/tag/drop-down-lists" rel="tag">Drop down lists</a> </li>
       <li><i class="fa fa-comments"></i> <a href="/2014/06/26/drop-down-lists-solved/#disqus_thread" data-disqus-identifier="/2014/06/26/drop-down-lists-solved/">0 комментариев</a></li>
     </ul>
     <p>This is an translation of <a href="http://blog.hazzik.ru/2012/04/02/mvcextensions-solving-drop-down-lists-problem/">my article</a> from 2nd April of 2012.
@@ -98,7 +98,7 @@ From the first version of <a href="http://www.asp.net/mvc">ASP.NET MVC</a> coupl
 
 <h2>&quot;Head on&quot; solution</h2>
 
-<p>The programmers bumping that problem try to solve it by brute force: they create additional property &quot;Genres&quot; of type <em>SelectList<em> at the model class, and they fill it at the controller&#39;s action. Like this:</p>
+<p>The programmers bumping that problem try to solve it by brute force: they create additional property &quot;Genres&quot; of type <em>SelectList</em> at the model class, and they fill it at the controller&#39;s action. Like this:</p>
 
 <h3>The model</h3>
 <div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Movie</span> <span class="p">{</span>

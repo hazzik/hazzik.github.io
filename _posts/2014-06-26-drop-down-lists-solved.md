@@ -183,7 +183,7 @@ public class Movie {
 ```csharp
 public class MovieMetadata : ModelMetadataConfiguration {
     public MovieMetadata {
-        Configure(movie =&gt; movie.GenreId).AsDropDownList("Genres"/*шаблон*/);
+        Configure(movie => movie.GenreId).AsDropDownList("Genres"/*шаблон*/);
     }
 }
 ```
@@ -281,7 +281,7 @@ public class Movie {
 ```csharp
 public class MovieMetadata : ModelMetadataConfiguration {
     public MovieMetadata {
-        Configure(movie =&gt; movie.GenreId).RenderAction("List", "Genres");
+        Configure(movie => movie.GenreId).RenderAction("List", "Genres");
     }
 }
 ```

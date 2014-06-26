@@ -341,4 +341,4 @@ The sample of code with ChildAction + MvcExtensions is here: [http://github.com/
 
 *magic-strings can be easily solved by using of constans, and so because of that, I prefere using string over dynamic properties.
 
-PS: Возможности MvcExtensions для расширения старого доброго ASP.NET MVC просто безграничны.
+PS: The MvcExtensions abilities to extend ASP.NET MVC are limitless

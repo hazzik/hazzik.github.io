@@ -20,17 +20,17 @@
 &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;You should really use &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/bb347013&quot;&gt;TryGetValue&lt;/a&gt; instead:
-/* Given:
- * IDictionary&lt;TKey, TValue&gt; dictionary;
+&lt;p&gt;You should really use &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/bb347013&quot;&gt;TryGetValue&lt;/a&gt; instead:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;cm&quot;&gt;/* Given:
+ * IDictionary&amp;lt;TKey, TValue&amp;gt; dictionary;
  * TKey key;
- */
-TValue value;
-if (dictionary.TryGetValue(key, out value) 
-{
-    // do something with retrieved value
-}&lt;/p&gt;
-
+ */&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;TValue&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dictionary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TryGetValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// do something with retrieved value
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;And here is a couple of reasons why:&lt;/p&gt;
 
 &lt;ul&gt;

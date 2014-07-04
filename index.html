@@ -99,17 +99,17 @@
 </span><span class="p">}</span>
 
 </code></pre></div>
-<p>You should really use <a href="http://msdn.microsoft.com/en-us/library/bb347013">TryGetValue</a> instead:
-/* Given:
- * IDictionary<TKey, TValue> dictionary;
+<p>You should really use <a href="http://msdn.microsoft.com/en-us/library/bb347013">TryGetValue</a> instead:</p>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="cm">/* Given:
+ * IDictionary&lt;TKey, TValue&gt; dictionary;
  * TKey key;
- */
-TValue value;
-if (dictionary.TryGetValue(key, out value) 
-{
-    // do something with retrieved value
-}</p>
-
+ */</span>
+<span class="n">TValue</span> <span class="k">value</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">dictionary</span><span class="p">.</span><span class="nf">TryGetValue</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="k">out</span> <span class="k">value</span><span class="p">)</span> 
+<span class="p">{</span>
+    <span class="c1">// do something with retrieved value
+</span><span class="p">}</span>
+</code></pre></div>
 <p>And here is a couple of reasons why:</p>
 
 <ul>

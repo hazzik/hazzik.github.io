@@ -21,6 +21,8 @@ if (dictionary.ContainsKey(key)
 
 ```
 You should really use [TryGetValue](http://msdn.microsoft.com/en-us/library/bb347013) instead:
+
+```csharp
 /* Given:
  * IDictionary<TKey, TValue> dictionary;
  * TKey key;
@@ -30,6 +32,7 @@ if (dictionary.TryGetValue(key, out value)
 {
     // do something with retrieved value
 }
+```
 
 And here is a couple of reasons why:
 

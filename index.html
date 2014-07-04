@@ -15,7 +15,7 @@ title: Home
     <ul class="post-info">
       <li><i class="fa fa-calendar"></i> <time datetime="{{ post.date | date_to_xmlschema }}"> {{ post.date | date_to_string }} </time></li>
       <li><i class="fa fa-tags"></i> {{ post | tags }} </li>
-      <li><i class="fa fa-comments"></i> <a href="{{ post.url }}#disqus_thread" data-disqus-identifier="{% if post.disqus_identifier %}{{ post.disqus_identifier}}{% else %}{{ post.url }}{% endif %}">0 комментариев</a></li>
+      <li><i class="fa fa-comments"></i> <a href="{{ post.url }}#disqus_thread" data-disqus-identifier="{% if post.disqus_identifier %}{{ post.disqus_identifier}}{% else %}{{ post.url }}{% endif %}">0 comments</a></li>
     </ul>
     {{ post.content }}
   </div>

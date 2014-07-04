@@ -36,7 +36,7 @@
     <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="tag-cloud">
-      <a href="/tag/asp-dot-net-mvc" class="set-5">ASP.NET MVC</a> <a href="/tag/blog" class="set-1">Blog</a> <a href="/tag/computed-properties" class="set-1">Computed Properties</a> <a href="/tag/dataannotations" class="set-1">DataAnnotations</a> <a href="/tag/decompiler" class="set-1">Decompiler</a> <a href="/tag/delegate" class="set-1">Delegate</a> <a href="/tag/drop-down-lists" class="set-1">Drop down lists</a> <a href="/tag/linq" class="set-1">LINQ</a> <a href="/tag/mvcextensions" class="set-1">MvcExtensions</a> <a href="/tag/nhibernate" class="set-5">NHibernate</a> <a href="/tag/persistent-tree" class="set-1">Persistent-Tree</a> <a href="/tag/renderaction" class="set-1">RenderAction</a> <a href="/tag/tree" class="set-1">Tree</a> <a href="/tag/tree-hierarchy" class="set-1">Tree-Hierarchy</a> <a href="/tag/tree-structures" class="set-1">Tree-Structures</a>
+      <a href="/tag/dot-net" class="set-1">.NET</a> <a href="/tag/asp-dot-net-mvc" class="set-5">ASP.NET MVC</a> <a href="/tag/best-practicies" class="set-1">Best practicies</a> <a href="/tag/blog" class="set-1">Blog</a> <a href="/tag/computed-properties" class="set-1">Computed Properties</a> <a href="/tag/dataannotations" class="set-1">DataAnnotations</a> <a href="/tag/decompiler" class="set-1">Decompiler</a> <a href="/tag/delegate" class="set-1">Delegate</a> <a href="/tag/drop-down-lists" class="set-1">Drop down lists</a> <a href="/tag/linq" class="set-1">LINQ</a> <a href="/tag/mvcextensions" class="set-1">MvcExtensions</a> <a href="/tag/nhibernate" class="set-5">NHibernate</a> <a href="/tag/persistent-tree" class="set-1">Persistent-Tree</a> <a href="/tag/renderaction" class="set-1">RenderAction</a> <a href="/tag/tree" class="set-1">Tree</a> <a href="/tag/tree-hierarchy" class="set-1">Tree-Hierarchy</a> <a href="/tag/tree-structures" class="set-1">Tree-Structures</a>
     </div>
     <div class="sidebar-about">
 
@@ -74,6 +74,52 @@
 
     <div class="content container">
       <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://github.com/hazzik/alexzaytsev.me/edit/master/_posts/2014-07-04-learn-how-to-use-idcitionary-dot-trygetvalue.md"><i class="fa fa-edit"></i></a>
+      <a href="/2014/07/04/learn-how-to-use-idcitionary-dot-trygetvalue/">
+        Learn How to Use IDcitionary<,>.TryGetValue!
+      </a>
+    </h1>
+    <ul class="post-info">
+      <li><i class="fa fa-calendar"></i> <time datetime="2014-07-04T14:36:35+12:00"> 04 Jul 2014 </time></li>
+      <li><i class="fa fa-tags"></i> <a href="/tag/best-practicies" rel="tag">Best practicies</a>, <a href="/tag/dot-net" rel="tag">.NET</a> </li>
+      <li><i class="fa fa-comments"></i> <a href="/2014/07/04/learn-how-to-use-idcitionary-dot-trygetvalue/#disqus_thread" data-disqus-identifier="/2014/07/04/learn-how-to-use-idcitionary-dot-trygetvalue/">0 комментариев</a></li>
+    </ul>
+    <p>Every time I saw code similar to following snippet I&#39;m going nuts. </p>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="cm">/* Given:
+ * IDictionary&lt;TKey, TValue&gt; dictionary;
+ * TKey key;
+ */</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">dictionary</span><span class="p">.</span><span class="nf">ContainsKey</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> 
+<span class="p">{</span>
+    <span class="n">var</span> <span class="k">value</span> <span class="p">=</span> <span class="n">dictionary</span><span class="p">[</span><span class="n">key</span><span class="p">];</span>
+    <span class="c1">// do something with retrieved value
+</span><span class="p">}</span>
+
+</code></pre></div>
+<p>You should really use <a href="http://msdn.microsoft.com/en-us/library/bb347013">TryGetValue</a> instead:
+/* Given:
+ * IDictionary<TKey, TValue> dictionary;
+ * TKey key;
+ */
+TValue value;
+if (dictionary.TryGetValue(key, out value) 
+{
+    // do something with retrieved value
+}</p>
+
+<p>And here is a couple of reasons why:</p>
+
+<ul>
+<li>It is more performant as the location of the value calculated only once. And in fact implementation of <code>ContainsKey</code>, <code>Item</code> and <code>TryGetValue</code> is exactly the same.</li>
+<li>In the first example the dictionary could be changed between <code>ContainsKey</code> and <code>Item</code> method calls, and the retrieving of the item could fail in multi-threaded environment.</li>
+</ul>
+
+<p>I was so crazy about this, so couple of month ago I wrote <a href="https://resharper-plugins.jetbrains.com/packages/ReSharper.DictionaryHelper/">a plugin</a> for <a href="http://jetbrains.com/resharper">ReSharper</a> which can analyze and optimize such subsequent calls.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -642,142 +688,11 @@
 
   </div>
   
-  <div class="post">
-    <h1 class="post-title">
-      <a href="http://github.com/hazzik/alexzaytsev.me/edit/master/_posts/tumblr/2013-03-04-nhibernate-how-to-persist-tree-like-structures.md"><i class="fa fa-edit"></i></a>
-      <a href="/2013/03/04/nhibernate-how-to-persist-tree-like-structures/">
-        NHibernate: How to persist Tree-like structures
-      </a>
-    </h1>
-    <ul class="post-info">
-      <li><i class="fa fa-calendar"></i> <time datetime="2013-03-04T17:21:00+12:00"> 04 Mar 2013 </time></li>
-      <li><i class="fa fa-tags"></i> <a href="/tag/tree" rel="tag">Tree</a>, <a href="/tag/nhibernate" rel="tag">NHibernate</a>, <a href="/tag/tree-structures" rel="tag">Tree-Structures</a>, <a href="/tag/tree-hierarchy" rel="tag">Tree-Hierarchy</a>, <a href="/tag/persistent-tree" rel="tag">Persistent-Tree</a> </li>
-      <li><i class="fa fa-comments"></i> <a href="/2013/03/04/nhibernate-how-to-persist-tree-like-structures/#disqus_thread" data-disqus-identifier="/2013/03/04/nhibernate-how-to-persist-tree-like-structures/">0 комментариев</a></li>
-    </ul>
-    <p>Many of you have seen a simple problem - how to store hierarchy data in relational database and efficient work with it. It seems that there is no simpler things to do - just create PARENT_ID column and store the parent identifier of this record.</p>
-<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">class</span> <span class="nc">Tree</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">Id</span><span class="p">;</span>
-    <span class="n">Tree</span> <span class="n">Parent</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>But it is only at first glance.</p>
-
-<p>Everything is fine until you are working with only one level of an hierarchy: an parent and his children. But the funny part begins when you need to extend your levels, for example you need to check an ancestor of entity on any of the upper levels.</p>
-
-<p>This task can not be handled by any ORM - in best case you will get <a href="http://nhprof.com/Learn/Alerts/SelectNPlusOne">SELECT N+1</a> problem. To solve this issue you need to write custom database depend query with WITH statement for Microsoft Sql Server or CONNECT BY PRIOR for Oracle, or even custom stored procedure, use temporary tables and other scary things.</p>
-
-<p>In article “<a href="http://nhibernate.hibernatingrhinos.com/16/how-to-map-a-tree-in-nhibernate">How to map a tree in NHibernate</a>&quot; <a href="http://lostechies.com/gabrielschenker/author/gabrielschenker/">Gabriel Schenker</a> offers an alternate approach - adding an helper table to store hierarchy relations. This table will store all ancestors and descendants for each entity. Descendants will be mapped to Descendants collection and ancestors will be mapped to Ancestors collection. Both collections are many-to-many:</p>
-<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">class</span> <span class="nc">Tree</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">Id</span><span class="p">;</span>
-    <span class="n">Tree</span> <span class="n">Parent</span><span class="p">;</span>
-    <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">Tree</span><span class="p">&gt;</span> <span class="n">Children</span><span class="p">;</span>
-    <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">Tree</span><span class="p">&gt;</span> <span class="n">Ancestors</span><span class="p">;</span>
-    <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">Tree</span><span class="p">&gt;</span> <span class="n">Descendant</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>You can easy handle this structure.</p>
-
-<p>But pros always go with cons. From cons I see that you have to manage this hierarchy table. You can do it from code or from trigger, query or stored procedure in your database.</p>
-
-<p>Happily if you will decide to manage it from code you can write it once and use everywhere. And it is what <a href="https://github.com/BrandyFx/Grapes">I did eventually</a>.</p>
-
-<h1>Brandy.Grapes</h1>
-
-<p><a href="https://github.com/BrandyFx/Grapes">Brandy.Grapes</a> - this is a small set of libraries (only three of them) which allows to easy manage such persisting hierarchy data with <a href="http://nhforge.org/">NHibernate</a>.</p>
-
-<p>You need to install the library through <a href="http://nuget.org/">nuget</a> (currently NHibernate By Code and FluentNHibernate are supported):</p>
-<div class="highlight"><pre><code class="language-" data-lang="">&gt; install-package Brandy.Grapes.NHibernate
-</code></pre></div>
-<p>or</p>
-<div class="highlight"><pre><code class="language-" data-lang="">&gt; install-pacakge Brandy.Grapes.FluentNhibernate
-</code></pre></div>
-<p>Inherit your entity from TreeEntry`1</p>
-<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MySuperTree</span> <span class="p">:</span> <span class="n">TreeEntry</span><span class="p">&lt;</span><span class="n">MySuperTree</span><span class="p">&gt;</span> <span class="p">{</span>
-    <span class="k">public</span> <span class="k">virtual</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-
-    <span class="k">public</span> <span class="k">virtual</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>At last write a mapping, for example for FluentNHibernate:</p>
-<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">Brandy.Grapes.FluentNHibernate</span><span class="p">;</span>
-<span class="k">public</span> <span class="k">class</span> <span class="nc">MySuperTreeMap</span> <span class="p">:</span> <span class="n">ClassMap</span><span class="p">&lt;</span><span class="n">MySuperTree</span><span class="p">&gt;</span> <span class="p">{</span>
-    <span class="k">public</span> <span class="nf">MySuperTreeMap</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nf">Id</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
-        <span class="nf">Map</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
-
-        <span class="k">this</span><span class="p">.</span><span class="nf">MapTree</span><span class="p">(</span><span class="s">"MySuperTreeHierarchy"</span><span class="p">);</span> <span class="c1">// all magic goes here
-</span>    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Enjoy: now Brandy.Grapes will track hierarchy changes and persist it to a database for you.
-But when you add anything to the hierarchy the library need to load almost all nodes for the hierarchy from database to correct handle the relations. If your hierarchy is changed frequently you can turn off changes tracking by code and do it in database. There are few ways to do so.</p>
-
-<p>Call the stored procedure by trigger or by code to update hierarchy:</p>
-<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="c1">-- Example for Microsoft Sql Server
-</span><span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">FillHierarchy</span><span class="p">]</span> <span class="p">(</span><span class="o">@</span><span class="k">table_name</span> <span class="n">nvarchar</span><span class="p">(</span><span class="k">MAX</span><span class="p">),</span> <span class="o">@</span><span class="n">hierarchy_name</span> <span class="n">nvarchar</span><span class="p">(</span><span class="k">MAX</span><span class="p">))</span>
-<span class="k">AS</span>
-<span class="k">BEGIN</span>
-    <span class="k">DECLARE</span> <span class="o">@</span><span class="k">sql</span> <span class="n">nvarchar</span><span class="p">(</span><span class="k">MAX</span><span class="p">),</span> <span class="o">@</span><span class="n">id_column_name</span> <span class="n">nvarchar</span><span class="p">(</span><span class="k">MAX</span><span class="p">)</span>
-    <span class="k">SET</span> <span class="o">@</span><span class="n">id_column_name</span> <span class="o">=</span> <span class="s1">''</span><span class="p">[</span><span class="s1">''</span> <span class="o">+</span> <span class="o">@</span><span class="k">table_name</span> <span class="o">+</span> <span class="s1">''</span><span class="n">_ID</span><span class="p">]</span><span class="s1">''</span>
-    <span class="k">SET</span> <span class="o">@</span><span class="k">table_name</span> <span class="o">=</span> <span class="s1">''</span><span class="p">[</span><span class="s1">''</span> <span class="o">+</span> <span class="o">@</span><span class="k">table_name</span> <span class="o">+</span> <span class="s1">''</span><span class="p">]</span><span class="s1">''</span>
-    <span class="k">SET</span> <span class="o">@</span><span class="n">hierarchy_name</span> <span class="o">=</span> <span class="s1">''</span><span class="p">[</span><span class="s1">''</span> <span class="o">+</span> <span class="o">@</span><span class="n">hierarchy_name</span> <span class="o">+</span> <span class="s1">''</span><span class="p">]</span><span class="s1">''</span>
-
-    <span class="k">SET</span> <span class="o">@</span><span class="k">sql</span> <span class="o">=</span> <span class="s1">'</span><span class="se">''</span><span class="s1">'</span>
-    <span class="k">SET</span> <span class="o">@</span><span class="k">sql</span> <span class="o">=</span> <span class="o">@</span><span class="k">sql</span> <span class="o">+</span> <span class="s1">''</span><span class="k">WITH</span> <span class="n">Hierachy</span><span class="p">(</span><span class="n">CHILD_ID</span><span class="p">,</span> <span class="n">PARENT_ID</span><span class="p">)</span> <span class="k">AS</span> <span class="p">(</span> <span class="s1">''</span>
-    <span class="k">SET</span> <span class="o">@</span><span class="k">sql</span> <span class="o">=</span> <span class="o">@</span><span class="k">sql</span> <span class="o">+</span> <span class="s1">''</span><span class="k">SELECT</span> <span class="s1">''</span> <span class="o">+</span> <span class="o">@</span><span class="n">id_column_name</span> <span class="o">+</span> <span class="s1">''</span><span class="p">,</span> <span class="p">[</span><span class="n">PARENT_ID</span><span class="p">]</span> <span class="k">FROM</span> <span class="s1">''</span> <span class="o">+</span> <span class="o">@</span><span class="k">table_name</span> <span class="o">+</span> <span class="s1">''</span> <span class="n">e</span> <span class="s1">''</span>
-    <span class="k">SET</span> <span class="o">@</span><span class="k">sql</span> <span class="o">=</span> <span class="o">@</span><span class="k">sql</span> <span class="o">+</span> <span class="s1">''</span><span class="k">UNION</span> <span class="k">ALL</span> <span class="s1">''</span>
-    <span class="k">SET</span> <span class="o">@</span><span class="k">sql</span> <span class="o">=</span> <span class="o">@</span><span class="k">sql</span> <span class="o">+</span> <span class="s1">''</span><span class="k">SELECT</span> <span class="n">e</span><span class="p">.</span><span class="s1">''</span> <span class="o">+</span> <span class="o">@</span><span class="n">id_column_name</span> <span class="o">+</span> <span class="s1">''</span><span class="p">,</span> <span class="n">e</span><span class="p">.[</span><span class="n">PARENT_ID</span><span class="p">]</span> <span class="k">FROM</span> <span class="s1">''</span> <span class="o">+</span> <span class="o">@</span><span class="k">table_name</span> <span class="o">+</span> <span class="s1">''</span> <span class="n">e</span> <span class="s1">''</span>
-    <span class="k">SET</span> <span class="o">@</span><span class="k">sql</span> <span class="o">=</span> <span class="o">@</span><span class="k">sql</span> <span class="o">+</span> <span class="s1">''</span><span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">Hierachy</span> <span class="n">eh</span> <span class="k">ON</span> <span class="n">e</span><span class="p">.</span><span class="s1">''</span> <span class="o">+</span> <span class="o">@</span><span class="n">id_column_name</span> <span class="o">+</span> <span class="s1">''</span> <span class="o">=</span> <span class="n">eh</span><span class="p">.[</span><span class="n">PARENT_ID</span><span class="p">])</span> <span class="s1">''</span>
-    <span class="k">SET</span> <span class="o">@</span><span class="k">sql</span> <span class="o">=</span> <span class="o">@</span><span class="k">sql</span> <span class="o">+</span> <span class="s1">''</span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="s1">''</span> <span class="o">+</span> <span class="o">@</span><span class="n">hierarchy_name</span> <span class="o">+</span> <span class="s1">''</span> <span class="p">([</span><span class="n">CHILD_ID</span><span class="p">],</span> <span class="p">[</span><span class="n">PARENT_ID</span><span class="p">])</span> <span class="p">(</span> <span class="s1">''</span>
-    <span class="k">SET</span> <span class="o">@</span><span class="k">sql</span> <span class="o">=</span> <span class="o">@</span><span class="k">sql</span> <span class="o">+</span> <span class="s1">''</span><span class="k">SELECT</span> <span class="p">[</span><span class="n">CHILD_ID</span><span class="p">],</span> <span class="p">[</span><span class="n">PARENT_ID</span><span class="p">]</span> <span class="k">FROM</span> <span class="n">Hierachy</span> <span class="k">WHERE</span> <span class="p">[</span><span class="n">PARENT_ID</span><span class="p">]</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="s1">''</span>
-    <span class="k">SET</span> <span class="o">@</span><span class="k">sql</span> <span class="o">=</span> <span class="o">@</span><span class="k">sql</span> <span class="o">+</span> <span class="s1">''</span><span class="p">)</span> <span class="s1">''</span>
-
-    <span class="k">EXECUTE</span> <span class="p">(</span><span class="o">@</span><span class="k">sql</span><span class="p">)</span>
-<span class="k">END</span>
-<span class="k">GO</span>
-</code></pre></div>
-<p>Create a view for each hierarchy (the same query as in stored proceure) and map Ancestors and Descendants collections to that view:</p>
-<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="c1">-- Example for Microsoft Sql Server
-</span><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="p">[</span><span class="n">MySuperTreeHierarchy</span><span class="p">]</span>
-<span class="k">AS</span>
-    <span class="k">WITH</span> <span class="n">Hierachy</span> <span class="p">(</span><span class="n">CHILD_ID</span><span class="p">,</span> <span class="n">PARENT_ID</span><span class="p">)</span> 
-    <span class="k">AS</span> 
-    <span class="p">(</span>
-        <span class="k">SELECT</span> <span class="p">[</span><span class="n">MySuperTree_ID</span><span class="p">],</span> <span class="p">[</span><span class="n">PARENT_ID</span><span class="p">]</span> <span class="k">FROM</span> <span class="p">[</span><span class="n">MySuperTree</span><span class="p">]</span> <span class="k">AS</span> <span class="n">e</span>
-        <span class="k">UNION</span> <span class="k">ALL</span>
-        <span class="k">SELECT</span> <span class="n">e</span><span class="p">.[</span><span class="n">MySuperTree_ID</span><span class="p">],</span> <span class="n">e</span><span class="p">.[</span><span class="n">PARENT_ID</span><span class="p">]</span> <span class="k">FROM</span> <span class="p">[</span><span class="n">MySuperTree</span><span class="p">]</span> <span class="k">AS</span> <span class="n">e</span> 
-            <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">Hierachy</span> <span class="k">AS</span> <span class="n">eh</span> <span class="k">ON</span> <span class="n">e</span><span class="p">.[</span><span class="n">MySuperTree_ID</span><span class="p">]</span> <span class="o">=</span> <span class="n">eh</span><span class="p">.[</span><span class="n">PARENT_ID</span><span class="p">]</span>
-    <span class="p">)</span>
-
-    <span class="k">SELECT</span> <span class="p">[</span><span class="n">CHILD_ID</span><span class="p">],</span> <span class="p">[</span><span class="n">PARENT_ID</span><span class="p">]</span> <span class="k">FROM</span> <span class="n">Hierachy</span> <span class="k">WHERE</span> <span class="p">[</span><span class="n">PARENT_ID</span><span class="p">]</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span>
-<span class="k">GO</span>
-</code></pre></div>
-<p>Both approaches much powerful than calling dynamic queries to database on pure SQL from code.</p>
-
-<p>PS: an contract of TreeEntry`1 abstract class:</p>
-<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">abstract</span> <span class="k">class</span> <span class="nc">TreeEntry</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">where</span> <span class="n">T</span> <span class="p">:</span> <span class="n">TreeEntry</span> <span class="p">{</span>
-    <span class="k">public</span> <span class="k">virtual</span> <span class="n">T</span> <span class="n">Parent</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-
-    <span class="k">public</span> <span class="k">virtual</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">Children</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
-
-    <span class="k">public</span> <span class="k">virtual</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">Ancestors</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
-
-    <span class="k">public</span> <span class="k">virtual</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">Descendants</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
-
-    <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="nf">AddChild</span><span class="p">(</span><span class="n">T</span> <span class="n">child</span><span class="p">);</span>
-
-    <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="nf">RemoveChild</span><span class="p">(</span><span class="n">T</span> <span class="n">child</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>PPS: Currently EntityFramework does not support hiding collections by IEnumerable`1 interface, so I decided to not provide implementation for EntityFramework.</p>
-
-  </div>
-  
 </div>
 
 <div class="pagination">
   
-    <span class="pagination-item older">Older</span>
+    <a class="pagination-item older" href="/page2">Older</a>
   
   
     <span class="pagination-item newer">Newer</span>

@@ -7,6 +7,45 @@
     <atom:link href="http://alexzaytsev.me/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Learn How to Use IDcitionary&lt;,&gt;.TryGetValue!</title>
+        <description>&lt;p&gt;Every time I saw code similar to following snippet I&amp;#39;m going nuts. &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;cm&quot;&gt;/* Given:
+ * IDictionary&amp;lt;TKey, TValue&amp;gt; dictionary;
+ * TKey key;
+ */&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dictionary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ContainsKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dictionary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// do something with retrieved value
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You should really use &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/bb347013&quot;&gt;TryGetValue&lt;/a&gt; instead:
+/* Given:
+ * IDictionary&lt;TKey, TValue&gt; dictionary;
+ * TKey key;
+ */
+TValue value;
+if (dictionary.TryGetValue(key, out value) 
+{
+    // do something with retrieved value
+}&lt;/p&gt;
+
+&lt;p&gt;And here is a couple of reasons why:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;It is more performant as the location of the value calculated only once. And in fact implementation of &lt;code&gt;ContainsKey&lt;/code&gt;, &lt;code&gt;Item&lt;/code&gt; and &lt;code&gt;TryGetValue&lt;/code&gt; is exactly the same.&lt;/li&gt;
+&lt;li&gt;In the first example the dictionary could be changed between &lt;code&gt;ContainsKey&lt;/code&gt; and &lt;code&gt;Item&lt;/code&gt; method calls, and the retrieving of the item could fail in multi-threaded environment.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I was so crazy about this, so couple of month ago I wrote &lt;a href=&quot;https://resharper-plugins.jetbrains.com/packages/ReSharper.DictionaryHelper/&quot;&gt;a plugin&lt;/a&gt; for &lt;a href=&quot;http://jetbrains.com/resharper&quot;&gt;ReSharper&lt;/a&gt; which can analyze and optimize such subsequent calls.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 04 Jul 2014 14:36:35 +1200</pubDate>
+        <link>http://alexzaytsev.me/2014/07/04/learn-how-to-use-idcitionary-dot-trygetvalue/</link>
+        <guid isPermaLink="true">http://alexzaytsev.me/2014/07/04/learn-how-to-use-idcitionary-dot-trygetvalue/</guid>
+      </item>
+    
+      <item>
         <title>Solving DropDown list in ASP.NET MVC with MvcExtensions</title>
         <description>&lt;p&gt;This is an translation of &lt;a href=&quot;http://blog.hazzik.ru/2012/04/02/mvcextensions-solving-drop-down-lists-problem/&quot;&gt;my article&lt;/a&gt; from 2nd April of 2012.&lt;/p&gt;
 
@@ -316,7 +355,7 @@
 
 &lt;p&gt;*magic-strings can be easily solved by using of constans, and so because of that, I prefere using string over dynamic properties.&lt;/p&gt;
 
-&lt;p&gt;PS: The MvcExtensions abilities to extend ASP.NET MVC are limitless&lt;/p&gt;53855046.999255320.1404213941.5f3ad1f9b585aba890fe94c42c10ac06
+&lt;p&gt;PS: The MvcExtensions abilities to extend ASP.NET MVC are limitless&lt;/p&gt;
 </description>
         <pubDate>Thu, 26 Jun 2014 17:23:16 +1200</pubDate>
         <link>http://alexzaytsev.me/2014/06/26/drop-down-lists-solved/</link>
@@ -538,7 +577,7 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/hazzik/DelegateDecompiler&quot;&gt;Source code at GitHub&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://nuget.org/packages/DelegateDecompiler&quot;&gt;Nuget package&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;53855046.999255320.1404213722.5e564230fd3b58cb62d27186078010bc
+&lt;/ul&gt;
 </description>
         <pubDate>Tue, 05 Mar 2013 09:31:14 +1200</pubDate>
         <link>http://alexzaytsev.me/2013/03/05/computable-properties-for-any-linq-provider/</link>

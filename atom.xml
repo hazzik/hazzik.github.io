@@ -4,13 +4,52 @@
  <title>Hazzik's blog</title>
  <link href="http://alexzaytsev.me/atom.xml" rel="self"/>
  <link href="http://alexzaytsev.me/"/>
- <updated>2014-06-27T11:25:55+12:00</updated>
+ <updated>2014-07-04T14:38:27+12:00</updated>
  <id>http://alexzaytsev.me</id>
  <author>
    <name>Alexander Zaytsev</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Learn How to Use IDcitionary<,>.TryGetValue!</title>
+   <link href="http://alexzaytsev.me/2014/07/04/learn-how-to-use-idcitionary-dot-trygetvalue/"/>
+   <updated>2014-07-04T14:36:35+12:00</updated>
+   <id>http://alexzaytsev.me/2014/07/04/learn-how-to-use-idcitionary-dot-trygetvalue</id>
+   <content type="html">&lt;p&gt;Every time I saw code similar to following snippet I&amp;#39;m going nuts. &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;cm&quot;&gt;/* Given:
+ * IDictionary&amp;lt;TKey, TValue&amp;gt; dictionary;
+ * TKey key;
+ */&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dictionary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ContainsKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dictionary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// do something with retrieved value
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You should really use &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/bb347013&quot;&gt;TryGetValue&lt;/a&gt; instead:
+/* Given:
+ * IDictionary&lt;TKey, TValue&gt; dictionary;
+ * TKey key;
+ */
+TValue value;
+if (dictionary.TryGetValue(key, out value) 
+{
+    // do something with retrieved value
+}&lt;/p&gt;
+
+&lt;p&gt;And here is a couple of reasons why:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;It is more performant as the location of the value calculated only once. And in fact implementation of &lt;code&gt;ContainsKey&lt;/code&gt;, &lt;code&gt;Item&lt;/code&gt; and &lt;code&gt;TryGetValue&lt;/code&gt; is exactly the same.&lt;/li&gt;
+&lt;li&gt;In the first example the dictionary could be changed between &lt;code&gt;ContainsKey&lt;/code&gt; and &lt;code&gt;Item&lt;/code&gt; method calls, and the retrieving of the item could fail in multi-threaded environment.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I was so crazy about this, so couple of month ago I wrote &lt;a href=&quot;https://resharper-plugins.jetbrains.com/packages/ReSharper.DictionaryHelper/&quot;&gt;a plugin&lt;/a&gt; for &lt;a href=&quot;http://jetbrains.com/resharper&quot;&gt;ReSharper&lt;/a&gt; which can analyze and optimize such subsequent calls.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Solving DropDown list in ASP.NET MVC with MvcExtensions</title>

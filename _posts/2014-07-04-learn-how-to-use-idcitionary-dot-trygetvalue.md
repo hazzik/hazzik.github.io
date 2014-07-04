@@ -6,7 +6,7 @@ tags:
 - Best practicies
 - .NET
 ---
-Every time I saw code similar to following snippet I'm going nuts. 
+I'm going nuts every time I see the code similar to the following snippet.
 
 ```csharp
 /* Given:

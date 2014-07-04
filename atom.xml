@@ -4,7 +4,7 @@
  <title>Hazzik's blog</title>
  <link href="http://alexzaytsev.me/atom.xml" rel="self"/>
  <link href="http://alexzaytsev.me/"/>
- <updated>2014-07-04T14:42:23+12:00</updated>
+ <updated>2014-07-04T14:43:29+12:00</updated>
  <id>http://alexzaytsev.me</id>
  <author>
    <name>Alexander Zaytsev</name>
@@ -17,7 +17,7 @@
    <link href="http://alexzaytsev.me/2014/07/04/learn-how-to-use-idcitionary-dot-trygetvalue/"/>
    <updated>2014-07-04T14:36:35+12:00</updated>
    <id>http://alexzaytsev.me/2014/07/04/learn-how-to-use-idcitionary-dot-trygetvalue</id>
-   <content type="html">&lt;p&gt;Every time I saw code similar to following snippet I&amp;#39;m going nuts. &lt;/p&gt;
+   <content type="html">&lt;p&gt;I&amp;#39;m going nuts every time I see the code similar to the following snippet.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;cm&quot;&gt;/* Given:
  * IDictionary&amp;lt;TKey, TValue&amp;gt; dictionary;
  * TKey key;

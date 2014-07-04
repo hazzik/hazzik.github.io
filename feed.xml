@@ -8,7 +8,7 @@
     
       <item>
         <title>Learn How to Use IDcitionary&lt;,&gt;.TryGetValue!</title>
-        <description>&lt;p&gt;Every time I saw code similar to following snippet I&amp;#39;m going nuts. &lt;/p&gt;
+        <description>&lt;p&gt;I&amp;#39;m going nuts every time I see the code similar to the following snippet.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;cm&quot;&gt;/* Given:
  * IDictionary&amp;lt;TKey, TValue&amp;gt; dictionary;
  * TKey key;

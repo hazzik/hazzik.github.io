@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 gem 'octopress', :git => 'https://github.com/hazzik/octopress'
 gem 'octopress-deploy'
-gem 'rouge'
+gem 'rouge', '~>1.6.0'
 gem 'jekyll-redirect-from'
 gem 'jekyll-tagging', :git => 'https://github.com/hazzik/jekyll-tagging.git'

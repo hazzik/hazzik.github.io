@@ -10,7 +10,7 @@
 
   <title>
     
-      RenderAction &middot; Hazzik's blog
+      Git aliases to apply patches from url &middot; Hazzik's blog
     
   </title>
 
@@ -74,24 +74,45 @@
 
 
     <div class="content container">
-      <div class="page">
-  <h1 class="page-title">RenderAction</h1>
-  <div class="posts">
-  
-  <div class="post">
-    <h2 class="post-title">
-      <a href="/2014/06/17/render-action-attribute/">
-        Render Action Attribute
-      </a>
-    </h2>
-    <ul class="post-info">
-      <li><i class="fa fa-calendar"></i> <time datetime="2014-06-17T11:43:03+12:00"> 17 Jun 2014 </time></li>
-      <li><i class="fa fa-tags"></i> <a href="/tag/asp-dot-net-mvc" rel="tag">ASP.NET MVC</a>, <a href="/tag/dataannotations" rel="tag">DataAnnotations</a>, <a href="/tag/renderaction" rel="tag">RenderAction</a> </li>
-    </ul>
+      <div class="post hentry">
+  <h1 class="post-title entry-title">
+    <a href="http://github.com/hazzik/alexzaytsev.me/edit/master/_posts/2014-10-19-git-alias-to-apply-patch-from-url.md"><i class="fa fa-edit"></i></a> Git aliases to apply patches from url
+  </h1>
+  <ul class="post-info">
+    <li><i class="fa fa-calendar"></i><time datetime="2014-10-19T01:18:53+12:00" class="published"> 19 Oct 2014 </time></li>
+    <li class="tags"><i class="fa fa-tags"></i> <a href="/tag/git" rel="tag">Git</a>, <a href="/tag/git-alias" rel="tag">Git Alias</a></li>
+    <li><i class="fa fa-comments"></i> <a href="/2014/10/19/git-alias-to-apply-patch-from-url/#disqus_thread" data-disqus-identifier="/2014/10/19/git-alias-to-apply-patch-from-url/">0 comments</a></li>
+  </ul>
+  <div class="entry-content">
+    <p>Git has two commands to apply patches: <a href="https://www.kernel.org/pub/software/scm/git/docs/git-am.html"><em>git am</em></a> and <a href="https://www.kernel.org/pub/software/scm/git/docs/git-apply.html"><em>git apply</em></a>, but none of them are able to apply patches from an url. So here are my aliases to do so.</p>
+
+<h3>git apply-url - Apply a patch to files and/or to the index from url</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">$git config --global alias.apply-url "!f() { curl -s $1 2&gt;nul | git apply ${@:2}; }; f"
+</code></pre></div>
+<p>The alias itself is pretty simple. First it declares callable function <code>f</code> and then calls it. The function itself calls <code>curl</code> in silent mode with first argument passed to alias as url. Then it pipes <code>curl</code>s output to <code>git apply</code> with remaing arguments. This alias applies the patch but does not create a commit. </p>
+
+<p>Usage</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$git apply-url http://example.org/sample.patch args
+</code></pre></div>
+<p>The first argument MUST be an url for a patch, other arguments will be passed to <code>git apply</code>. </p>
+
+<h3>git apply-url - Apply a series of patches from an url (git am-url):</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">$git config --global alias.am-url "!f() { curl -s $1 2&gt;nul | git am ${@:2}; }; f"
+</code></pre></div>
+<p>This alias works exactly the same as previous.</p>
+
+<p>Usage</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$git am-url http://example.org/sample.patch args
+</code></pre></div>
+<p>The first argument MUST be an url for a patch, other arguments will be passed to <code>git am</code>.
+You can apply a pull request from github by performing following:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$git am-url https://github.com/user/repo/pull/777.patch
+</code></pre></div>
+<p>Happy aliasing!</p>
+
   </div>
-  
 </div>
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- alexzaytsev.me -->
 <ins class="adsbygoogle"
      style="display:inline-block;width:728px;height:15px"
@@ -100,6 +121,55 @@
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'hazzik-blog-en'; // required: replace example with your forum shortname
+      var disqus_identifier = '/2014/10/19/git-alias-to-apply-patch-from-url/';
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2014/07/04/learn-how-to-use-idcitionary-dot-trygetvalue/">
+            Learn How to Use IDcitionary<,>.TryGetValue!
+            <small>04 Jul 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2014/06/26/drop-down-lists-solved/">
+            Solving DropDown list in ASP.NET MVC with MvcExtensions
+            <small>26 Jun 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2014/06/17/render-action-attribute/">
+            Render Action Attribute
+            <small>17 Jun 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
 </div>
 
     </div>

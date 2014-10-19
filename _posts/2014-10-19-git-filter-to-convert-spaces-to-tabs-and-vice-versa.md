@@ -12,11 +12,11 @@ To make a work I use two GNU tools [expand](http://man7.org/linux/man-pages/man1
 DISCLAMER: Be really careful before commiting, as this filters can produce a huge changesets.
 
 ## Tabify - spaces to tabs on add
-1. Open your ~/.gitconfig (%SystemDrive%\Users\<username>\.gitconfig in case of Windows)
+1. Open your ~/.gitconfig (%SystemDrive%\Users\username\.gitconfig in case of Windows)
 2. Add following lines
 
 	[filter "tabify"]
-		clean = unexpand --tabs=4 --first-only
+	clean = unexpand --tabs=4 --first-only
 
 It says that we want to convert each 4 space characters at the beginning of a line to one tab.
 
@@ -31,7 +31,7 @@ It says that for files with ".cs" extension we want to use this filter.
 2. Add following lines
 
 	[filter "spacify"]
-		clean = expand --tabs=4 --initial
+	clean = expand --tabs=4 --initial
 
 It says that we want to convert each tab character at the beginning of line to 4 space characters.
 

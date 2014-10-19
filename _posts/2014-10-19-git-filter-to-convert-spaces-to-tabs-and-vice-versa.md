@@ -15,14 +15,18 @@ DISCLAMER: Be really careful before commiting, as this filters can produce a hug
 1. Open your ~/.gitconfig (%SystemDrive%\\Users\\<username>\\.gitconfig in case of Windows)
 2. Add following lines
 
-	[filter "tabify"]
+```ini
+[filter "tabify"]
 	clean = unexpand --tabs=4 --first-only
+```
 
 It says that we want to convert each 4 space characters at the beginning of a line to one tab.
 
 3. To make the filter active add following lines to your .gitconfig (or to .git\info\attributes)
 
-	*.cs filter=tabify
+```
+*.cs filter=tabify
+```
 
 It says that for files with ".cs" extension we want to use this filter.
 
@@ -30,30 +34,38 @@ It says that for files with ".cs" extension we want to use this filter.
 1. Open your ~/.gitconfig (%SystemDrive%\Users\<username>\.gitconfig in case of Windows)
 2. Add following lines
 
-	[filter "spacify"]
+```ini
+[filter "spacify"]
 	clean = expand --tabs=4 --initial
+```
 
 It says that we want to convert each tab character at the beginning of line to 4 space characters.
 
 3. To make the filter active add following lines to your .gitconfig (or to .git\info\attributes)
 
-	*.cs filter=spacify
+```
+*.cs filter=spacify
+```
 
 It says that for files with ".cs" extension we want to use this filter.
 
 ## Spaces2Tabs - spaces to tabs on add, and tabs to spaces on checkout.
 This filter is just a combination of previous two filters. This filter is usefull if your repository requires you to use tabs for indents, but you prefer spaces. The code
 
-	[filter "spaces2tabs"]
-		clean = unexpand --tabs=4 --first-only
-		smudge = expand --tabs=4 --initial
+```ini
+[filter "spaces2tabs"]
+	clean = unexpand --tabs=4 --first-only
+	smudge = expand --tabs=4 --initial	
+```
 
 ## Tabs2Spaces - tabs to spaces on add, and spaces to tabs on checkout.
 This filter is just a combination of first two filters. This filter is usefull if your repository requires you to use spaces for indents, but you prefer tabs. The code
 
-	[filter "tabs2spaces"]
-		clean = expand --tabs=4 --initial
-		smudge = unexpand --tabs=4 --first-only
+```ini
+[filter "tabs2spaces"]
+	clean = expand --tabs=4 --initial
+	smudge = unexpand --tabs=4 --first-only
+```
 
 Happy filtering!
 

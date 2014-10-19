@@ -102,55 +102,51 @@
 
 <ol>
 <li>Open your ~/.gitconfig (%SystemDrive%\Users\<username>\.gitconfig in case of Windows)</li>
-<li><p>Add following lines</p>
-
-<p>[filter &quot;tabify&quot;]
-clean = unexpand --tabs=4 --first-only</p></li>
+<li>Add following lines</li>
 </ol>
-
+<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="nn">[filter "tabify"]</span>
+    <span class="py">clean</span> <span class="p">=</span> <span class="s">unexpand --tabs=4 --first-only</span>
+</code></pre></div>
 <p>It says that we want to convert each 4 space characters at the beginning of a line to one tab.</p>
 
 <ol>
-<li><p>To make the filter active add following lines to your .gitconfig (or to .git\info\attributes)</p>
-
-<p>*.cs filter=tabify</p></li>
+<li>To make the filter active add following lines to your .gitconfig (or to .git\info\attributes)</li>
 </ol>
-
+<div class="highlight"><pre><code class="language-" data-lang="">*.cs filter=tabify
+</code></pre></div>
 <p>It says that for files with &quot;.cs&quot; extension we want to use this filter.</p>
 
 <h2>Spacify - spaces to tabs on add</h2>
 
 <ol>
 <li>Open your ~/.gitconfig (%SystemDrive%\Users&lt;username&gt;.gitconfig in case of Windows)</li>
-<li><p>Add following lines</p>
-
-<p>[filter &quot;spacify&quot;]
-clean = expand --tabs=4 --initial</p></li>
+<li>Add following lines</li>
 </ol>
-
+<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="nn">[filter "spacify"]</span>
+    <span class="py">clean</span> <span class="p">=</span> <span class="s">expand --tabs=4 --initial</span>
+</code></pre></div>
 <p>It says that we want to convert each tab character at the beginning of line to 4 space characters.</p>
 
 <ol>
-<li><p>To make the filter active add following lines to your .gitconfig (or to .git\info\attributes)</p>
-
-<p>*.cs filter=spacify</p></li>
+<li>To make the filter active add following lines to your .gitconfig (or to .git\info\attributes)</li>
 </ol>
-
+<div class="highlight"><pre><code class="language-" data-lang="">*.cs filter=spacify
+</code></pre></div>
 <p>It says that for files with &quot;.cs&quot; extension we want to use this filter.</p>
 
 <h2>Spaces2Tabs - spaces to tabs on add, and tabs to spaces on checkout.</h2>
 
 <p>This filter is just a combination of previous two filters. This filter is usefull if your repository requires you to use tabs for indents, but you prefer spaces. The code</p>
-<div class="highlight"><pre><code class="language-" data-lang="">[filter "spaces2tabs"]
-    clean = unexpand --tabs=4 --first-only
-    smudge = expand --tabs=4 --initial
+<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="nn">[filter "spaces2tabs"]</span>
+    <span class="py">clean</span> <span class="p">=</span> <span class="s">unexpand --tabs=4 --first-only</span>
+    <span class="py">smudge</span> <span class="p">=</span> <span class="s">expand --tabs=4 --initial  </span>
 </code></pre></div>
 <h2>Tabs2Spaces - tabs to spaces on add, and spaces to tabs on checkout.</h2>
 
 <p>This filter is just a combination of first two filters. This filter is usefull if your repository requires you to use spaces for indents, but you prefer tabs. The code</p>
-<div class="highlight"><pre><code class="language-" data-lang="">[filter "tabs2spaces"]
-    clean = expand --tabs=4 --initial
-    smudge = unexpand --tabs=4 --first-only
+<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="nn">[filter "tabs2spaces"]</span>
+    <span class="py">clean</span> <span class="p">=</span> <span class="s">expand --tabs=4 --initial</span>
+    <span class="py">smudge</span> <span class="p">=</span> <span class="s">unexpand --tabs=4 --first-only</span>
 </code></pre></div>
 <p>Happy filtering!</p>
 

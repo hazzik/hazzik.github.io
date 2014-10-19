@@ -17,7 +17,7 @@
 &lt;h2&gt;Tabify - spaces to tabs on add&lt;/h2&gt;
 
 &lt;ol&gt;
-&lt;li&gt;Open your ~/.gitconfig (%SystemDrive%\Users\&lt;username&gt;\.gitconfig in case of Windows)&lt;/li&gt;
+&lt;li&gt;Open your ~/.gitconfig (%SystemDrive%\Users\&amp;lt;username&amp;gt;\.gitconfig in case of Windows)&lt;/li&gt;
 &lt;li&gt;Add following lines&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span class=&quot;nn&quot;&gt;[filter &quot;tabify&quot;]&lt;/span&gt;

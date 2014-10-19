@@ -4,7 +4,7 @@
  <title>Hazzik&#39;s blog</title>
  <link href="http://alexzaytsev.me/atom.xml" rel="self"/>
  <link href="http://alexzaytsev.me/"/>
- <updated>2014-10-20T09:36:59+12:00</updated>
+ <updated>2014-10-20T09:38:23+12:00</updated>
  <id>http://alexzaytsev.me</id>
  <author>
    <name>Alexander Zaytsev</name>
@@ -26,7 +26,7 @@
 &lt;h2&gt;Tabify - spaces to tabs on add&lt;/h2&gt;
 
 &lt;ol&gt;
-&lt;li&gt;Open your ~/.gitconfig (%SystemDrive%\Users\&lt;username&gt;\.gitconfig in case of Windows)&lt;/li&gt;
+&lt;li&gt;Open your ~/.gitconfig (%SystemDrive%\Users\&amp;lt;username&amp;gt;\.gitconfig in case of Windows)&lt;/li&gt;
 &lt;li&gt;Add following lines&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span class=&quot;nn&quot;&gt;[filter &quot;tabify&quot;]&lt;/span&gt;

@@ -7,6 +7,75 @@
     <atom:link href="http://alexzaytsev.me/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Git Filter to Convert Spaces to Tabs and Vice Versa</title>
+        <description>&lt;p&gt;Usually people have different preferences on tabs vs spaces. Here is a git filter to convert tabs to spaces, and spaces to tabs. Git allows you to write filters - a small commands which will be run after checkout (smudge) or before add (clean). As usual all settings are stored in git config files.&lt;/p&gt;
+
+&lt;p&gt;To make a work I use two GNU tools &lt;a href=&quot;http://man7.org/linux/man-pages/man1/expand.1.html&quot;&gt;expand&lt;/a&gt; (converts tabs to spaces) and &lt;a href=&quot;http://man7.org/linux/man-pages/man1/unexpand.1.html&quot;&gt;unexpand&lt;/a&gt; (converts spaces to tabs). If you are using Windows, then you&amp;#39;ll need these tools to be reachable from your PATH environment varible. You can get this tools as part of &lt;a href=&quot;http://gnuwin32.sourceforge.net/&quot;&gt;GnuWin32&lt;/a&gt; or any other port of GNU tools to Windows.&lt;/p&gt;
+
+&lt;p&gt;DISCLAMER: Be really careful before commiting, as this filters can produce a huge changesets.&lt;/p&gt;
+
+&lt;h2&gt;Tabify - spaces to tabs on add&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Open your ~/.gitconfig (%SystemDrive%\Users&amp;lt;username&amp;gt;.gitconfig in case of Windows)&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Add following lines&lt;/p&gt;
+
+&lt;p&gt;[filter &amp;quot;tabify&amp;quot;]
+    clean = unexpand --tabs=4 --first-only&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;It says that we want to convert each 4 space characters at the beginning of a line to one tab.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;To make the filter active add following lines to your .gitconfig (or to .git\info\attributes)&lt;/p&gt;
+
+&lt;p&gt;*.cs filter=tabify&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;It says that for files with &amp;quot;.cs&amp;quot; extension we want to use this filter.&lt;/p&gt;
+
+&lt;h2&gt;Spacify - spaces to tabs on add&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Open your ~/.gitconfig (%SystemDrive%\Users&amp;lt;username&amp;gt;.gitconfig in case of Windows)&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Add following lines&lt;/p&gt;
+
+&lt;p&gt;[filter &amp;quot;spacify&amp;quot;]
+    clean = expand --tabs=4 --initial&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;It says that we want to convert each tab character at the beginning of line to 4 space characters.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;To make the filter active add following lines to your .gitconfig (or to .git\info\attributes)&lt;/p&gt;
+
+&lt;p&gt;*.cs filter=spacify&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;It says that for files with &amp;quot;.cs&amp;quot; extension we want to use this filter.&lt;/p&gt;
+
+&lt;h2&gt;Spaces2Tabs - spaces to tabs on add, and tabs to spaces on checkout.&lt;/h2&gt;
+
+&lt;p&gt;This filter is just a combination of previous two filters. This filter is usefull if your repository requires you to use tabs for indents, but you prefer spaces. The code&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;[filter &quot;spaces2tabs&quot;]
+    clean = unexpand --tabs=4 --first-only
+    smudge = expand --tabs=4 --initial
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Tabs2Spaces - tabs to spaces on add, and spaces to tabs on checkout.&lt;/h2&gt;
+
+&lt;p&gt;This filter is just a combination of first two filters. This filter is usefull if your repository requires you to use spaces for indents, but you prefer tabs. The code&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;[filter &quot;tabs2spaces&quot;]
+    clean = expand --tabs=4 --initial
+    smudge = unexpand --tabs=4 --first-only
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Happy filtering!&lt;/p&gt;
+</description>
+        <pubDate>Sun, 19 Oct 2014 10:32:29 +1200</pubDate>
+        <link>http://alexzaytsev.me/2014/10/19/git-filter-to-convert-spaces-to-tabs-and-vice-versa/</link>
+        <guid isPermaLink="true">http://alexzaytsev.me/2014/10/19/git-filter-to-convert-spaces-to-tabs-and-vice-versa/</guid>
+      </item>
+    
+      <item>
         <title>Git aliases to apply patches from url</title>
         <description>&lt;p&gt;Git has two commands to apply patches: &lt;a href=&quot;https://www.kernel.org/pub/software/scm/git/docs/git-am.html&quot;&gt;&lt;em&gt;git am&lt;/em&gt;&lt;/a&gt; and &lt;a href=&quot;https://www.kernel.org/pub/software/scm/git/docs/git-apply.html&quot;&gt;&lt;em&gt;git apply&lt;/em&gt;&lt;/a&gt;, but none of them are able to apply patches from an url. So here are my aliases to do so.&lt;/p&gt;
 

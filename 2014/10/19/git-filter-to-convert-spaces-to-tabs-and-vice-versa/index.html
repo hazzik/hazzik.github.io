@@ -10,7 +10,7 @@
 
   <title>
     
-      Git aliases to apply patches from url &middot; Hazzik's blog
+      Git Filter to Convert Spaces to Tabs and Vice Versa &middot; Hazzik's blog
     
   </title>
 
@@ -80,39 +80,75 @@
     <div class="content container">
       <div class="post hentry">
   <h1 class="post-title entry-title">
-    <a href="http://github.com/hazzik/alexzaytsev.me/edit/master/_posts/2014-10-19-git-alias-to-apply-patch-from-url.md"><i class="fa fa-edit"></i></a> Git aliases to apply patches from url
+    <a href="http://github.com/hazzik/alexzaytsev.me/edit/master/_posts/2014-10-19-git-filter-to-convert-spaces-to-tabs-and-vice-versa.md"><i class="fa fa-edit"></i></a> Git Filter to Convert Spaces to Tabs and Vice Versa
   </h1>
   <ul class="post-info">
-    <li><i class="fa fa-calendar"></i><time datetime="2014-10-19T01:18:53+12:00" class="published"> 19 Oct 2014 </time></li>
-    <li class="tags"><i class="fa fa-tags"></i> <a href="/tag/git" rel="tag">Git</a>, <a href="/tag/git-alias" rel="tag">Git Alias</a></li>
-    <li><i class="fa fa-comments"></i> <a href="/2014/10/19/git-alias-to-apply-patch-from-url/#disqus_thread" data-disqus-identifier="/2014/10/19/git-alias-to-apply-patch-from-url/">0 comments</a></li>
+    <li><i class="fa fa-calendar"></i><time datetime="2014-10-19T10:32:29+12:00" class="published"> 19 Oct 2014 </time></li>
+    <li class="tags"><i class="fa fa-tags"></i> <a href="/tag/git" rel="tag">Git</a></li>
+    <li><i class="fa fa-comments"></i> <a href="/2014/10/19/git-filter-to-convert-spaces-to-tabs-and-vice-versa/#disqus_thread" data-disqus-identifier="/2014/10/19/git-filter-to-convert-spaces-to-tabs-and-vice-versa/">0 comments</a></li>
   </ul>
   <div class="entry-content">
-    <p>Git has two commands to apply patches: <a href="https://www.kernel.org/pub/software/scm/git/docs/git-am.html"><em>git am</em></a> and <a href="https://www.kernel.org/pub/software/scm/git/docs/git-apply.html"><em>git apply</em></a>, but none of them are able to apply patches from an url. So here are my aliases to do so.</p>
+    <p>Usually people have different preferences on tabs vs spaces. Here is a git filter to convert tabs to spaces, and spaces to tabs. Git allows you to write filters - a small commands which will be run after checkout (smudge) or before add (clean). As usual all settings are stored in git config files.</p>
 
-<h3>git apply-url - Apply a patch to files and/or to the index from url</h3>
-<div class="highlight"><pre><code class="language-" data-lang="">$git config --global alias.apply-url "!f() { curl -s $1 2&gt;nul | git apply ${@:2}; }; f"
-</code></pre></div>
-<p>The alias itself is pretty simple. First it declares callable function <code>f</code> and then calls it. The function itself calls <code>curl</code> in silent mode with first argument passed to alias as url. Then it pipes <code>curl</code>s output to <code>git apply</code> with remaing arguments. This alias applies the patch but does not create a commit. </p>
+<p>To make a work I use two GNU tools <a href="http://man7.org/linux/man-pages/man1/expand.1.html">expand</a> (converts tabs to spaces) and <a href="http://man7.org/linux/man-pages/man1/unexpand.1.html">unexpand</a> (converts spaces to tabs). If you are using Windows, then you&#39;ll need these tools to be reachable from your PATH environment varible. You can get this tools as part of <a href="http://gnuwin32.sourceforge.net/">GnuWin32</a> or any other port of GNU tools to Windows.</p>
 
-<p>Usage</p>
-<div class="highlight"><pre><code class="language-" data-lang="">$git apply-url http://example.org/sample.patch args
-</code></pre></div>
-<p>The first argument MUST be an url for a patch, other arguments will be passed to <code>git apply</code>. </p>
+<p>DISCLAMER: Be really careful before commiting, as this filters can produce a huge changesets.</p>
 
-<h3>git apply-url - Apply a series of patches from an url (git am-url):</h3>
-<div class="highlight"><pre><code class="language-" data-lang="">$git config --global alias.am-url "!f() { curl -s $1 2&gt;nul | git am ${@:2}; }; f"
-</code></pre></div>
-<p>This alias works exactly the same as previous.</p>
+<h2>Tabify - spaces to tabs on add</h2>
 
-<p>Usage</p>
-<div class="highlight"><pre><code class="language-" data-lang="">$git am-url http://example.org/sample.patch args
+<ol>
+<li>Open your ~/.gitconfig (%SystemDrive%\Users&lt;username&gt;.gitconfig in case of Windows)</li>
+<li><p>Add following lines</p>
+
+<p>[filter &quot;tabify&quot;]
+    clean = unexpand --tabs=4 --first-only</p></li>
+</ol>
+
+<p>It says that we want to convert each 4 space characters at the beginning of a line to one tab.</p>
+
+<ol>
+<li><p>To make the filter active add following lines to your .gitconfig (or to .git\info\attributes)</p>
+
+<p>*.cs filter=tabify</p></li>
+</ol>
+
+<p>It says that for files with &quot;.cs&quot; extension we want to use this filter.</p>
+
+<h2>Spacify - spaces to tabs on add</h2>
+
+<ol>
+<li>Open your ~/.gitconfig (%SystemDrive%\Users&lt;username&gt;.gitconfig in case of Windows)</li>
+<li><p>Add following lines</p>
+
+<p>[filter &quot;spacify&quot;]
+    clean = expand --tabs=4 --initial</p></li>
+</ol>
+
+<p>It says that we want to convert each tab character at the beginning of line to 4 space characters.</p>
+
+<ol>
+<li><p>To make the filter active add following lines to your .gitconfig (or to .git\info\attributes)</p>
+
+<p>*.cs filter=spacify</p></li>
+</ol>
+
+<p>It says that for files with &quot;.cs&quot; extension we want to use this filter.</p>
+
+<h2>Spaces2Tabs - spaces to tabs on add, and tabs to spaces on checkout.</h2>
+
+<p>This filter is just a combination of previous two filters. This filter is usefull if your repository requires you to use tabs for indents, but you prefer spaces. The code</p>
+<div class="highlight"><pre><code class="language-" data-lang="">[filter "spaces2tabs"]
+    clean = unexpand --tabs=4 --first-only
+    smudge = expand --tabs=4 --initial
 </code></pre></div>
-<p>The first argument MUST be an url for a patch, other arguments will be passed to <code>git am</code>.
-You can apply a pull request from github by performing following:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">$git am-url https://github.com/user/repo/pull/777.patch
+<h2>Tabs2Spaces - tabs to spaces on add, and spaces to tabs on checkout.</h2>
+
+<p>This filter is just a combination of first two filters. This filter is usefull if your repository requires you to use spaces for indents, but you prefer tabs. The code</p>
+<div class="highlight"><pre><code class="language-" data-lang="">[filter "tabs2spaces"]
+    clean = expand --tabs=4 --initial
+    smudge = unexpand --tabs=4 --first-only
 </code></pre></div>
-<p>Happy aliasing!</p>
+<p>Happy filtering!</p>
 
   </div>
 </div>
@@ -130,7 +166,7 @@ You can apply a pull request from github by performing following:</p>
   <script type="text/javascript">
       /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'hazzik-blog-en'; // required: replace example with your forum shortname
-      var disqus_identifier = '/2014/10/19/git-alias-to-apply-patch-from-url/';
+      var disqus_identifier = '/2014/10/19/git-filter-to-convert-spaces-to-tabs-and-vice-versa/';
       /* * * DON'T EDIT BELOW THIS LINE * * */
       (function() {
           var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -148,8 +184,8 @@ You can apply a pull request from github by performing following:</p>
     
       <li>
         <h3>
-          <a href="/2014/10/19/git-filter-to-convert-spaces-to-tabs-and-vice-versa/">
-            Git Filter to Convert Spaces to Tabs and Vice Versa
+          <a href="/2014/10/19/git-alias-to-apply-patch-from-url/">
+            Git aliases to apply patches from url
             <small>19 Oct 2014</small>
           </a>
         </h3>

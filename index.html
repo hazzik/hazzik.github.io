@@ -37,7 +37,7 @@
     <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="tag-cloud">
-      <a href="/tag/dot-net" class="set-1">.NET</a> <a href="/tag/asp-dot-net-mvc" class="set-5">ASP.NET MVC</a> <a href="/tag/best-practicies" class="set-1">Best practicies</a> <a href="/tag/blog" class="set-1">Blog</a> <a href="/tag/computed-properties" class="set-1">Computed Properties</a> <a href="/tag/dataannotations" class="set-1">DataAnnotations</a> <a href="/tag/decompiler" class="set-1">Decompiler</a> <a href="/tag/delegate" class="set-1">Delegate</a> <a href="/tag/drop-down-lists" class="set-1">Drop down lists</a> <a href="/tag/git" class="set-1">Git</a> <a href="/tag/git-alias" class="set-1">Git Alias</a> <a href="/tag/linq" class="set-1">LINQ</a> <a href="/tag/mvcextensions" class="set-1">MvcExtensions</a> <a href="/tag/nhibernate" class="set-5">NHibernate</a> <a href="/tag/persistent-tree" class="set-1">Persistent-Tree</a> <a href="/tag/renderaction" class="set-1">RenderAction</a> <a href="/tag/tree" class="set-1">Tree</a> <a href="/tag/tree-hierarchy" class="set-1">Tree-Hierarchy</a> <a href="/tag/tree-structures" class="set-1">Tree-Structures</a>
+      <a href="/tag/dot-net" class="set-1">.NET</a> <a href="/tag/asp-dot-net-mvc" class="set-5">ASP.NET MVC</a> <a href="/tag/best-practicies" class="set-1">Best practicies</a> <a href="/tag/blog" class="set-1">Blog</a> <a href="/tag/computed-properties" class="set-1">Computed Properties</a> <a href="/tag/dataannotations" class="set-1">DataAnnotations</a> <a href="/tag/decompiler" class="set-1">Decompiler</a> <a href="/tag/delegate" class="set-1">Delegate</a> <a href="/tag/drop-down-lists" class="set-1">Drop down lists</a> <a href="/tag/git" class="set-5">Git</a> <a href="/tag/git-alias" class="set-1">Git Alias</a> <a href="/tag/linq" class="set-1">LINQ</a> <a href="/tag/mvcextensions" class="set-1">MvcExtensions</a> <a href="/tag/nhibernate" class="set-5">NHibernate</a> <a href="/tag/persistent-tree" class="set-1">Persistent-Tree</a> <a href="/tag/renderaction" class="set-1">RenderAction</a> <a href="/tag/tree" class="set-1">Tree</a> <a href="/tag/tree-hierarchy" class="set-1">Tree-Hierarchy</a> <a href="/tag/tree-structures" class="set-1">Tree-Structures</a>
     </div>
     <div class="sidebar-about">
 
@@ -59,6 +59,10 @@
               <a href="/about/">About</a>
             </li>
       
+            <li class="sidebar-nav-item">
+              <a href="/books/">Books</a>
+            </li>
+      
     </ul>
     <ul class="sidebar-social">
       <li class="sidebar-social-item"><a href="http://twitter.com/hazzik"><i class="fa fa-twitter"></i></a></li>
@@ -75,6 +79,82 @@
 
     <div class="content container">
       <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://github.com/hazzik/alexzaytsev.me/edit/master/_posts/2014-10-19-git-filter-to-convert-spaces-to-tabs-and-vice-versa.md"><i class="fa fa-edit"></i></a>
+      <a href="/2014/10/19/git-filter-to-convert-spaces-to-tabs-and-vice-versa/">
+        Git Filter to Convert Spaces to Tabs and Vice Versa
+      </a>
+    </h1>
+    <ul class="post-info">
+      <li><i class="fa fa-calendar"></i> <time datetime="2014-10-19T10:32:29+12:00"> 19 Oct 2014 </time></li>
+      <li><i class="fa fa-tags"></i> <a href="/tag/git" rel="tag">Git</a> </li>
+      <li><i class="fa fa-comments"></i> <a href="/2014/10/19/git-filter-to-convert-spaces-to-tabs-and-vice-versa/#disqus_thread" data-disqus-identifier="/2014/10/19/git-filter-to-convert-spaces-to-tabs-and-vice-versa/">0 comments</a></li>
+    </ul>
+    <p>Usually people have different preferences on tabs vs spaces. Here is a git filter to convert tabs to spaces, and spaces to tabs. Git allows you to write filters - a small commands which will be run after checkout (smudge) or before add (clean). As usual all settings are stored in git config files.</p>
+
+<p>To make a work I use two GNU tools <a href="http://man7.org/linux/man-pages/man1/expand.1.html">expand</a> (converts tabs to spaces) and <a href="http://man7.org/linux/man-pages/man1/unexpand.1.html">unexpand</a> (converts spaces to tabs). If you are using Windows, then you&#39;ll need these tools to be reachable from your PATH environment varible. You can get this tools as part of <a href="http://gnuwin32.sourceforge.net/">GnuWin32</a> or any other port of GNU tools to Windows.</p>
+
+<p>DISCLAMER: Be really careful before commiting, as this filters can produce a huge changesets.</p>
+
+<h2>Tabify - spaces to tabs on add</h2>
+
+<ol>
+<li>Open your ~/.gitconfig (%SystemDrive%\Users&lt;username&gt;.gitconfig in case of Windows)</li>
+<li><p>Add following lines</p>
+
+<p>[filter &quot;tabify&quot;]
+    clean = unexpand --tabs=4 --first-only</p></li>
+</ol>
+
+<p>It says that we want to convert each 4 space characters at the beginning of a line to one tab.</p>
+
+<ol>
+<li><p>To make the filter active add following lines to your .gitconfig (or to .git\info\attributes)</p>
+
+<p>*.cs filter=tabify</p></li>
+</ol>
+
+<p>It says that for files with &quot;.cs&quot; extension we want to use this filter.</p>
+
+<h2>Spacify - spaces to tabs on add</h2>
+
+<ol>
+<li>Open your ~/.gitconfig (%SystemDrive%\Users&lt;username&gt;.gitconfig in case of Windows)</li>
+<li><p>Add following lines</p>
+
+<p>[filter &quot;spacify&quot;]
+    clean = expand --tabs=4 --initial</p></li>
+</ol>
+
+<p>It says that we want to convert each tab character at the beginning of line to 4 space characters.</p>
+
+<ol>
+<li><p>To make the filter active add following lines to your .gitconfig (or to .git\info\attributes)</p>
+
+<p>*.cs filter=spacify</p></li>
+</ol>
+
+<p>It says that for files with &quot;.cs&quot; extension we want to use this filter.</p>
+
+<h2>Spaces2Tabs - spaces to tabs on add, and tabs to spaces on checkout.</h2>
+
+<p>This filter is just a combination of previous two filters. This filter is usefull if your repository requires you to use tabs for indents, but you prefer spaces. The code</p>
+<div class="highlight"><pre><code class="language-" data-lang="">[filter "spaces2tabs"]
+    clean = unexpand --tabs=4 --first-only
+    smudge = expand --tabs=4 --initial
+</code></pre></div>
+<h2>Tabs2Spaces - tabs to spaces on add, and spaces to tabs on checkout.</h2>
+
+<p>This filter is just a combination of first two filters. This filter is usefull if your repository requires you to use spaces for indents, but you prefer tabs. The code</p>
+<div class="highlight"><pre><code class="language-" data-lang="">[filter "tabs2spaces"]
+    clean = expand --tabs=4 --initial
+    smudge = unexpand --tabs=4 --first-only
+</code></pre></div>
+<p>Happy filtering!</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -586,22 +666,6 @@ You can apply a pull request from github by performing following:</p>
 </span><span class="n">@Html</span><span class="p">.</span><span class="nf">EditorFor</span><span class="p">(</span><span class="n">m</span> <span class="p">=&gt;</span> <span class="n">m</span><span class="p">.</span><span class="n">CityId</span><span class="p">,</span> <span class="k">new</span> <span class="p">{</span> <span class="n">htmlAttributes</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> <span class="n">@class</span> <span class="p">=</span> <span class="s">"my-editor"</span> <span class="p">}</span> <span class="p">}</span> <span class="p">)</span>
 <span class="c1">// ...
 </span></code></pre></div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="http://github.com/hazzik/alexzaytsev.me/edit/master/_posts/2014-05-27-the-blog-has-been-moved.md"><i class="fa fa-edit"></i></a>
-      <a href="/2014/05/27/the-blog-has-been-moved/">
-        The blog has been moved to alexzaytsev.me
-      </a>
-    </h1>
-    <ul class="post-info">
-      <li><i class="fa fa-calendar"></i> <time datetime="2014-05-27T20:26:00+12:00"> 27 May 2014 </time></li>
-      <li><i class="fa fa-tags"></i> <a href="/tag/blog" rel="tag">Blog</a> </li>
-      <li><i class="fa fa-comments"></i> <a href="/2014/05/27/the-blog-has-been-moved/#disqus_thread" data-disqus-identifier="/2014/05/27/the-blog-has-been-moved/">0 comments</a></li>
-    </ul>
-    <p>Subj</p>
-
   </div>
   
 </div>

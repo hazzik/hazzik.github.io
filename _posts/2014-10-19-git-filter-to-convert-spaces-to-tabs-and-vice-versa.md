@@ -12,7 +12,7 @@ To make a work I use two GNU tools [expand](http://man7.org/linux/man-pages/man1
 DISCLAMER: Be really careful before commiting, as this filters can produce a huge changesets.
 
 ## Tabify - spaces to tabs on add
-1. Open your ~/.gitconfig (%SystemDrive%\\Users\\<username>\\.gitconfig in case of Windows)
+1. Open your ~/.gitconfig (%SystemDrive%\\Users\\&lt;username>\\.gitconfig in case of Windows)
 2. Add following lines
 
 ```ini

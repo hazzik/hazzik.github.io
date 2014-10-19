@@ -17,11 +17,11 @@
 &lt;h2&gt;Tabify - spaces to tabs on add&lt;/h2&gt;
 
 &lt;ol&gt;
-&lt;li&gt;Open your ~/.gitconfig (%SystemDrive%\Users&amp;lt;username&amp;gt;.gitconfig in case of Windows)&lt;/li&gt;
+&lt;li&gt;Open your ~/.gitconfig (%SystemDrive%\Users\username.gitconfig in case of Windows)&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Add following lines&lt;/p&gt;
 
 &lt;p&gt;[filter &amp;quot;tabify&amp;quot;]
-    clean = unexpand --tabs=4 --first-only&lt;/p&gt;&lt;/li&gt;
+clean = unexpand --tabs=4 --first-only&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;It says that we want to convert each 4 space characters at the beginning of a line to one tab.&lt;/p&gt;
@@ -41,7 +41,7 @@
 &lt;li&gt;&lt;p&gt;Add following lines&lt;/p&gt;
 
 &lt;p&gt;[filter &amp;quot;spacify&amp;quot;]
-    clean = expand --tabs=4 --initial&lt;/p&gt;&lt;/li&gt;
+clean = expand --tabs=4 --initial&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;It says that we want to convert each tab character at the beginning of line to 4 space characters.&lt;/p&gt;

@@ -28,11 +28,13 @@
       {% endif %}{% endif %}{% endfor %}
     </ul>
     <ul class="sidebar-social">
-      <li class="sidebar-social-item"><a href="http://twitter.com/hazzik"><i class="fa fa-twitter"></i></a></li>
+      <li class="sidebar-social-item"><a href="http://twitter.com/hazzik" rel="me" alt="Twitter"><i class="fa fa-twitter"></i></a></li>
       &middot;
-      <li class="sidebar-social-item"><a href="http://github.com/hazzik"><i class="fa fa-github"></i></a></li>
+      <li class="sidebar-social-item"><a href="http://github.com/hazzik" rel="me" alt="GitHub"><i class="fa fa-github"></i></a></li>
       &middot;
-      <li class="sidebar-social-item"><a href="http://linkedin.com/in/hazzik"><i class="fa fa-linkedin"></i></a></li>
+      <li class="sidebar-social-item"><a href="http://linkedin.com/in/hazzik" rel="me" alt="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
+      &middot;
+      <li class="sidebar-social-item"><a href="rss://{{ site.url }}/atom.xml" alt="Subscribe"><i class="fa fa-rss"></i></i></a></li>
     </ul>
 
     <p>&copy; {{ site.time | date: '%Y' }}. All rights reserved.</p>

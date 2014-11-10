@@ -1,5 +1,5 @@
 ---
-title: Playing with Google scripts
+title: Playing with Google Apps Scripts
 date: 2014-11-10T22:40:49+13:00
 tags: 
   - JavaScript

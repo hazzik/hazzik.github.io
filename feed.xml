@@ -7,7 +7,7 @@
     <atom:link href="http://alexzaytsev.me/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>Playing with Google scripts</title>
+        <title>Playing with Google Apps Scripts</title>
         <description>&lt;p&gt;Google has an Apps Script platform which allows you yo write scripts for most of Google products, such as Gmail, Drive, Spreadsheets, etc. The google script (extension .gs) is an JavaScript language subset. Google provides online editor for scripts, which is available at &lt;a href=&quot;https://script.google.com&quot;&gt;script.google.com&lt;/a&gt;. The editor is an online IDE with basic autocompletion support, which is really nice. But I prefer to write Google Scripts in some mature desctop editors such as Visual Studio or at least Sublime Text.&lt;/p&gt;
 
 &lt;p&gt;I came across need of writing Google Script, when I wanted to sort my GitHub notification and remove some subscription emails.&lt;/p&gt;

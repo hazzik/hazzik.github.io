@@ -1,0 +1,87 @@
+<p>Google has an Apps Script platform which allows you yo write scripts for most of Google products, such as Gmail, Drive, Spreadsheets, etc. The google script (extension .gs) is an JavaScript language subset. Google provides online editor for scripts, which is available at <a href="https://script.google.com">script.google.com</a>. The editor is an online IDE with basic autocompletion support, which is really nice. But I prefer to write Google Scripts in some mature desctop editors such as Visual Studio or at least Sublime Text.</p>
+
+<p>I came across need of writing Google Script, when I wanted to sort my GitHub notification and remove some subscription emails.</p>
+
+<p>Ok, lets start. First, open the <a href="https://script.google.com">script.google.com</a> page in your favourite browser. The page will ask you to choose an project type, or open recent project.</p>
+
+<p><img src="/public/images/gs/step1.png" alt="Step 1"></p>
+
+<p>I&#39;m going to select the &quot;Blank Project&quot; option.</p>
+
+<p><img src="/public/images/gs/step2.png" alt="Step 2"></p>
+
+<p>If you click on &quot;Untitled project&quot; you&#39;ll be able to give a sensible name for your project.</p>
+
+<p><img src="/public/images/gs/step3.png" alt="Step 3"></p>
+
+<p><img src="/public/images/gs/step4.png" alt="Step 4"></p>
+
+<p>Then you can write a code. As manipulating emails means a lot of work with collection, so it would be nice to have something like <a href="http://underscorejs.org/">underscore.js</a> or <a href="https://lodash.com/">lodash.js</a> in place. I&#39;ll go with Lo-Dash. Just go to <a href="https://lodash.com">lodash.com</a> and dowload <a href="https://raw.github.com/lodash/lodash/2.4.1/dist/lodash.min.js">minified modern build</a>. </p>
+
+<p>When you have Lo-Dash downloaded you need to import it to your Google Apps Script project. Press <em>File</em>-&gt;<em>New</em>-&gt;<em>Script File</em></p>
+
+<p><img src="/public/images/gs/step5.png" alt="Step 5"></p>
+
+<p>Enter the name of the file: LoDash</p>
+
+<p><img src="/public/images/gs/step6.png" alt="Step 6"></p>
+
+<p>Then copy and paste content of lodash.min.js to LoDash.gs and save the file.</p>
+
+<p>And finally there is my code to sort Github label in the Gmail.</p>
+<div class="highlight"><pre><code class="language-JavaScript" data-lang="JavaScript">function split() {
+  // I have a filter in Gmail, which will put all emails from notifications@github.com 
+  // to "GitHub" label and skip inbox for them
+  // Get the 'GitHub' label
+  var label = GmailApp.getUserLabelByName('GitHub');
+
+  // Group all threads by Project Name. All notification emails have Project Name 
+  // in square brackets in the email title. 
+  var groups = _.groupBy(label.getThreads(), function(t) {
+    var subject = t.getFirstMessageSubject();
+
+    var tag = /\[([^\]]+)\]/.exec(subject);
+    if (tag) {
+      return label.getName() + '/' + tag[1];
+    }
+    return label.getName();
+  });
+
+  _.forEach(groups, function(threads, l) {
+    if (label.getName() != l) {
+
+      // Get or create a label for a project 
+      var new_label = GmailApp.getUserLabelByName(l) || GmailApp.createLabel(l);
+
+      // Label.addToThreads / Label.removeFromThreads has an restriction of
+      // 100 threads per call, so we need to page our threads.
+      var pages = _.groupBy(threads, function(t, i) { return (i / 100) &gt;&gt; 0; });
+
+      _.forEach(pages, function(page) {
+        new_label.addToThreads(page);
+        label.removeFromThreads(page);  
+
+        // If you call API to often you can reach call limit and script will stop execution
+        Utilities.sleep(100);
+      });
+    }
+  });
+}
+</code></pre></div>
+<p>When we have code in place we want to add a trigger to run the script regularly. Click <em>Resources</em>-&gt;<em>Current project&#39;s triggers</em></p>
+
+<p><img src="/public/images/gs/step9.png" alt="Step 9"></p>
+
+<p>Then click on &quot;No triggers set up. Click here to add new now.&quot;</p>
+
+<p><img src="/public/images/gs/step10.png" alt="Step 10"></p>
+
+<p>Select the frequence you want your trigger to run. I&#39;ve chosen to run this script every five minutes. Click Save. The script will ask you for Authorisation.</p>
+
+<p><img src="/public/images/gs/step11.png" alt="Step 11"></p>
+
+<p>Press &quot;Continue&quot;. And then in the pop-up window review and Accept permissions for your script.</p>
+
+<p><img src="/public/images/gs/step12.png" alt="Step 12"></p>
+
+<p>Happy scripting!</p>

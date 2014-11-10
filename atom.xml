@@ -4,13 +4,108 @@
  <title>Hazzik&#39;s blog</title>
  <link href="http://alexzaytsev.me/atom.xml" rel="self"/>
  <link href="http://alexzaytsev.me/"/>
- <updated>2014-11-01T22:59:07+12:00</updated>
+ <updated>2014-11-10T21:43:08+12:00</updated>
  <id>http://alexzaytsev.me</id>
  <author>
    <name>Alexander Zaytsev</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Playing with Google scripts</title>
+   <link href="http://alexzaytsev.me/2014/11/10/playing-with-google-apps-script/"/>
+   <updated>2014-11-10T21:40:49+12:00</updated>
+   <id>http://alexzaytsev.me/2014/11/10/playing-with-google-apps-script</id>
+   <content type="html">&lt;p&gt;Google has an Apps Script platform which allows you yo write scripts for most of Google products, such as Gmail, Drive, Spreadsheets, etc. The google script (extension .gs) is an JavaScript language subset. Google provides online editor for scripts, which is available at &lt;a href=&quot;https://script.google.com&quot;&gt;script.google.com&lt;/a&gt;. The editor is an online IDE with basic autocompletion support, which is really nice. But I prefer to write Google Scripts in some mature desctop editors such as Visual Studio or at least Sublime Text.&lt;/p&gt;
+
+&lt;p&gt;I came across need of writing Google Script, when I wanted to sort my GitHub notification and remove some subscription emails.&lt;/p&gt;
+
+&lt;p&gt;Ok, lets start. First, open the &lt;a href=&quot;https://script.google.com&quot;&gt;script.google.com&lt;/a&gt; page in your favourite browser. The page will ask you to choose an project type, or open recent project.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/gs/step1.png&quot; alt=&quot;Step 1&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;#39;m going to select the &amp;quot;Blank Project&amp;quot; option.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/gs/step2.png&quot; alt=&quot;Step 2&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;If you click on &amp;quot;Untitled project&amp;quot; you&amp;#39;ll be able to give a sensible name for your project.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/gs/step3.png&quot; alt=&quot;Step 3&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/gs/step4.png&quot; alt=&quot;Step 4&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Then you can write a code. As manipulating emails means a lot of work with collection, so it would be nice to have something like &lt;a href=&quot;http://underscorejs.org/&quot;&gt;underscore.js&lt;/a&gt; or &lt;a href=&quot;https://lodash.com/&quot;&gt;lodash.js&lt;/a&gt; in place. I&amp;#39;ll go with Lo-Dash. Just go to &lt;a href=&quot;https://lodash.com&quot;&gt;lodash.com&lt;/a&gt; and dowload &lt;a href=&quot;https://raw.github.com/lodash/lodash/2.4.1/dist/lodash.min.js&quot;&gt;minified modern build&lt;/a&gt;. &lt;/p&gt;
+
+&lt;p&gt;When you have Lo-Dash downloaded you need to import it to your Google Apps Script project. Press &lt;em&gt;File&lt;/em&gt;-&amp;gt;&lt;em&gt;New&lt;/em&gt;-&amp;gt;&lt;em&gt;Script File&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/gs/step5.png&quot; alt=&quot;Step 5&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Enter the name of the file: LoDash&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/gs/step6.png&quot; alt=&quot;Step 6&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Then copy and paste content of lodash.min.js to LoDash.gs and save the file.&lt;/p&gt;
+
+&lt;p&gt;And finally there is my code to sort Github label in the Gmail.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot; data-lang=&quot;JavaScript&quot;&gt;function split() {
+  // I have a filter in Gmail, which will put all emails from notifications@github.com 
+  // to &quot;GitHub&quot; label and skip inbox for them
+  // Get the &#39;GitHub&#39; label
+  var label = GmailApp.getUserLabelByName(&#39;GitHub&#39;);
+
+  // Group all threads by Project Name. All notification emails have Project Name 
+  // in square brackets in the email title. 
+  var groups = _.groupBy(label.getThreads(), function(t) {
+    var subject = t.getFirstMessageSubject();
+
+    var tag = /\[([^\]]+)\]/.exec(subject);
+    if (tag) {
+      return label.getName() + &#39;/&#39; + tag[1];
+    }
+    return label.getName();
+  });
+
+  _.forEach(groups, function(threads, l) {
+    if (label.getName() != l) {
+
+      // Get or create a label for a project 
+      var new_label = GmailApp.getUserLabelByName(l) || GmailApp.createLabel(l);
+
+      // Label.addToThreads / Label.removeFromThreads has an restriction of
+      // 100 threads per call, so we need to page our threads.
+      var pages = _.groupBy(threads, function(t, i) { return (i / 100) &amp;gt;&amp;gt; 0; });
+
+      _.forEach(pages, function(page) {
+        new_label.addToThreads(page);
+        label.removeFromThreads(page);  
+
+        // If you call API to often you can reach call limit and script will stop execution
+        Utilities.sleep(100);
+      });
+    }
+  });
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;When we have code in place we want to add a trigger to run the script regularly. Click &lt;em&gt;Resources&lt;/em&gt;-&amp;gt;&lt;em&gt;Current project&amp;#39;s triggers&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/gs/step9.png&quot; alt=&quot;Step 9&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Then click on &amp;quot;No triggers set up. Click here to add new now.&amp;quot;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/gs/step10.png&quot; alt=&quot;Step 10&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Select the frequence you want your trigger to run. I&amp;#39;ve chosen to run this script every five minutes. Click Save. The script will ask you for Authorisation.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/gs/step11.png&quot; alt=&quot;Step 11&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Press &amp;quot;Continue&amp;quot;. And then in the pop-up window review and Accept permissions for your script.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/gs/step12.png&quot; alt=&quot;Step 12&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Happy scripting!&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Git Filter to Convert Spaces to Tabs and Vice Versa</title>

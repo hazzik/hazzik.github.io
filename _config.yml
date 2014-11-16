@@ -27,3 +27,4 @@ ya_metrika_id:    25093751
 
 gems:
   - jekyll-redirect-from
+  - jekyll-sitemap

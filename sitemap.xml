@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://alexzaytsev.me/2014/11/16/nhibernate-4-0-2-released/</loc>
+    <lastmod>2014-11-16T14:14:27+12:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>http://alexzaytsev.me/2014/11/10/playing-with-google-apps-script/</loc>
     <lastmod>2014-11-10T21:40:49+12:00</lastmod>
     <priority>0.8</priority>
@@ -47,151 +52,151 @@
   </url>
   <url>
     <loc>http://alexzaytsev.me/404.html</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://alexzaytsev.me/about/</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://alexzaytsev.me/</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://alexzaytsev.me/tag/tree/</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://alexzaytsev.me/tag/nhibernate/</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://alexzaytsev.me/tag/tree-structures/</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://alexzaytsev.me/tag/tree-hierarchy/</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://alexzaytsev.me/tag/persistent-tree/</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://alexzaytsev.me/tag/linq/</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://alexzaytsev.me/tag/computed-properties/</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://alexzaytsev.me/tag/decompiler/</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://alexzaytsev.me/tag/delegate/</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://alexzaytsev.me/tag/blog/</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://alexzaytsev.me/tag/asp-dot-net-mvc/</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://alexzaytsev.me/tag/dataannotations/</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://alexzaytsev.me/tag/renderaction/</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://alexzaytsev.me/tag/mvcextensions/</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://alexzaytsev.me/tag/drop-down-lists/</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://alexzaytsev.me/tag/best-practicies/</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://alexzaytsev.me/tag/dot-net/</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://alexzaytsev.me/tag/git/</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://alexzaytsev.me/tag/git-alias/</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://alexzaytsev.me/tag/javascript/</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://alexzaytsev.me/tag/google/</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://alexzaytsev.me/tag/google-apps-script/</loc>
-    <lastmod>2014-11-16T14:09:39+12:00</lastmod>
+    <lastmod>2014-11-16T14:24:14+12:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

@@ -4,13 +4,50 @@
  <title>Hazzik&#39;s blog</title>
  <link href="http://alexzaytsev.me/atom.xml" rel="self"/>
  <link href="http://alexzaytsev.me/"/>
- <updated>2014-11-16T14:09:39+12:00</updated>
+ <updated>2014-11-16T14:24:14+12:00</updated>
  <id>http://alexzaytsev.me</id>
  <author>
    <name>Alexander Zaytsev</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>NHibernate 4.0.2 Released</title>
+   <link href="http://alexzaytsev.me/2014/11/16/nhibernate-4-0-2-released/"/>
+   <updated>2014-11-16T14:14:27+12:00</updated>
+   <id>http://alexzaytsev.me/2014/11/16/nhibernate-4-0-2-released</id>
+   <content type="html">&lt;p&gt;NHibernate 4.0.2 General Availability is now available for download from &lt;a href=&quot;https://sourceforge.net/projects/nhibernate/files/NHibernate/4.0.2.GA/&quot;&gt;Sourceforge&lt;/a&gt; and &lt;a href=&quot;https://www.nuget.org/packages/NHibernate/4.0.2.4000&quot;&gt;Nuget&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This includes fixes for regressions in NH 4.0.1, and some fixes for mapping-by-code and Firebird issues.
+Please see the full release notes for more information:
+&lt;a href=&quot;https://github.com/nhibernate/nhibernate-core/blob/4.0.2.GA/releasenotes.txt&quot;&gt;releasenotes.txt&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Full list of changes:&lt;/p&gt;
+
+&lt;h2&gt;Bug&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[NH-2779] - Session.Get() can throw InvalidCastException when log-level is set to DEBUG&lt;/li&gt;
+&lt;li&gt;[NH-2782] - Linq: selecting into a new array doesn&amp;#39;t work&lt;/li&gt;
+&lt;li&gt;[NH-2831] - NH cannot load mapping assembly from GAC &lt;/li&gt;
+&lt;li&gt;[NH-3049] - Mapping by code to Field not working&lt;/li&gt;
+&lt;li&gt;[NH-3222] - NHibernate Futures passes empty tuples to ResultSetTransformer&lt;/li&gt;
+&lt;li&gt;[NH-3650] - ComponentAsId&lt;T&gt; used more than once, cache first mapping and produces  subsequently a sql select wrong&lt;/li&gt;
+&lt;li&gt;[NH-3709] - Fix Reference to One Shot Delete and Inverse Collections&lt;/li&gt;
+&lt;li&gt;[NH-3710] - Use of SetLockMode with DetachedCriteria causes null reference exception&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Task&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[NH-3697] - Ignore Firebird in NHSpecificTest.NH1981&lt;/li&gt;
+&lt;li&gt;[NH-3698] - NHSpecificTest.NH1989 fails for some drivers&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Source: &lt;a href=&quot;http://nhibernate.github.io/2014/11/15/nhibernate-4-0-2-released.html&quot;&gt;http://nhibernate.github.io/2014/11/15/nhibernate-4-0-2-released.html&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Playing with Google Apps Scripts</title>

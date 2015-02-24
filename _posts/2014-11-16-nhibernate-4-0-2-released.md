@@ -27,4 +27,4 @@ Full list of changes:
 * [NH-3697] - Ignore Firebird in NHSpecificTest.NH1981
 * [NH-3698] - NHSpecificTest.NH1989 fails for some drivers
 
-Source: [http://nhibernate.github.io/2014/11/15/nhibernate-4-0-2-released.html](http://nhibernate.github.io/2014/11/15/nhibernate-4-0-2-released.html)
+Source: [http://nhibernate.info/2014/11/15/nhibernate-4-0-2-released.html](http://nhibernate.info/2014/11/15/nhibernate-4-0-2-released.html)

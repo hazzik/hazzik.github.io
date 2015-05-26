@@ -36,7 +36,7 @@ Please see the full release notes for more information:
 &lt;li&gt;[NH-3698] - NHSpecificTest.NH1989 fails for some drivers&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Source: &lt;a href=&quot;http://nhibernate.github.io/2014/11/15/nhibernate-4-0-2-released.html&quot;&gt;http://nhibernate.github.io/2014/11/15/nhibernate-4-0-2-released.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Source: &lt;a href=&quot;http://nhibernate.info/2014/11/15/nhibernate-4-0-2-released.html&quot;&gt;http://nhibernate.info/2014/11/15/nhibernate-4-0-2-released.html&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 16 Nov 2014 14:14:27 +1200</pubDate>
         <link>http://alexzaytsev.me/2014/11/16/nhibernate-4-0-2-released/</link>
@@ -144,7 +144,7 @@ Please see the full release notes for more information:
 
 &lt;p&gt;To make a work I use two GNU tools &lt;a href=&quot;http://man7.org/linux/man-pages/man1/expand.1.html&quot;&gt;expand&lt;/a&gt; (converts tabs to spaces) and &lt;a href=&quot;http://man7.org/linux/man-pages/man1/unexpand.1.html&quot;&gt;unexpand&lt;/a&gt; (converts spaces to tabs). If you are using Windows, then you&amp;#39;ll need these tools to be reachable from your PATH environment varible. You can get this tools as part of &lt;a href=&quot;http://gnuwin32.sourceforge.net/&quot;&gt;GnuWin32&lt;/a&gt; or any other port of GNU tools to Windows.&lt;/p&gt;
 
-&lt;p&gt;DISCLAMER: Be really careful before commiting, as this filters can produce a huge changesets.&lt;/p&gt;
+&lt;p&gt;DISCLAMER: Be really careful before commiting, as these filters can produce a huge changesets.&lt;/p&gt;
 
 &lt;h2&gt;Tabify - spaces to tabs on add&lt;/h2&gt;
 
@@ -809,7 +809,7 @@ You can apply a pull request from github by performing following:&lt;/p&gt;
 &lt;li&gt;&lt;a href=&quot;https://nuget.org/packages/DelegateDecompiler&quot;&gt;Nuget package&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-        <pubDate>Tue, 05 Mar 2013 09:31:14 +1200</pubDate>
+        <pubDate>Tue, 05 Mar 2013 10:31:14 +1300</pubDate>
         <link>http://alexzaytsev.me/2013/03/05/computable-properties-for-any-linq-provider/</link>
         <guid isPermaLink="true">http://alexzaytsev.me/2013/03/05/computable-properties-for-any-linq-provider/</guid>
       </item>
@@ -933,7 +933,7 @@ But when you add anything to the hierarchy the library need to load almost all n
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;PPS: Currently EntityFramework does not support hiding collections by IEnumerable`1 interface, so I decided to not provide implementation for EntityFramework.&lt;/p&gt;
 </description>
-        <pubDate>Mon, 04 Mar 2013 17:21:00 +1200</pubDate>
+        <pubDate>Mon, 04 Mar 2013 18:21:00 +1300</pubDate>
         <link>http://alexzaytsev.me/2013/03/04/nhibernate-how-to-persist-tree-like-structures/</link>
         <guid isPermaLink="true">http://alexzaytsev.me/2013/03/04/nhibernate-how-to-persist-tree-like-structures/</guid>
       </item>

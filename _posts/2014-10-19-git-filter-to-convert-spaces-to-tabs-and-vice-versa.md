@@ -9,7 +9,7 @@ Usually people have different preferences on tabs vs spaces. Here is a git filte
 
 To make a work I use two GNU tools [expand](http://man7.org/linux/man-pages/man1/expand.1.html) (converts tabs to spaces) and [unexpand](http://man7.org/linux/man-pages/man1/unexpand.1.html) (converts spaces to tabs). If you are using Windows, then you'll need these tools to be reachable from your PATH environment varible. You can get this tools as part of [GnuWin32](http://gnuwin32.sourceforge.net/) or any other port of GNU tools to Windows.
 
-DISCLAMER: Be really careful before commiting, as this filters can produce a huge changesets.
+DISCLAMER: Be really careful before commiting, as these filters can produce a huge changesets.
 
 ## Tabify - spaces to tabs on add
 1. Open your ~/.gitconfig (%SystemDrive%\\Users\\&lt;username>\\.gitconfig in case of Windows)

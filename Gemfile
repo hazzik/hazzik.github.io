@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-gem 'octopress', :git => 'https://github.com/hazzik/octopress'
+gem 'octopress', :git => 'https://github.com/hazzik/octopress.git'
 gem 'octopress-deploy'
 gem 'rouge', '~>1.6.0'
 gem 'jekyll-redirect-from'

@@ -10,7 +10,7 @@
 
   <title>
     
-      NHibernate: How to persist Tree-like structures &middot; Hazzik's blog
+      Hazzik's blog &middot; 
     
   </title>
 
@@ -47,7 +47,7 @@
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item">
+      <li class="sidebar-nav-item active">
         <a href="/">Home</a>
       </li>
 
@@ -76,16 +76,20 @@
 
 
     <div class="content container">
-      <div class="post hentry">
-  <h1 class="post-title entry-title">
-    <a href="http://github.com/hazzik/alexzaytsev.me/edit/master/_posts/tumblr/2013-03-04-nhibernate-how-to-persist-tree-like-structures.md"><i class="fa fa-edit"></i></a> NHibernate: How to persist Tree-like structures
-  </h1>
-  <ul class="post-info">
-    <li><i class="fa fa-calendar"></i><time datetime="2013-03-04T18:21:00+13:00" class="published"> 04 Mar 2013 </time></li>
-    <li class="tags"><i class="fa fa-tags"></i> <a href="/tag/tree" rel="tag">Tree</a>, <a href="/tag/nhibernate" rel="tag">NHibernate</a>, <a href="/tag/tree-structures" rel="tag">Tree-Structures</a>, <a href="/tag/tree-hierarchy" rel="tag">Tree-Hierarchy</a>, <a href="/tag/persistent-tree" rel="tag">Persistent-Tree</a></li>
-    <li><i class="fa fa-comments"></i> <a href="/2013/03/04/nhibernate-how-to-persist-tree-like-structures/#disqus_thread" data-disqus-identifier="/2013/03/04/nhibernate-how-to-persist-tree-like-structures/">0 comments</a></li>
-  </ul>
-  <div class="entry-content">
+      <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://github.com/hazzik/alexzaytsev.me/edit/master/_posts/tumblr/2013-03-04-nhibernate-how-to-persist-tree-like-structures.md"><i class="fa fa-edit"></i></a>
+      <a href="/2013/03/04/nhibernate-how-to-persist-tree-like-structures/">
+        NHibernate: How to persist Tree-like structures
+      </a>
+    </h1>
+    <ul class="post-info">
+      <li><i class="fa fa-calendar"></i> <time datetime="2013-03-04T18:21:00+13:00"> 04 Mar 2013 </time></li>
+      <li><i class="fa fa-tags"></i> <a href="/tag/tree" rel="tag">Tree</a>, <a href="/tag/nhibernate" rel="tag">NHibernate</a>, <a href="/tag/tree-structures" rel="tag">Tree-Structures</a>, <a href="/tag/tree-hierarchy" rel="tag">Tree-Hierarchy</a>, <a href="/tag/persistent-tree" rel="tag">Persistent-Tree</a> </li>
+      <li><i class="fa fa-comments"></i> <a href="/2013/03/04/nhibernate-how-to-persist-tree-like-structures/#disqus_thread" data-disqus-identifier="/2013/03/04/nhibernate-how-to-persist-tree-like-structures/">0 comments</a></li>
+    </ul>
     <p>Many of you have seen a simple problem - how to store hierarchy data in relational database and efficient work with it. It seems that there is no simpler things to do - just create PARENT_ID column and store the parent identifier of this record.</p>
 <div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">class</span> <span class="nc">Tree</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">Id</span><span class="p">;</span>
@@ -204,65 +208,18 @@ But when you add anything to the hierarchy the library need to load almost all n
 <p>PPS: Currently EntityFramework does not support hiding collections by IEnumerable`1 interface, so I decided to not provide implementation for EntityFramework.</p>
 
   </div>
+  
 </div>
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- alexzaytsev.me -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:728px;height:15px"
-     data-ad-client="ca-pub-6286543550478332"
-     data-ad-slot="7799059444"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
 
-  <div id="disqus_thread"></div>
-  <script type="text/javascript">
-      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'hazzik-blog-en'; // required: replace example with your forum shortname
-      var disqus_identifier = '/2013/03/04/nhibernate-how-to-persist-tree-like-structures/';
-      /* * * DON'T EDIT BELOW THIS LINE * * */
-      (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-
-<div class="related">
-  <h2>Related Posts</h2>
-  <ul class="related-posts">
+<div class="pagination">
+  
+    <span class="pagination-item older">Older</span>
+  
+  
     
-      <li>
-        <h3>
-          <a href="/2015/01/20/nhibernate-4-0-3-released/">
-            NHibernate 4.0.3 Released
-            <small>20 Jan 2015</small>
-          </a>
-        </h3>
-      </li>
+      <a class="pagination-item newer" href="/page2">Newer</a>
     
-      <li>
-        <h3>
-          <a href="/2014/11/16/nhibernate-4-0-2-released/">
-            NHibernate 4.0.2 Released
-            <small>16 Nov 2014</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2014/11/10/playing-with-google-apps-script/">
-            Playing with Google Apps Scripts
-            <small>10 Nov 2014</small>
-          </a>
-        </h3>
-      </li>
-    
-  </ul>
+  
 </div>
 
     </div>

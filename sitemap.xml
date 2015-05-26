@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://alexzaytsev.me/2015/01/20/nhibernate-4-0-3-released/</loc>
+    <lastmod>2015-01-20T21:27:48+12:00</lastmod>
+  </url>
+  <url>
     <loc>http://alexzaytsev.me/2014/11/16/nhibernate-4-0-2-released/</loc>
     <lastmod>2014-11-16T14:14:27+12:00</lastmod>
   </url>
@@ -114,6 +118,9 @@
   </url>
   <url>
     <loc>http://alexzaytsev.me/tag/google-apps-script/</loc>
+  </url>
+  <url>
+    <loc>http://alexzaytsev.me/tag/release-notes/</loc>
   </url>
   <url>
     <loc>http://alexzaytsev.me/post/44522958800/nhibernate-how-to-persist-tree-like-structures/index.html</loc>

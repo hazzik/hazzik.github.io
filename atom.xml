@@ -4,13 +4,45 @@
  <title>Hazzik&#39;s blog</title>
  <link href="http://alexzaytsev.me/atom.xml" rel="self"/>
  <link href="http://alexzaytsev.me/"/>
- <updated>2015-05-26T17:53:38+12:00</updated>
+ <updated>2015-05-26T18:00:48+12:00</updated>
  <id>http://alexzaytsev.me</id>
  <author>
    <name>Alexander Zaytsev</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>NHibernate 4.0.3 Released</title>
+   <link href="http://alexzaytsev.me/2015/01/20/nhibernate-4-0-3-released/"/>
+   <updated>2015-01-20T21:27:48+12:00</updated>
+   <id>http://alexzaytsev.me/2015/01/20/nhibernate-4-0-3-released</id>
+   <content type="html">&lt;p&gt;NHibernate 4.0.3 General Availability is now available for download from &lt;a href=&quot;https://sourceforge.net/projects/nhibernate/files/NHibernate/4.0.3.GA/&quot;&gt;Sourceforge&lt;/a&gt; and &lt;a href=&quot;https://www.nuget.org/packages/NHibernate/4.0.3.4000&quot;&gt;Nuget&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This includes fixes for regressions in NH 4.0.2 and some minor fixes.
+Please see the full release notes for more information:
+&lt;a href=&quot;https://github.com/nhibernate/nhibernate-core/blob/4.0.3.GA/releasenotes.txt&quot;&gt;releasenotes.txt&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Full list of changes:&lt;/p&gt;
+
+&lt;h2&gt;Bug&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&#39;https://nhibernate.jira.com/browse/NH-2504&#39;&gt;NH-2504&lt;/a&gt;] -         Can&amp;#39;t use Cacheable with Group By
+&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&#39;https://nhibernate.jira.com/browse/NH-3457&#39;&gt;NH-3457&lt;/a&gt;] -         TemplatedViolatedConstraintNameExtracter.ExtractUsingTemplate calls Substring with wrong arguments
+&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&#39;https://nhibernate.jira.com/browse/NH-3468&#39;&gt;NH-3468&lt;/a&gt;] -         InvalidCastException when deleting entities containing uninitialized lazy components
+&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&#39;https://nhibernate.jira.com/browse/NH-3573&#39;&gt;NH-3573&lt;/a&gt;] -         Query cache statistics not updated when using MultiCriteria
+&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&#39;https://nhibernate.jira.com/browse/NH-3731&#39;&gt;NH-3731&lt;/a&gt;] -         Unable to serialize session after modifying the index of entities in a list
+&lt;/li&gt;
+&lt;/ul&gt;
+                        
+&lt;p&gt;
+Source: &lt;a href=&quot;http://nhibernate.info/blog/2015/01/20/nhibernate-4-0-3-released.html&quot;&gt;http://nhibernate.info/blog/2015/01/20/nhibernate-4-0-3-released.html&lt;/a&gt;
+&lt;/pr&gt;</content>
+ </entry>
  
  <entry>
    <title>NHibernate 4.0.2 Released</title>

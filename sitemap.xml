@@ -54,6 +54,9 @@
     <loc>http://alexzaytsev.me/</loc>
   </url>
   <url>
+    <loc>http://alexzaytsev.me/nuget/</loc>
+  </url>
+  <url>
     <loc>http://alexzaytsev.me/tag/tree/</loc>
   </url>
   <url>
@@ -118,6 +121,12 @@
   </url>
   <url>
     <loc>http://alexzaytsev.me/tag/google-apps-script/</loc>
+  </url>
+  <url>
+    <loc>http://alexzaytsev.me/page2/</loc>
+  </url>
+  <url>
+    <loc>http://alexzaytsev.me/page3/</loc>
   </url>
   <url>
     <loc>http://alexzaytsev.me/post/44522958800/nhibernate-how-to-persist-tree-like-structures/index.html</loc>

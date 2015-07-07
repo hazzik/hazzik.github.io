@@ -54,6 +54,9 @@
     <loc>http://alexzaytsev.me/</loc>
   </url>
   <url>
+    <loc>http://alexzaytsev.me/nuget/</loc>
+  </url>
+  <url>
     <loc>http://alexzaytsev.me/tag/tree/</loc>
   </url>
   <url>
@@ -120,11 +123,17 @@
     <loc>http://alexzaytsev.me/tag/google-apps-script/</loc>
   </url>
   <url>
+    <loc>http://alexzaytsev.me/page2/</loc>
+  </url>
+  <url>
+    <loc>http://alexzaytsev.me/page3/</loc>
+  </url>
+  <url>
     <loc>http://alexzaytsev.me/post/44522958800/nhibernate-how-to-persist-tree-like-structures/index.html</loc>
-    <lastmod>2015-05-26T17:17:12+12:00</lastmod>
+    <lastmod>2015-07-08T00:23:21+12:00</lastmod>
   </url>
   <url>
     <loc>http://alexzaytsev.me/post/44564275956/computable-properties-for-any-linq-provider/index.html</loc>
-    <lastmod>2015-05-26T17:17:12+12:00</lastmod>
+    <lastmod>2015-07-08T00:23:21+12:00</lastmod>
   </url>
 </urlset>

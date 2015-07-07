@@ -4,7 +4,7 @@
  <title>Hazzik&#39;s blog</title>
  <link href="http://alexzaytsev.me/atom.xml" rel="self"/>
  <link href="http://alexzaytsev.me/"/>
- <updated>2015-05-26T18:01:58+12:00</updated>
+ <updated>2015-07-08T00:54:19+12:00</updated>
  <id>http://alexzaytsev.me</id>
  <author>
    <name>Alexander Zaytsev</name>
@@ -615,7 +615,8 @@ You can apply a pull request from github by performing following:&lt;/p&gt;
 &lt;li&gt;Post-Redirect-Get is supported&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2&gt;Ending
+&lt;h2&gt;Ending&lt;/h2&gt;
+
 &lt;p&gt;For me, as a developer of MvcExtensions the methdos using the library is preferrable.&lt;/p&gt;
 
 &lt;p&gt;The sample of code with ViewBag / ViewData + MvcExtensions is here: &lt;a href=&quot;http://github.com/MvcExtensions/Core/tree/master/samples&quot;&gt;http://github.com/MvcExtensions/Core/tree/master/samples&lt;/a&gt;&lt;/p&gt;

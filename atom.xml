@@ -4,22 +4,13 @@
  <title>Hazzik&#39;s blog</title>
  <link href="http://alexzaytsev.me/atom.xml" rel="self"/>
  <link href="http://alexzaytsev.me/"/>
- <updated>2016-02-04T22:59:20+12:00</updated>
+ <updated>2016-02-04T23:00:32+12:00</updated>
  <id>http://alexzaytsev.me</id>
  <author>
    <name>Alexander Zaytsev</name>
    <email></email>
  </author>
 
- 
- <entry>
-   <title>NMoneys + NHibernate = love</title>
-   <link href="http://alexzaytsev.me/2015/01/24/nmoneys-plus-nhibernate-equals-love/"/>
-   <updated>2015-01-24T22:25:42+12:00</updated>
-   <id>http://alexzaytsev.me/2015/01/24/nmoneys-plus-nhibernate-equals-love</id>
-   <content type="html">&lt;p&gt;&lt;a href=&quot;https://code.google.com/p/nmoneys/&quot;&gt;NMoneys&lt;/a&gt; (plural) is a simple .NET library to represent monetary quantities. It is an implementation of the Money Value Object to support representing moneys in the currencies defined in the ISO 4417 standard.&lt;/p&gt;
-</content>
- </entry>
  
  <entry>
    <title>NHibernate 4.0.3 Released</title>

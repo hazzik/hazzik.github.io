@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://alexzaytsev.me/2015/01/24/nmoneys-plus-nhibernate-equals-love/</loc>
+    <lastmod>2015-01-24T22:25:42+12:00</lastmod>
+  </url>
+  <url>
     <loc>http://alexzaytsev.me/2015/01/20/nhibernate-4-0-3-released/</loc>
     <lastmod>2015-01-20T21:27:48+12:00</lastmod>
   </url>
@@ -38,11 +42,11 @@
   </url>
   <url>
     <loc>http://alexzaytsev.me/2013/03/05/computable-properties-for-any-linq-provider/</loc>
-    <lastmod>2013-03-05T10:31:14+13:00</lastmod>
+    <lastmod>2013-03-05T09:31:14+12:00</lastmod>
   </url>
   <url>
     <loc>http://alexzaytsev.me/2013/03/04/nhibernate-how-to-persist-tree-like-structures/</loc>
-    <lastmod>2013-03-04T18:21:00+13:00</lastmod>
+    <lastmod>2013-03-04T17:21:00+12:00</lastmod>
   </url>
   <url>
     <loc>http://alexzaytsev.me/404.html</loc>
@@ -120,17 +124,11 @@
     <loc>http://alexzaytsev.me/tag/google-apps-script/</loc>
   </url>
   <url>
-    <loc>http://alexzaytsev.me/page2/</loc>
-  </url>
-  <url>
-    <loc>http://alexzaytsev.me/page3/</loc>
-  </url>
-  <url>
     <loc>http://alexzaytsev.me/post/44522958800/nhibernate-how-to-persist-tree-like-structures/index.html</loc>
-    <lastmod>2015-07-08T00:23:21+12:00</lastmod>
+    <lastmod>2014-09-12T21:42:01+12:00</lastmod>
   </url>
   <url>
     <loc>http://alexzaytsev.me/post/44564275956/computable-properties-for-any-linq-provider/index.html</loc>
-    <lastmod>2015-07-08T00:23:21+12:00</lastmod>
+    <lastmod>2014-09-12T21:42:01+12:00</lastmod>
   </url>
 </urlset>

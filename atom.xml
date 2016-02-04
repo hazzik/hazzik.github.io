@@ -4,13 +4,22 @@
  <title>Hazzik&#39;s blog</title>
  <link href="http://alexzaytsev.me/atom.xml" rel="self"/>
  <link href="http://alexzaytsev.me/"/>
- <updated>2015-07-08T01:49:34+12:00</updated>
+ <updated>2016-02-04T22:59:20+12:00</updated>
  <id>http://alexzaytsev.me</id>
  <author>
    <name>Alexander Zaytsev</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>NMoneys + NHibernate = love</title>
+   <link href="http://alexzaytsev.me/2015/01/24/nmoneys-plus-nhibernate-equals-love/"/>
+   <updated>2015-01-24T22:25:42+12:00</updated>
+   <id>http://alexzaytsev.me/2015/01/24/nmoneys-plus-nhibernate-equals-love</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;https://code.google.com/p/nmoneys/&quot;&gt;NMoneys&lt;/a&gt; (plural) is a simple .NET library to represent monetary quantities. It is an implementation of the Money Value Object to support representing moneys in the currencies defined in the ISO 4417 standard.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>NHibernate 4.0.3 Released</title>
@@ -615,8 +624,7 @@ You can apply a pull request from github by performing following:&lt;/p&gt;
 &lt;li&gt;Post-Redirect-Get is supported&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2&gt;Ending&lt;/h2&gt;
-
+&lt;h2&gt;Ending
 &lt;p&gt;For me, as a developer of MvcExtensions the methdos using the library is preferrable.&lt;/p&gt;
 
 &lt;p&gt;The sample of code with ViewBag / ViewData + MvcExtensions is here: &lt;a href=&quot;http://github.com/MvcExtensions/Core/tree/master/samples&quot;&gt;http://github.com/MvcExtensions/Core/tree/master/samples&lt;/a&gt;&lt;/p&gt;
@@ -738,7 +746,7 @@ You can apply a pull request from github by performing following:&lt;/p&gt;
  <entry>
    <title>Computable properties for any LINQ provider</title>
    <link href="http://alexzaytsev.me/2013/03/05/computable-properties-for-any-linq-provider/"/>
-   <updated>2013-03-05T10:31:14+13:00</updated>
+   <updated>2013-03-05T09:31:14+12:00</updated>
    <id>http://alexzaytsev.me/2013/03/05/computable-properties-for-any-linq-provider</id>
    <content type="html">&lt;p&gt;In this blog post I want to present a little library which I wrote a while ago. This library can decompile methods to their λ-representation.&lt;/p&gt;
 
@@ -856,7 +864,7 @@ You can apply a pull request from github by performing following:&lt;/p&gt;
  <entry>
    <title>NHibernate: How to persist Tree-like structures</title>
    <link href="http://alexzaytsev.me/2013/03/04/nhibernate-how-to-persist-tree-like-structures/"/>
-   <updated>2013-03-04T18:21:00+13:00</updated>
+   <updated>2013-03-04T17:21:00+12:00</updated>
    <id>http://alexzaytsev.me/2013/03/04/nhibernate-how-to-persist-tree-like-structures</id>
    <content type="html">&lt;p&gt;Many of you have seen a simple problem - how to store hierarchy data in relational database and efficient work with it. It seems that there is no simpler things to do - just create PARENT_ID column and store the parent identifier of this record.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Tree&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;

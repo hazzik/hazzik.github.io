@@ -74,7 +74,7 @@
       <li class="sidebar-social-item"><a href="http://alexzaytsev.me/atom.xml" alt="Subscribe"><i class="fa fa-rss"></i></i></a></li>
     </ul>
 
-    <p>&copy; 2015. All rights reserved.</p>
+    <p>&copy; 2016. All rights reserved.</p>
   </div>
 </div>
 
@@ -84,13 +84,138 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="http://github.com/hazzik/alexzaytsev.me/edit/master/_posts/tumblr/2013-03-05-computable-properties-for-any-linq-provider.md"><i class="fa fa-edit"></i></a>
+      <a href="/2013/03/05/computable-properties-for-any-linq-provider/">
+        Computable properties for any LINQ provider
+      </a>
+    </h1>
+    <ul class="post-info">
+      <li><i class="fa fa-calendar"></i> <time datetime="2013-03-05T09:31:14+12:00"> 05 Mar 2013 </time></li>
+      <li><i class="fa fa-tags"></i> <a href="/tag/nhibernate" rel="tag">NHibernate</a>, <a href="/tag/linq" rel="tag">LINQ</a>, <a href="/tag/computed-properties" rel="tag">Computed Properties</a>, <a href="/tag/decompiler" rel="tag">Decompiler</a>, <a href="/tag/delegate" rel="tag">Delegate</a> </li>
+      <li><i class="fa fa-comments"></i> <a href="/2013/03/05/computable-properties-for-any-linq-provider/#disqus_thread" data-disqus-identifier="/2013/03/05/computable-properties-for-any-linq-provider/">0 comments</a></li>
+    </ul>
+    <p>In this blog post I want to present a little library which I wrote a while ago. This library can decompile methods to their λ-representation.</p>
+
+<h1>Why</h1>
+
+<p>Sometimes you need to use computable properties in LINQ queries, for example you have Employee class with computable property FullName</p>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">class</span> <span class="nc">Employee</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">FullName</span>
+    <span class="p">{</span>
+        <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">FirstName</span> <span class="p">+</span> <span class="s">" "</span> <span class="p">+</span> <span class="n">LastName</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">LastName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">FirstName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>And now your manager comes to you and says that we need to have ability to search by employee’s full name. And you without any thinking write following query:</p>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">var</span> <span class="n">employees</span> <span class="p">=</span> <span class="p">(</span><span class="n">from</span> <span class="n">employee</span> <span class="k">in</span> <span class="n">db</span><span class="p">.</span><span class="n">Employees</span>
+                 <span class="nf">where</span> <span class="p">(</span><span class="n">employee</span><span class="p">.</span><span class="n">FirstName</span> <span class="p">+</span> <span class="s">" "</span> <span class="p">+</span> <span class="n">employee</span><span class="p">.</span><span class="n">LastName</span><span class="p">)</span> <span class="p">==</span> <span class="s">"Test User"</span>
+                 <span class="n">select</span> <span class="n">employee</span><span class="p">).</span><span class="nf">ToList</span><span class="p">();</span>
+</code></pre></div>
+<p>Yes, with such simple property as FullName it can work, but what will you do if field would be not simple as this one? For example there is one field from one of my previous projects, and it should be queryable!</p>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">class</span> <span class="nc">WayPoint</span> 
+<span class="p">{</span>
+    <span class="c1">// all other is skipped due to clarity reasons
+</span>    <span class="k">public</span> <span class="k">virtual</span> <span class="kt">bool</span> <span class="n">IsValid</span>
+    <span class="p">{</span>
+        <span class="k">get</span> 
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">Account</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="p">||</span>
+               <span class="p">(</span><span class="n">Role</span> <span class="p">==</span> <span class="k">null</span> <span class="p">||</span> <span class="n">Account</span><span class="p">.</span><span class="n">Role</span> <span class="p">==</span> <span class="n">Role</span><span class="p">)</span> <span class="p">&amp;</span><span class="n">amp</span><span class="p">;&amp;</span><span class="n">amp</span><span class="p">;</span>
+               <span class="p">(</span><span class="n">StructuralUnit</span> <span class="p">==</span> <span class="k">null</span> <span class="p">||</span> <span class="n">Account</span><span class="p">.</span><span class="n">State</span><span class="p">.</span><span class="n">StructuralUnit</span> <span class="p">==</span> <span class="n">StructuralUnit</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This is much harder…</p>
+
+<p>What do we have to solve such puzzles?</p>
+
+<h1>&lt;formula&gt; element in NHibernate</h1>
+
+<p>If you are using NHibernate then you can map this field as formula, but this way is full of big scare bears, and such code is hard to maintain, and the <code>&lt;formula&gt;</code> element supports only small subset of SQL, and if you are developing software which have to work with different RDBMS you have to be very-very careful.</p>
+
+<p>It works only in NHibernate</p>
+
+<h1><a href="http://damieng.com/blog/2009/06/24/client-side-properties-and-any-remote-linq-provider">Microsoft.Linq.Translations</a></h1>
+
+<p>With this great and powerful library we would rewrite our class like this</p>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">class</span> <span class="nc">Employee</span> 
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">CompiledExpression</span> <span class="n">fullNameExpression</span>
+        <span class="p">=</span> <span class="n">DefaultTranslationOf</span><span class="p">.</span><span class="nf">Property</span><span class="p">(</span><span class="n">e</span> <span class="p">=&gt;</span> <span class="n">e</span><span class="p">.</span><span class="n">FullName</span><span class="p">).</span><span class="nf">Is</span><span class="p">(</span><span class="n">e</span> <span class="p">=&gt;</span> <span class="n">e</span><span class="p">.</span><span class="n">FirstName</span> <span class="p">+</span> <span class="s">" "</span> <span class="p">+</span> <span class="n">e</span><span class="p">.</span><span class="n">LastName</span><span class="p">);</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">FullName</span> 
+    <span class="p">{</span>
+        <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">fullNameExpression</span><span class="p">.</span><span class="nf">Evaluate</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">LastName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">FirstName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">var</span> <span class="n">employees</span> <span class="p">=</span> <span class="p">(</span><span class="n">from</span> <span class="n">employee</span> <span class="k">in</span> <span class="n">db</span><span class="p">.</span><span class="n">Employees</span>
+                 <span class="n">where</span> <span class="n">employee</span><span class="p">.</span><span class="n">FullName</span> <span class="p">==</span> <span class="s">"Test User"</span>
+                 <span class="n">select</span> <span class="n">employee</span><span class="p">).</span><span class="nf">WithTranslations</span><span class="p">().</span><span class="nf">ToList</span><span class="p">()</span>
+</code></pre></div>
+<p>All right, and the query looks good but the field declaration is terrible! And Evaluate compiles the λ-expression in runtime, which is no less terrible than the computable field decalaration.</p>
+
+<p>And now meet my small library - DelegateDecompiler</p>
+
+<h1>DelegateDecompiler</h1>
+
+<p>The property should be marked with [Computed] attribute and it is all you need, and add <code>.Decompile()</code> method invocation to the query.</p>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">class</span> <span class="nc">Employee</span> 
+<span class="p">{</span>
+    <span class="p">[</span><span class="n">Computed</span><span class="p">]</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">FullName</span> 
+    <span class="p">{</span>
+        <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">FirstName</span> <span class="p">+</span> <span class="s">" "</span> <span class="p">+</span> <span class="n">LastName</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">LastName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">FirstName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">var</span> <span class="n">employees</span> <span class="p">=</span> <span class="p">(</span><span class="n">from</span> <span class="n">employee</span> <span class="k">in</span> <span class="n">db</span><span class="p">.</span><span class="n">Employees</span>
+                 <span class="n">where</span> <span class="n">employee</span><span class="p">.</span><span class="n">FullName</span> <span class="p">==</span> <span class="s">"Test User"</span>
+                 <span class="n">select</span> <span class="n">employee</span><span class="p">).</span><span class="nf">Decompile</span><span class="p">().</span><span class="nf">ToList</span><span class="p">()</span>
+</code></pre></div>
+<p>In my opinion it is gracefully (If you don’t blow your own horn, no one will do it for you). But bear in mind that the source of your computable property should be supported using LINQ provider.</p>
+
+<h1>How does it work?</h1>
+
+<p><code>.Decompile()</code> method finds all the properties and methods marked with <code>[Computed]</code> attribute and expand them to their source expressions. In other words the query above will become as following query:</p>
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">var</span> <span class="n">employees</span> <span class="p">=</span> <span class="p">(</span><span class="n">from</span> <span class="n">employee</span> <span class="k">in</span> <span class="n">db</span><span class="p">.</span><span class="n">Employees</span>
+                 <span class="nf">where</span> <span class="p">(</span><span class="n">employee</span><span class="p">.</span><span class="n">FirstName</span> <span class="p">+</span> <span class="s">" "</span> <span class="p">+</span> <span class="n">employee</span><span class="p">.</span><span class="n">LastName</span><span class="p">)</span> <span class="p">==</span> <span class="s">"Test User"</span>
+                 <span class="n">select</span> <span class="n">employee</span><span class="p">).</span><span class="nf">ToList</span><span class="p">();</span>
+</code></pre></div>
+<p>The library uses Mono.Reflection (GitHub, NuGet) as decompiler. The Mono.Reflection library is written by Jean-Baptiste Evain the creator of Mono.Cecil.</p>
+
+<p>PS: This is an alpha version, use at your own risk.</p>
+
+<h1>Links</h1>
+
+<ul>
+<li><a href="https://github.com/hazzik/DelegateDecompiler">Source code at GitHub</a></li>
+<li><a href="https://nuget.org/packages/DelegateDecompiler">Nuget package</a></li>
+</ul>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="http://github.com/hazzik/alexzaytsev.me/edit/master/_posts/tumblr/2013-03-04-nhibernate-how-to-persist-tree-like-structures.md"><i class="fa fa-edit"></i></a>
       <a href="/2013/03/04/nhibernate-how-to-persist-tree-like-structures/">
         NHibernate: How to persist Tree-like structures
       </a>
     </h1>
     <ul class="post-info">
-      <li><i class="fa fa-calendar"></i> <time datetime="2013-03-04T18:21:00+13:00"> 04 Mar 2013 </time></li>
+      <li><i class="fa fa-calendar"></i> <time datetime="2013-03-04T17:21:00+12:00"> 04 Mar 2013 </time></li>
       <li><i class="fa fa-tags"></i> <a href="/tag/tree" rel="tag">Tree</a>, <a href="/tag/nhibernate" rel="tag">NHibernate</a>, <a href="/tag/tree-structures" rel="tag">Tree-Structures</a>, <a href="/tag/tree-hierarchy" rel="tag">Tree-Hierarchy</a>, <a href="/tag/persistent-tree" rel="tag">Persistent-Tree</a> </li>
       <li><i class="fa fa-comments"></i> <a href="/2013/03/04/nhibernate-how-to-persist-tree-like-structures/#disqus_thread" data-disqus-identifier="/2013/03/04/nhibernate-how-to-persist-tree-like-structures/">0 comments</a></li>
     </ul>

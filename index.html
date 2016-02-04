@@ -74,13 +74,29 @@
       <li class="sidebar-social-item"><a href="http://alexzaytsev.me/atom.xml" alt="Subscribe"><i class="fa fa-rss"></i></i></a></li>
     </ul>
 
-    <p>&copy; 2015. All rights reserved.</p>
+    <p>&copy; 2016. All rights reserved.</p>
   </div>
 </div>
 
 
     <div class="content container">
       <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://github.com/hazzik/alexzaytsev.me/edit/master/_posts/2015-01-24-nmoneys-plus-nhibernate-equals-love.markdown"><i class="fa fa-edit"></i></a>
+      <a href="/2015/01/24/nmoneys-plus-nhibernate-equals-love/">
+        NMoneys + NHibernate = love
+      </a>
+    </h1>
+    <ul class="post-info">
+      <li><i class="fa fa-calendar"></i> <time datetime="2015-01-24T22:25:42+12:00"> 24 Jan 2015 </time></li>
+      <li><i class="fa fa-tags"></i> <a href="/tag/nhibernate" rel="tag">NHibernate</a> </li>
+      <li><i class="fa fa-comments"></i> <a href="/2015/01/24/nmoneys-plus-nhibernate-equals-love/#disqus_thread" data-disqus-identifier="/2015/01/24/nmoneys-plus-nhibernate-equals-love/">0 comments</a></li>
+    </ul>
+    <p><a href="https://code.google.com/p/nmoneys/">NMoneys</a> (plural) is a simple .NET library to represent monetary quantities. It is an implementation of the Money Value Object to support representing moneys in the currencies defined in the ISO 4417 standard.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -336,46 +352,6 @@ Please see the full release notes for more information:
     <span class="py">smudge</span> <span class="p">=</span> <span class="s">unexpand --tabs=4 --first-only</span>
 </code></pre></div>
 <p>Happy filtering!</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="http://github.com/hazzik/alexzaytsev.me/edit/master/_posts/2014-10-19-git-alias-to-apply-patch-from-url.md"><i class="fa fa-edit"></i></a>
-      <a href="/2014/10/19/git-alias-to-apply-patch-from-url/">
-        Git aliases to apply patches from url
-      </a>
-    </h1>
-    <ul class="post-info">
-      <li><i class="fa fa-calendar"></i> <time datetime="2014-10-19T01:18:53+12:00"> 19 Oct 2014 </time></li>
-      <li><i class="fa fa-tags"></i> <a href="/tag/git" rel="tag">Git</a>, <a href="/tag/git-alias" rel="tag">Git Alias</a> </li>
-      <li><i class="fa fa-comments"></i> <a href="/2014/10/19/git-alias-to-apply-patch-from-url/#disqus_thread" data-disqus-identifier="/2014/10/19/git-alias-to-apply-patch-from-url/">0 comments</a></li>
-    </ul>
-    <p>Git has two commands to apply patches: <a href="https://www.kernel.org/pub/software/scm/git/docs/git-am.html"><em>git am</em></a> and <a href="https://www.kernel.org/pub/software/scm/git/docs/git-apply.html"><em>git apply</em></a>, but none of them are able to apply patches from an url. So here are my aliases to do so.</p>
-
-<h3>git apply-url - Apply a patch to files and/or to the index from url</h3>
-<div class="highlight"><pre><code class="language-" data-lang="">$git config --global alias.apply-url "!f() { curl -s $1 2&gt;nul | git apply ${@:2}; }; f"
-</code></pre></div>
-<p>The alias itself is pretty simple. First it declares callable function <code>f</code> and then calls it. The function itself calls <code>curl</code> in silent mode with first argument passed to alias as url. Then it pipes <code>curl</code>s output to <code>git apply</code> with remaing arguments. This alias applies the patch but does not create a commit. </p>
-
-<p>Usage</p>
-<div class="highlight"><pre><code class="language-" data-lang="">$git apply-url http://example.org/sample.patch args
-</code></pre></div>
-<p>The first argument MUST be an url for a patch, other arguments will be passed to <code>git apply</code>. </p>
-
-<h3>git apply-url - Apply a series of patches from an url (git am-url):</h3>
-<div class="highlight"><pre><code class="language-" data-lang="">$git config --global alias.am-url "!f() { curl -s $1 2&gt;nul | git am ${@:2}; }; f"
-</code></pre></div>
-<p>This alias works exactly the same as previous.</p>
-
-<p>Usage</p>
-<div class="highlight"><pre><code class="language-" data-lang="">$git am-url http://example.org/sample.patch args
-</code></pre></div>
-<p>The first argument MUST be an url for a patch, other arguments will be passed to <code>git am</code>.
-You can apply a pull request from github by performing following:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">$git am-url https://github.com/user/repo/pull/777.patch
-</code></pre></div>
-<p>Happy aliasing!</p>
 
   </div>
   

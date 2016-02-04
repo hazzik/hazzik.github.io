@@ -4,7 +4,7 @@ layout: default
 
 <div class="post hentry">
   <h1 class="post-title entry-title">
-    <a href="{{ site.github.source }}{{ page.path }}"><i class="fa fa-edit"></i></a> {{ page.title }}
+    <a href="{{ site.github.source }}{{ page.path }}"><i class="fa fa-edit"></i></a> {{ page.title | emojify }}
   </h1>
   <ul class="post-info">
     <li><i class="fa fa-calendar"></i><time datetime="{{ page.date | date_to_xmlschema }}" class="published"> {{ page.date | date_to_string }} </time></li>

@@ -1,1 +1,1 @@
-Sitemap: http://alexzaytsev.me/sitemap.xml
+Sitemap: https://alexzaytsev.me/sitemap.xml

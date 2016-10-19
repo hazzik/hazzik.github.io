@@ -20,7 +20,7 @@ Please see the full release notes for more information:
 &lt;ul&gt;
 &lt;li&gt;[&lt;a href=&#39;https://nhibernate.jira.com/browse/NH-2504&#39;&gt;NH-2504&lt;/a&gt;] -         Can&amp;#39;t use Cacheable with Group By
 &lt;/li&gt;
-&lt;li&gt;[&lt;a href=&#39;https://nhibernate.jira.com/browse/NH-3457&#39;&gt;NH-3457&lt;/a&gt;] -         TemplatedViolatedConstraintNameExtracter.ExtractUsingTemplate calls Substring with wrong arguments
+&lt;li&gt;[&lt;a href=&#39;https://nhibernate.jira.com/browse/NH-3457&#39;&gt;NH-3457&lt;/a&gt;] -         TemplatedViolatedConstraintNameExtracter.&amp;#8203;ExtractUsingTemplate calls Substring with wrong arguments
 &lt;/li&gt;
 &lt;li&gt;[&lt;a href=&#39;https://nhibernate.jira.com/browse/NH-3468&#39;&gt;NH-3468&lt;/a&gt;] -         InvalidCastException when deleting entities containing uninitialized lazy components
 &lt;/li&gt;
@@ -32,7 +32,8 @@ Please see the full release notes for more information:
                         
 &lt;p&gt;
 Source: &lt;a href=&quot;http://nhibernate.info/blog/2015/01/20/nhibernate-4-0-3-released.html&quot;&gt;http://nhibernate.info/blog/2015/01/20/nhibernate-4-0-3-released.html&lt;/a&gt;
-&lt;/pr&gt;</description>
+&lt;/pr&gt;
+</description>
         <pubDate>Tue, 20 Jan 2015 21:27:48 +1200</pubDate>
         <link>http://alexzaytsev.me/2015/01/20/nhibernate-4-0-3-released/</link>
         <guid isPermaLink="true">http://alexzaytsev.me/2015/01/20/nhibernate-4-0-3-released/</guid>
@@ -841,7 +842,7 @@ You can apply a pull request from github by performing following:&lt;/p&gt;
 &lt;li&gt;&lt;a href=&quot;https://nuget.org/packages/DelegateDecompiler&quot;&gt;Nuget package&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-        <pubDate>Tue, 05 Mar 2013 09:31:14 +1200</pubDate>
+        <pubDate>Tue, 05 Mar 2013 10:31:14 +1300</pubDate>
         <link>http://alexzaytsev.me/2013/03/05/computable-properties-for-any-linq-provider/</link>
         <guid isPermaLink="true">http://alexzaytsev.me/2013/03/05/computable-properties-for-any-linq-provider/</guid>
       </item>

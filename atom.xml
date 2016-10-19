@@ -4,7 +4,7 @@
  <title>Hazzik&#39;s blog</title>
  <link href="http://alexzaytsev.me/atom.xml" rel="self"/>
  <link href="http://alexzaytsev.me/"/>
- <updated>2016-02-04T23:06:25+12:00</updated>
+ <updated>2016-10-20T10:27:57+12:00</updated>
  <id>http://alexzaytsev.me</id>
  <author>
    <name>Alexander Zaytsev</name>
@@ -29,7 +29,7 @@ Please see the full release notes for more information:
 &lt;ul&gt;
 &lt;li&gt;[&lt;a href=&#39;https://nhibernate.jira.com/browse/NH-2504&#39;&gt;NH-2504&lt;/a&gt;] -         Can&amp;#39;t use Cacheable with Group By
 &lt;/li&gt;
-&lt;li&gt;[&lt;a href=&#39;https://nhibernate.jira.com/browse/NH-3457&#39;&gt;NH-3457&lt;/a&gt;] -         TemplatedViolatedConstraintNameExtracter.ExtractUsingTemplate calls Substring with wrong arguments
+&lt;li&gt;[&lt;a href=&#39;https://nhibernate.jira.com/browse/NH-3457&#39;&gt;NH-3457&lt;/a&gt;] -         TemplatedViolatedConstraintNameExtracter.&amp;#8203;ExtractUsingTemplate calls Substring with wrong arguments
 &lt;/li&gt;
 &lt;li&gt;[&lt;a href=&#39;https://nhibernate.jira.com/browse/NH-3468&#39;&gt;NH-3468&lt;/a&gt;] -         InvalidCastException when deleting entities containing uninitialized lazy components
 &lt;/li&gt;
@@ -41,7 +41,8 @@ Please see the full release notes for more information:
                         
 &lt;p&gt;
 Source: &lt;a href=&quot;http://nhibernate.info/blog/2015/01/20/nhibernate-4-0-3-released.html&quot;&gt;http://nhibernate.info/blog/2015/01/20/nhibernate-4-0-3-released.html&lt;/a&gt;
-&lt;/pr&gt;</content>
+&lt;/pr&gt;
+</content>
  </entry>
  
  <entry>
@@ -737,7 +738,7 @@ You can apply a pull request from github by performing following:&lt;/p&gt;
  <entry>
    <title>Computable properties for any LINQ provider</title>
    <link href="http://alexzaytsev.me/2013/03/05/computable-properties-for-any-linq-provider/"/>
-   <updated>2013-03-05T09:31:14+12:00</updated>
+   <updated>2013-03-05T10:31:14+13:00</updated>
    <id>http://alexzaytsev.me/2013/03/05/computable-properties-for-any-linq-provider</id>
    <content type="html">&lt;p&gt;In this blog post I want to present a little library which I wrote a while ago. This library can decompile methods to their λ-representation.&lt;/p&gt;
 
@@ -855,7 +856,7 @@ You can apply a pull request from github by performing following:&lt;/p&gt;
  <entry>
    <title>NHibernate: How to persist Tree-like structures</title>
    <link href="http://alexzaytsev.me/2013/03/04/nhibernate-how-to-persist-tree-like-structures/"/>
-   <updated>2013-03-04T17:21:00+12:00</updated>
+   <updated>2013-03-04T18:21:00+13:00</updated>
    <id>http://alexzaytsev.me/2013/03/04/nhibernate-how-to-persist-tree-like-structures</id>
    <content type="html">&lt;p&gt;Many of you have seen a simple problem - how to store hierarchy data in relational database and efficient work with it. It seems that there is no simpler things to do - just create PARENT_ID column and store the parent identifier of this record.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Tree&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;

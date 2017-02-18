@@ -4,12 +4,12 @@ title: About
 permalink: /about/
 ---
 <img src="/public/me.jpg" alt="Photo of Alexander Zaytsev" style="float:right">
-Alexander has over 7 years of experience in IT field, analysing, designing and developing .NET based enterprise applications using cutting-edge technologies. He graduated from one of the biggest technical universities in Russia – South Ural State University in 2008. He started to work as a professional developer while being the last year student.
+Alexander is an experienced full-stack .NET Developer. He develops high-quality complex solutions using .NET platform. He has more than 10 years of experience in C#, JavaScript, ASP.NET (MVC, Webforms, WebApi, WCF, etc.), Web Services, NHibernate, Entity Framework, LINQ, SQL, Windows Forms. He graduated from one of the biggest technical universities in Russia, South Ural State University, in 2008.
 
-He considers himself as a highly qualified expert in C# language and Microsoft .NET platform. He has expert level of knowledge and work experience with ASP.NET, Web Services, ASP.NET MVC 1-5, ASP.NET WebApi, NServiceBus, NHibernate, Entity Framework, LINQ, Windows Forms, including related technologies such as HTML, JavaScript and CSS.
+His clients include a variety of companies from small startups to large corporations. 
 
-He demonstrates confident knowledge of the object-oriented programming and design, domain driven design (DDD), event sourcing and CQRS. He knows and applies design patterns (GoF, PoEEA), programming principles and best practices (SOLID, GRASP, CQS) in his day-to-day development.
+He’s a self-motivated and a team player. He manages his work time using the Pomodoro principle. 
 
-In his work he uses the principles of Agile, Extreme Programming and Scrum. For day-to-day tasks, he uses Test-Driven Development (TDD) and pair programming.
+Writing a good, clean, and maintainable code is his passion. He practices Test Driven Development and Pair Programming to write a testable bug-free code that is easily understood by other developers.  He applies design patterns, principles and best practices (such as GoF patterns, PoEEA, SOLID, and GRASP) to his code. He's a big fan of Domain Driven Design and CQRS principle. He's not afraid of large legacy codebases.
 
-He is an active member of open source and local development communities.
+He's an active member of Open Source .NET community. In total, his packages have been downloaded more than 3.5 million times from NuGet. “NHibernate 4.x Cookbook” book co-author.

@@ -1,144 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://alexzaytsev.me/2015/01/20/nhibernate-4-0-3-released/</loc>
-    <lastmod>2015-01-20T21:27:48+12:00</lastmod>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/2014/11/16/nhibernate-4-0-2-released/</loc>
-    <lastmod>2014-11-16T14:14:27+12:00</lastmod>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/2014/11/10/playing-with-google-apps-script/</loc>
-    <lastmod>2014-11-10T21:40:49+12:00</lastmod>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/2014/10/19/git-filter-to-convert-spaces-to-tabs-and-vice-versa/</loc>
-    <lastmod>2014-10-19T10:32:29+12:00</lastmod>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/2014/10/19/git-alias-to-apply-patch-from-url/</loc>
-    <lastmod>2014-10-19T01:18:53+12:00</lastmod>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/2014/07/04/learn-how-to-use-idcitionary-dot-trygetvalue/</loc>
-    <lastmod>2014-07-04T14:36:35+12:00</lastmod>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/2014/06/26/drop-down-lists-solved/</loc>
-    <lastmod>2014-06-26T17:23:16+12:00</lastmod>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/2014/06/17/render-action-attribute/</loc>
-    <lastmod>2014-06-17T11:43:03+12:00</lastmod>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/2014/05/27/the-blog-has-been-moved/</loc>
-    <lastmod>2014-05-27T20:26:00+12:00</lastmod>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/2013/03/05/computable-properties-for-any-linq-provider/</loc>
-    <lastmod>2013-03-05T10:31:14+13:00</lastmod>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/2013/03/04/nhibernate-how-to-persist-tree-like-structures/</loc>
-    <lastmod>2013-03-04T18:21:00+13:00</lastmod>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/404.html</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/about/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/tag/tree/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/tag/nhibernate/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/tag/tree-structures/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/tag/tree-hierarchy/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/tag/persistent-tree/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/tag/linq/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/tag/computed-properties/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/tag/decompiler/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/tag/delegate/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/tag/blog/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/tag/asp-dot-net-mvc/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/tag/dataannotations/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/tag/renderaction/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/tag/mvcextensions/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/tag/drop-down-lists/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/tag/best-practicies/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/tag/dot-net/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/tag/git/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/tag/git-alias/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/tag/javascript/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/tag/google/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/tag/google-apps-script/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/page2/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/page3/</loc>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/616c1ab443d938ac0d68dce3576cd053d0878f43.html</loc>
-    <lastmod>2016-10-13T14:03:54+12:00</lastmod>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/72846d40e883354a0c7f81998551dfb7d89e126f.html</loc>
-    <lastmod>2016-10-20T10:33:07+12:00</lastmod>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/post/44522958800/nhibernate-how-to-persist-tree-like-structures/index.html</loc>
-    <lastmod>2016-10-13T14:03:54+12:00</lastmod>
-  </url>
-  <url>
-    <loc>https://alexzaytsev.me/post/44564275956/computable-properties-for-any-linq-provider/index.html</loc>
-    <lastmod>2016-10-13T14:03:54+12:00</lastmod>
-  </url>
+<url>
+<loc>http://alexzaytsev.me/2015/01/20/nhibernate-4-0-3-released/</loc>
+<lastmod>2015-01-20T21:27:48+12:00</lastmod>
+</url>
+<url>
+<loc>http://alexzaytsev.me/2014/11/16/nhibernate-4-0-2-released/</loc>
+<lastmod>2014-11-16T14:14:27+12:00</lastmod>
+</url>
+<url>
+<loc>http://alexzaytsev.me/2014/11/10/playing-with-google-apps-script/</loc>
+<lastmod>2014-11-10T21:40:49+12:00</lastmod>
+</url>
+<url>
+<loc>http://alexzaytsev.me/2014/10/19/git-filter-to-convert-spaces-to-tabs-and-vice-versa/</loc>
+<lastmod>2014-10-19T10:32:29+12:00</lastmod>
+</url>
+<url>
+<loc>http://alexzaytsev.me/2014/10/19/git-alias-to-apply-patch-from-url/</loc>
+<lastmod>2014-10-19T01:18:53+12:00</lastmod>
+</url>
+<url>
+<loc>http://alexzaytsev.me/2014/07/04/learn-how-to-use-idcitionary-dot-trygetvalue/</loc>
+<lastmod>2014-07-04T14:36:35+12:00</lastmod>
+</url>
+<url>
+<loc>http://alexzaytsev.me/2014/06/26/drop-down-lists-solved/</loc>
+<lastmod>2014-06-26T17:23:16+12:00</lastmod>
+</url>
+<url>
+<loc>http://alexzaytsev.me/2014/06/17/render-action-attribute/</loc>
+<lastmod>2014-06-17T11:43:03+12:00</lastmod>
+</url>
+<url>
+<loc>http://alexzaytsev.me/2014/05/27/the-blog-has-been-moved/</loc>
+<lastmod>2014-05-27T20:26:00+12:00</lastmod>
+</url>
+<url>
+<loc>http://alexzaytsev.me/2013/03/05/computable-properties-for-any-linq-provider/</loc>
+<lastmod>2013-03-05T10:31:14+13:00</lastmod>
+</url>
+<url>
+<loc>http://alexzaytsev.me/2013/03/04/nhibernate-how-to-persist-tree-like-structures/</loc>
+<lastmod>2013-03-04T18:21:00+13:00</lastmod>
+</url>
+<url>
+<loc>http://alexzaytsev.me/404.html</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/about/</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/tag/tree/</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/tag/nhibernate/</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/tag/tree-structures/</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/tag/tree-hierarchy/</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/tag/persistent-tree/</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/tag/linq/</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/tag/computed-properties/</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/tag/decompiler/</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/tag/delegate/</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/tag/blog/</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/tag/asp-dot-net-mvc/</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/tag/dataannotations/</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/tag/renderaction/</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/tag/mvcextensions/</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/tag/drop-down-lists/</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/tag/best-practicies/</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/tag/dot-net/</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/tag/git/</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/tag/git-alias/</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/tag/javascript/</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/tag/google/</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/tag/google-apps-script/</loc>
+</url>
+<url>
+<loc>http://alexzaytsev.me/616c1ab443d938ac0d68dce3576cd053d0878f43.html</loc>
+<lastmod>2017-02-18T18:13:05+12:00</lastmod>
+</url>
+<url>
+<loc>http://alexzaytsev.me/post/44522958800/nhibernate-how-to-persist-tree-like-structures/index.html</loc>
+<lastmod>2014-09-12T21:42:01+12:00</lastmod>
+</url>
+<url>
+<loc>http://alexzaytsev.me/post/44564275956/computable-properties-for-any-linq-provider/index.html</loc>
+<lastmod>2014-09-12T21:42:01+12:00</lastmod>
+</url>
 </urlset>

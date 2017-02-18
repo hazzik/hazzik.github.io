@@ -9,14 +9,14 @@ permalink:        pretty
 title:            Hazzik's blog
 tagline:          ''
 description:      ''
-url:              http://alexzaytsev.me
+url:              https://alexzaytsev.me
 timezone:         'NZS-12:00'
 tag_page_layout: tag_page
 tag_page_dir: tag
 
 author:
   name:           'Alexander Zaytsev'
-  url:            http://alexzaytsev.me
+  url:            https://alexzaytsev.me
 
 paginate:         5
 

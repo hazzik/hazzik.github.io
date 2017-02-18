@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Hazzik&#39;s blog</title>
- <link href="http://alexzaytsev.me/atom.xml" rel="self"/>
- <link href="http://alexzaytsev.me/"/>
- <updated>2017-02-18T18:32:34+12:00</updated>
- <id>http://alexzaytsev.me</id>
+ <link href="https://alexzaytsev.me/atom.xml" rel="self"/>
+ <link href="https://alexzaytsev.me/"/>
+ <updated>2017-02-18T18:35:21+12:00</updated>
+ <id>https://alexzaytsev.me</id>
  <author>
    <name>Alexander Zaytsev</name>
    <email></email>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>NHibernate 4.0.3 Released</title>
-   <link href="http://alexzaytsev.me/2015/01/20/nhibernate-4-0-3-released/"/>
+   <link href="https://alexzaytsev.me/2015/01/20/nhibernate-4-0-3-released/"/>
    <updated>2015-01-20T21:27:48+12:00</updated>
-   <id>http://alexzaytsev.me/2015/01/20/nhibernate-4-0-3-released</id>
+   <id>https://alexzaytsev.me/2015/01/20/nhibernate-4-0-3-released</id>
    <content type="html">&lt;p&gt;NHibernate 4.0.3 General Availability is now available for download from &lt;a href=&quot;https://sourceforge.net/projects/nhibernate/files/NHibernate/4.0.3.GA/&quot;&gt;Sourceforge&lt;/a&gt; and &lt;a href=&quot;https://www.nuget.org/packages/NHibernate/4.0.3.4000&quot;&gt;Nuget&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;This includes fixes for regressions in NH 4.0.2 and some minor fixes.
@@ -47,9 +47,9 @@ Source: &lt;a href=&quot;http://nhibernate.info/blog/2015/01/20/nhibernate-4-0-3
  
  <entry>
    <title>NHibernate 4.0.2 Released</title>
-   <link href="http://alexzaytsev.me/2014/11/16/nhibernate-4-0-2-released/"/>
+   <link href="https://alexzaytsev.me/2014/11/16/nhibernate-4-0-2-released/"/>
    <updated>2014-11-16T14:14:27+12:00</updated>
-   <id>http://alexzaytsev.me/2014/11/16/nhibernate-4-0-2-released</id>
+   <id>https://alexzaytsev.me/2014/11/16/nhibernate-4-0-2-released</id>
    <content type="html">&lt;p&gt;NHibernate 4.0.2 General Availability is now available for download from &lt;a href=&quot;https://sourceforge.net/projects/nhibernate/files/NHibernate/4.0.2.GA/&quot;&gt;Sourceforge&lt;/a&gt; and &lt;a href=&quot;https://www.nuget.org/packages/NHibernate/4.0.2.4000&quot;&gt;Nuget&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;This includes fixes for regressions in NH 4.0.1, and some fixes for mapping-by-code and Firebird issues.
@@ -84,9 +84,9 @@ Please see the full release notes for more information:
  
  <entry>
    <title>Playing with Google Apps Scripts</title>
-   <link href="http://alexzaytsev.me/2014/11/10/playing-with-google-apps-script/"/>
+   <link href="https://alexzaytsev.me/2014/11/10/playing-with-google-apps-script/"/>
    <updated>2014-11-10T21:40:49+12:00</updated>
-   <id>http://alexzaytsev.me/2014/11/10/playing-with-google-apps-script</id>
+   <id>https://alexzaytsev.me/2014/11/10/playing-with-google-apps-script</id>
    <content type="html">&lt;p&gt;Google has an Apps Script platform which allows you yo write scripts for most of Google products, such as Gmail, Drive, Spreadsheets, etc. The google script (extension .gs) is an JavaScript language subset. Google provides online editor for scripts, which is available at &lt;a href=&quot;https://script.google.com&quot;&gt;script.google.com&lt;/a&gt;. The editor is an online IDE with basic autocompletion support, which is really nice. But I prefer to write Google Scripts in some mature desctop editors such as Visual Studio or at least Sublime Text.&lt;/p&gt;
 
 &lt;p&gt;I came across need of writing Google Script, when I wanted to sort my GitHub notification and remove some subscription emails.&lt;/p&gt;
@@ -179,9 +179,9 @@ Please see the full release notes for more information:
  
  <entry>
    <title>Git Filter to Convert Spaces to Tabs and Vice Versa</title>
-   <link href="http://alexzaytsev.me/2014/10/19/git-filter-to-convert-spaces-to-tabs-and-vice-versa/"/>
+   <link href="https://alexzaytsev.me/2014/10/19/git-filter-to-convert-spaces-to-tabs-and-vice-versa/"/>
    <updated>2014-10-19T10:32:29+12:00</updated>
-   <id>http://alexzaytsev.me/2014/10/19/git-filter-to-convert-spaces-to-tabs-and-vice-versa</id>
+   <id>https://alexzaytsev.me/2014/10/19/git-filter-to-convert-spaces-to-tabs-and-vice-versa</id>
    <content type="html">&lt;p&gt;Usually people have different preferences on tabs vs spaces. Here is a git filter to convert tabs to spaces, and spaces to tabs. Git allows you to write filters - a small commands which will be run after checkout (smudge) or before add (clean). As usual all settings are stored in git config files.&lt;/p&gt;
 
 &lt;p&gt;To make a work I use two GNU tools &lt;a href=&quot;http://man7.org/linux/man-pages/man1/expand.1.html&quot;&gt;expand&lt;/a&gt; (converts tabs to spaces) and &lt;a href=&quot;http://man7.org/linux/man-pages/man1/unexpand.1.html&quot;&gt;unexpand&lt;/a&gt; (converts spaces to tabs). If you are using Windows, then you&amp;#39;ll need these tools to be reachable from your PATH environment varible. You can get this tools as part of &lt;a href=&quot;http://gnuwin32.sourceforge.net/&quot;&gt;GnuWin32&lt;/a&gt; or any other port of GNU tools to Windows.&lt;/p&gt;
@@ -244,9 +244,9 @@ Please see the full release notes for more information:
  
  <entry>
    <title>Git aliases to apply patches from url</title>
-   <link href="http://alexzaytsev.me/2014/10/19/git-alias-to-apply-patch-from-url/"/>
+   <link href="https://alexzaytsev.me/2014/10/19/git-alias-to-apply-patch-from-url/"/>
    <updated>2014-10-19T01:18:53+12:00</updated>
-   <id>http://alexzaytsev.me/2014/10/19/git-alias-to-apply-patch-from-url</id>
+   <id>https://alexzaytsev.me/2014/10/19/git-alias-to-apply-patch-from-url</id>
    <content type="html">&lt;p&gt;Git has two commands to apply patches: &lt;a href=&quot;https://www.kernel.org/pub/software/scm/git/docs/git-am.html&quot;&gt;&lt;em&gt;git am&lt;/em&gt;&lt;/a&gt; and &lt;a href=&quot;https://www.kernel.org/pub/software/scm/git/docs/git-apply.html&quot;&gt;&lt;em&gt;git apply&lt;/em&gt;&lt;/a&gt;, but none of them are able to apply patches from an url. So here are my aliases to do so.&lt;/p&gt;
 
 &lt;h3&gt;git apply-url - Apply a patch to files and/or to the index from url&lt;/h3&gt;
@@ -277,9 +277,9 @@ You can apply a pull request from github by performing following:&lt;/p&gt;
  
  <entry>
    <title>Learn How to Use IDcitionary&lt;,&gt;.TryGetValue!</title>
-   <link href="http://alexzaytsev.me/2014/07/04/learn-how-to-use-idcitionary-dot-trygetvalue/"/>
+   <link href="https://alexzaytsev.me/2014/07/04/learn-how-to-use-idcitionary-dot-trygetvalue/"/>
    <updated>2014-07-04T14:36:35+12:00</updated>
-   <id>http://alexzaytsev.me/2014/07/04/learn-how-to-use-idcitionary-dot-trygetvalue</id>
+   <id>https://alexzaytsev.me/2014/07/04/learn-how-to-use-idcitionary-dot-trygetvalue</id>
    <content type="html">&lt;p&gt;I&amp;#39;m going nuts every time I see the code similar to the following snippet.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;cm&quot;&gt;/* Given:
  * IDictionary&amp;lt;TKey, TValue&amp;gt; dictionary;
@@ -316,9 +316,9 @@ You can apply a pull request from github by performing following:&lt;/p&gt;
  
  <entry>
    <title>Solving DropDown list in ASP.NET MVC with MvcExtensions</title>
-   <link href="http://alexzaytsev.me/2014/06/26/drop-down-lists-solved/"/>
+   <link href="https://alexzaytsev.me/2014/06/26/drop-down-lists-solved/"/>
    <updated>2014-06-26T17:23:16+12:00</updated>
-   <id>http://alexzaytsev.me/2014/06/26/drop-down-lists-solved</id>
+   <id>https://alexzaytsev.me/2014/06/26/drop-down-lists-solved</id>
    <content type="html">&lt;p&gt;This is an translation of &lt;a href=&quot;http://blog.hazzik.ru/2012/04/02/mvcextensions-solving-drop-down-lists-problem/&quot;&gt;my article&lt;/a&gt; from 2nd April of 2012.&lt;/p&gt;
 
 &lt;p&gt;From the first version of &lt;a href=&quot;http://www.asp.net/mvc&quot;&gt;ASP.NET MVC&lt;/a&gt; couple of years ago I found that there is no common solution how to display drop down lists properly. Probably every of you &lt;a href=&quot;http://www.google.ru/webhp#q=asp.net+mvc+dropdownlist&quot;&gt;asked yourself&lt;/a&gt;: &amp;#8220;How to pass the selection list to a drop down list?&amp;#8221; And so I was asking the same question to myself, I could not even sleep;)&lt;/p&gt;
@@ -634,9 +634,9 @@ You can apply a pull request from github by performing following:&lt;/p&gt;
  
  <entry>
    <title>Render Action Attribute</title>
-   <link href="http://alexzaytsev.me/2014/06/17/render-action-attribute/"/>
+   <link href="https://alexzaytsev.me/2014/06/17/render-action-attribute/"/>
    <updated>2014-06-17T11:43:03+12:00</updated>
-   <id>http://alexzaytsev.me/2014/06/17/render-action-attribute</id>
+   <id>https://alexzaytsev.me/2014/06/17/render-action-attribute</id>
    <content type="html">&lt;p&gt;The purpose of this attribute is to be able to render action as an editor or display template for your form fields. First of all we will need the data structure which will hold options for the our editor template.&lt;/p&gt;
 
 &lt;h4&gt;RenderActionOptions.cs&lt;/h4&gt;
@@ -729,18 +729,18 @@ You can apply a pull request from github by performing following:&lt;/p&gt;
  
  <entry>
    <title>The blog has been moved to alexzaytsev.me</title>
-   <link href="http://alexzaytsev.me/2014/05/27/the-blog-has-been-moved/"/>
+   <link href="https://alexzaytsev.me/2014/05/27/the-blog-has-been-moved/"/>
    <updated>2014-05-27T20:26:00+12:00</updated>
-   <id>http://alexzaytsev.me/2014/05/27/the-blog-has-been-moved</id>
+   <id>https://alexzaytsev.me/2014/05/27/the-blog-has-been-moved</id>
    <content type="html">&lt;p&gt;Subj&lt;/p&gt;
 </content>
  </entry>
  
  <entry>
    <title>Computable properties for any LINQ provider</title>
-   <link href="http://alexzaytsev.me/2013/03/05/computable-properties-for-any-linq-provider/"/>
+   <link href="https://alexzaytsev.me/2013/03/05/computable-properties-for-any-linq-provider/"/>
    <updated>2013-03-05T10:31:14+13:00</updated>
-   <id>http://alexzaytsev.me/2013/03/05/computable-properties-for-any-linq-provider</id>
+   <id>https://alexzaytsev.me/2013/03/05/computable-properties-for-any-linq-provider</id>
    <content type="html">&lt;p&gt;In this blog post I want to present a little library which I wrote a while ago. This library can decompile methods to their λ-representation.&lt;/p&gt;
 
 &lt;h1&gt;Why&lt;/h1&gt;
@@ -856,9 +856,9 @@ You can apply a pull request from github by performing following:&lt;/p&gt;
  
  <entry>
    <title>NHibernate: How to persist Tree-like structures</title>
-   <link href="http://alexzaytsev.me/2013/03/04/nhibernate-how-to-persist-tree-like-structures/"/>
+   <link href="https://alexzaytsev.me/2013/03/04/nhibernate-how-to-persist-tree-like-structures/"/>
    <updated>2013-03-04T18:21:00+13:00</updated>
-   <id>http://alexzaytsev.me/2013/03/04/nhibernate-how-to-persist-tree-like-structures</id>
+   <id>https://alexzaytsev.me/2013/03/04/nhibernate-how-to-persist-tree-like-structures</id>
    <content type="html">&lt;p&gt;Many of you have seen a simple problem - how to store hierarchy data in relational database and efficient work with it. It seems that there is no simpler things to do - just create PARENT_ID column and store the parent identifier of this record.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Tree&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;

@@ -1,9 +1,8 @@
 GIT
   remote: https://github.com/hazzik/jekyll-tagging.git
-  revision: b6afb520e13512c1e687cd555673829f4b55e2b7
+  revision: 0a0d679f0fca87e0b1158efa8c62bd6c5ab68d29
   specs:
     jekyll-tagging (0.5.0)
-      ruby-nuggets
       stringex
 
 GIT
@@ -11,11 +10,16 @@ GIT
   revision: 7ddfafbcaefc2b4944fc0e684260b57c68788a23
   specs:
     octopress (3.0.11)
+      bundler (~> 1.3)
+      clash
       jekyll (>= 2.0)
       mercenary (~> 0.3.2)
       octopress-deploy
       octopress-escape-code (~> 2.0)
       octopress-hooks (~> 2.0)
+      octopress-ink
+      pry-byebug
+      rake
       redcarpet (~> 3.0)
       stringex (~> 2.5.2)
       titlecase
@@ -44,7 +48,6 @@ GEM
     fast-stemmer (1.0.2)
     ffi (1.9.17)
     ffi (1.9.17-x64-mingw32)
-    ffi (1.9.17-x86-mingw32)
     gemoji (2.1.0)
     html-pipeline (2.5.0)
       activesupport (>= 2)
@@ -96,9 +99,6 @@ GEM
       mini_portile2 (~> 2.1.0)
     nokogiri (1.7.0.1-x64-mingw32)
       mini_portile2 (~> 2.1.0)
-    nokogiri (1.7.0.1-x86-mingw32)
-      mini_portile2 (~> 2.1.0)
-    nuggets (1.0.0)
     octokit (4.6.2)
       sawyer (~> 0.8.0, >= 0.5.3)
     octopress-deploy (1.3.0)
@@ -118,8 +118,6 @@ GEM
       ffi (>= 0.5.0)
     redcarpet (3.4.0)
     rouge (1.6.2)
-    ruby-nuggets (1.0.0)
-      nuggets (= 1.0.0)
     safe_yaml (1.0.4)
     sass (3.4.23)
     sawyer (0.8.1)
@@ -138,7 +136,6 @@ GEM
 PLATFORMS
   ruby
   x64-mingw32
-  x86-mingw32
 
 DEPENDENCIES
   jekyll-redirect-from
@@ -151,4 +148,4 @@ DEPENDENCIES
   wdm (>= 0.1.0)
 
 BUNDLED WITH
-   1.14.4
+   1.14.6

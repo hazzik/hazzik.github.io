@@ -12,4 +12,4 @@ He’s a self-motivated and a team player. He manages his work time using the Po
 
 Writing a good, clean, and maintainable code is his passion. He practices Test Driven Development and Pair Programming to write a testable bug-free code that is easily understood by other developers.  He applies design patterns, principles and best practices (such as GoF patterns, PoEEA, SOLID, and GRASP) to his code. He's a big fan of Domain Driven Design and CQRS principle. He's not afraid of large legacy codebases.
 
-He's an active member of Open Source .NET community. In total, his packages have been downloaded more than 3.5 million times from NuGet. “NHibernate 4.x Cookbook” book co-author.
+He's an active member of Open Source .NET community. In total, his packages have been downloaded more than 3.5 million times from NuGet. “<a href="http://amzn.to/2GsxnGw" title="Buy NHibernate 4.x Cookbook on Amazon">NHibernate 4.x Cookbook</a>” book co-author.

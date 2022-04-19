@@ -41,7 +41,7 @@ GEM
     faraday (0.14.0)
       multipart-post (>= 1.2, < 3)
     fast-stemmer (1.0.2)
-    ffi (1.9.23)
+    ffi (1.9.25)
     gemoji (2.1.0)
     html-pipeline (2.7.1)
       activesupport (>= 2)
@@ -137,6 +137,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ffi (~> 1.9.23)
   jekyll-redirect-from
   jekyll-sitemap
   jekyll-tagging!
@@ -146,4 +147,4 @@ DEPENDENCIES
   rouge (~> 1.6.0)
 
 BUNDLED WITH
-   1.16.1
+   1.17.2

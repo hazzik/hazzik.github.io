@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem "ffi", "~>1.9.23"
 gem 'octopress', :git => 'https://github.com/hazzik/octopress.git'
 gem 'octopress-deploy'
 gem 'rouge', '~>1.6.0'

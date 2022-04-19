@@ -9,19 +9,19 @@ permalink:        pretty
 title:            Hazzik's blog
 tagline:          ''
 description:      ''
-url:              https://alexzaytsev.me
+url:              https://hazzik.github.io
 timezone:         'NZS-12:00'
 tag_page_layout: tag_page
 tag_page_dir: tag
 
 author:
-  name:           'Alexander Zaytsev'
-  url:            https://alexzaytsev.me
+  name:           'Alex Zaytsev'
+  url:            https://hazzik.github.io
 
 paginate:         5
 
 github:
-  source:    'http://github.com/hazzik/alexzaytsev.me/edit/master/'
+  source:    'http://github.com/hazzik/hazzik.github.io/edit/master/'
 
 ya_metrika_id:    25093751
 
